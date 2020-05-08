@@ -29,7 +29,7 @@ const LoginMessageForm: React.SFC = () => (
       </Card>
     </Form>
     <Message>
-      <a href="/">Retour</a>
+      <Link to="/">Retour</Link>
     </Message>
   </div>
 );

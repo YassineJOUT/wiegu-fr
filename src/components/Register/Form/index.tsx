@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Form, Button, Message, Checkbox } from "semantic-ui-react";
 import { Formik, Field, ErrorMessage } from "formik";
 import { registrationSchema } from "../../../utilities/validationSchema";
+import { Link } from "react-router-dom";
 
 
 const RegisterForm: React.SFC = () => {
@@ -80,9 +81,9 @@ const RegisterForm: React.SFC = () => {
         )}
       </Formik>
       <Message>
-        Déjà membre de VaTo ? <a href="/login">Se connecter</a>
+        Déjà membre de VaTo ? <Link to="/login">Se connecter</Link>
         <br />
-        <a href="/">Mot de passe oublié ?</a>
+        <Link to="/">Mot de passe oublié ?</Link>
       </Message>
     </div>
   );
