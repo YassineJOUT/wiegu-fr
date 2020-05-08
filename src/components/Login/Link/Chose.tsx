@@ -36,7 +36,7 @@ const LoginChoseForm: React.SFC = () => (
       </Card>
     </Form>
     <Message>
-      <a href="/login">Retour</a>
+      <Link to="/login">Retour</Link>
     </Message>
   </div>
 );

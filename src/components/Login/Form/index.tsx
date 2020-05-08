@@ -7,6 +7,7 @@ import {
 } from "semantic-ui-react";
 import { Formik, ErrorMessage } from "formik";
 import { loginValidationSchema } from "../../../utilities/validationSchema";
+import { Link } from "react-router-dom";
 
 
 const LoginForm: React.SFC = () => {
@@ -82,9 +83,9 @@ const LoginForm: React.SFC = () => {
         )}
       </Formik>
       <Message>
-        Pas de compte ? <a href="/register">Rejoindre VaTo</a>
+        Pas de compte ? <Link to="/register">Rejoindre VaTo</Link>
         <br />
-        <a href="/">Mot de passe oublié ?</a>
+        <Link to="/">Mot de passe oublié ?</Link>
       </Message>
     </div>
   );
