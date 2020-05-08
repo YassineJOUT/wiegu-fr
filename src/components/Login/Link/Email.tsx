@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Form, Button } from "semantic-ui-react";
+import { Card, Form, Button, Message } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { Formik, Field, ErrorMessage } from "formik";
 import { EmailValidationSchema } from "../../../utilities/validationSchema";
@@ -27,9 +27,7 @@ const LoginEmailForm: React.SFC = () => {
       validationSchema={EmailValidationSchema}
       onSubmit={Submit}
     >
-      {({
-        handleSubmit
-      }) => (
+      {({ handleSubmit }) => (
         <Form onSubmit={handleSubmit}>
           <Card centered style={{ width: 450 }}>
             <Card.Content style={{ margin: 20 }}>
@@ -38,9 +36,11 @@ const LoginEmailForm: React.SFC = () => {
               </Card.Header>
               {/* <Card.Meta>Joined in 2016</Card.Meta> */}
               <Card.Description style={{ textAlign: "left" }}>
-              
                 <Form.Field style={{ padding: 5 }}>
-                <div className="msg-error"> <ErrorMessage name="email" /></div>
+                  <div className="msg-error">
+                    {" "}
+                    <ErrorMessage name="email" />
+                  </div>
                   <Field type="text" placeholder="Email" name="email" />
                 </Form.Field>
                 <Link to="login-link-text">
@@ -58,6 +58,9 @@ const LoginEmailForm: React.SFC = () => {
           </Card>
         </Form>
       )}
+      <Message>
+        <Link to="/login">Retour></Link>
+      </Message>
     </Formik>
   );
 };
