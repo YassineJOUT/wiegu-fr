@@ -83,7 +83,7 @@ const LoginForm: React.SFC = () => {
         )}
       </Formik>
       <Message>
-        Pas de compte ? <a href="/register">Rejoindre VaTo</a>
+        Pas de compte ? <Link to="/register">Rejoindre VaTo</Link>
         <br />
         <Link to="/">Mot de passe oublié ?</Link>
       </Message>
