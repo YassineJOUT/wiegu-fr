@@ -19,7 +19,7 @@ const LoginForm: React.SFC = () => {
     }: { setSubmitting: Function; resetForm: Function }
   ) => {
     setSubmitting(true);
-    console.log(values);
+    //console.log(values);
     //this.props.login(values.email, values.password);
     setSubmitting(false);
     resetForm();
@@ -74,7 +74,7 @@ const LoginForm: React.SFC = () => {
                 </Card.Description>
               </Card.Content>
               <Card.Content extra style={{ paddingLeft: 40, paddingRight: 40 }}>
-                <Button color="teal" fluid size="large">
+                <Button type="submit" color="teal" fluid size="large">
                   Connexion
                 </Button>
               </Card.Content>
