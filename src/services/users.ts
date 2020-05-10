@@ -6,20 +6,16 @@ const headersOptions: {} = {
   headers: { "Content-Type": "application/json" },
 };
 
-const login = (email: string, password: string) => {
-  const endPoint: string = "http://localhost/vato/api/users/signin.php";
-  let params = new URLSearchParams();
-  console.log("login");
-  params.append("email", email);
-  params.append("password", password);
-  return axios.post(endPoint + "signin", params, headersOptions);
+const signIn = (values: formValues) => {
+  const endPoint: string = "http://localhost:8080/VATO/api/users/signin.php";
+  return axios.post(endPoint, JSON.stringify({username : values.email, password: values.password}), headersOptions);
 };
 
 const signUp = (values: formValues) => {
   const endPoint: string = "http://localhost:8080/VATO/api/users/signup.php";
   let params = new URLSearchParams();
   params.append("email", values.email);
-  params.append("username", values.username);
+  params.append("username", values.username || "");
   params.append(
     "password",
     values.password === undefined ? "" : values.password
@@ -52,7 +48,7 @@ const resetPassword = (
 };
 
 export const userService = {
-  login,
+  signIn,
   signUp,
   passwordForgotten,
   resetPassword,

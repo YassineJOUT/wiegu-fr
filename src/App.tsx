@@ -1,11 +1,12 @@
 import React from 'react';
-import { Router } from "react-router-dom";
+import { Router, Route, Redirect } from "react-router-dom";
 import { history } from "./utilities/history";
 import RegisterPage from "./pages/RegistrationPage";
 import LoginPage from "./pages/LoginPage";
 import LoginChosePage from "./pages/LoginLink/ChosePage";
 import LoginTextPage from "./pages/LoginLink/MessagePage";
 import LoginEmailForm from "./pages/LoginLink/EmailPage";
+import ProfilePage from "./pages/ProfilePage";
 import ProtectedRoute, {
   ProtectedRouteProps,
 } from "./utilities/protectedRoute";
@@ -17,7 +18,7 @@ function App() {
   return (
     <div>
       <Router history={history}>
-      {/* <Route
+      <Route
               path="/"
               exact
               component={() => (
@@ -25,7 +26,7 @@ function App() {
                   to={"login"}
                 />
               )}
-            /> */}
+            /> 
       <ProtectedRoute
               {...defaultProtectedRouteProps}
               exact={true}
@@ -35,15 +36,16 @@ function App() {
       <ProtectedRoute
               {...defaultProtectedRouteProps}
               exact={true}
-              path="/register"
-              component={RegisterPage}
+              path="/profile"
+              component={ProfilePage}
             />
       <ProtectedRoute
               {...defaultProtectedRouteProps}
               exact={true}
-              path="/login"
-              component={LoginPage}
+              path="/register"
+              component={RegisterPage}
             />
+  
       <ProtectedRoute
               {...defaultProtectedRouteProps}
               exact={true}

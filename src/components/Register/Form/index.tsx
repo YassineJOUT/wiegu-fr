@@ -25,6 +25,7 @@ const RegisterForm: React.SFC = () => {
     dispatch({ type: "request" });
     try {
       const result = await userService.signUp(values);
+      console.log(result);
       const data = { ...result.data };
       if (data.success) {
         dispatch({ type: "success", message: data.message });

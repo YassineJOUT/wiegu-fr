@@ -1,8 +1,8 @@
 export interface formValues {
   email: string;
   password: string;
-  username: string;
-  terms: boolean;
+  username?: string;
+  terms?: boolean;
 }
 
 export type State = {
