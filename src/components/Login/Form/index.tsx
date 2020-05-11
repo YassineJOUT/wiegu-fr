@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useContext } from "react";
 import { Card, Form, Button, Message } from "semantic-ui-react";
 import { Formik, ErrorMessage } from "formik";
 import { loginValidationSchema } from "../../../utilities/validationSchema";
@@ -6,8 +6,11 @@ import { Link } from "react-router-dom";
 import { reducer } from "../../../utilities/reducers";
 import { userService } from "../../../services/users";
 import { history } from "../../../utilities/history";
+import { Context, saveState } from "../../../utilities/useAuth";
 
 const LoginForm: React.SFC = () => {
+  const {contextState, setContext} = useContext(Context);
+
   const [{ success, error }, dispatch] = useReducer(reducer, {
     success: false,
     error: "",
@@ -29,6 +32,18 @@ const LoginForm: React.SFC = () => {
       if (data.success) {
         //history push to profile
         history.push("/profile");
+        const v = {
+          contextState:{
+            isLogged: data.success,
+            user:{
+              id: '1',
+              role: 'admin'
+            }
+          },
+          setContext
+        };
+      setContext(v);
+      saveState(v);
         dispatch({ type: "success", message: data.message });
       } else {
         dispatch({ type: "failure", error: data.message });
