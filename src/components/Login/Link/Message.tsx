@@ -20,7 +20,7 @@ const LoginMessageForm: React.SFC = () => (
               Il contient un lien magique qui vous connectera à votre compte.{" "}
             </p>
             <Link to="/login">
-              <Button color="teal" fluid size="large" style={{ marginTop: 30 }}>
+              <Button type="submit" color="teal" fluid size="large" style={{ marginTop: 30 }}>
                 Connexion avec mot de passe
               </Button>
             </Link>

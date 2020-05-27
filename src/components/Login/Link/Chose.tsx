@@ -27,7 +27,7 @@ const LoginChoseForm: React.SFC = () => (
               </Button>
             </Link>
             <Link to="/login">
-              <Button color="teal" fluid size="large">
+              <Button type="submit" color="teal" fluid size="large">
                 Connexion avec mot de passe
               </Button>
             </Link>

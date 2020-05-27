@@ -15,7 +15,7 @@ const LoginEmailForm: React.SFC = () => {
     }: { setSubmitting: Function; resetForm: Function }
   ) => {
     setSubmitting(true);
-    console.log(values);
+    //console.log(values);
     //this.props.login(values.email, values.password);
     setSubmitting(false);
     resetForm();
@@ -45,6 +45,7 @@ const LoginEmailForm: React.SFC = () => {
                 </Form.Field>
                 <Link to="login-link-text">
                   <Button
+                  type="submit"
                     color="teal"
                     fluid
                     size="large"
