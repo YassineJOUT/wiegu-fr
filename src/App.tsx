@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Router, Route, Redirect } from "react-router-dom";
 import { history } from "./utilities/history";
 import RegisterPage from "./pages/RegistrationPage";
@@ -9,19 +9,33 @@ import ProfilePage from "./pages/ProfilePage";
 import ProtectedRoute, {
   ProtectedRouteProps,
 } from "./utilities/protectedRoute";
+
 import { Context, loadState } from "./utilities/useAuth";
 import LoginPage from "./pages/LoginPage";
+import { userService } from "./services/users";
 
 const loadedState = loadState();
 
 const App: React.FC = () => {
   const [context, setContext] = useState<Context>(loadedState);
+
+  useEffect(() => {
+     userService
+      .getStore()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  });
+
   console.log(context);
   const defaultProtectedRouteProps: ProtectedRouteProps = {
     isAuthenticated: context.contextState.isLogged,
     authenticationPath: "/",
   };
-      return (
+  return (
     <div>
       <Context.Provider value={{ ...context, setContext }}>
         <Router history={history}>

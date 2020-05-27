@@ -1,18 +1,31 @@
 import axios from "axios";
 import { formValues } from "../utilities/types";
+import { API_URL } from "../utilities/config";
 
-
+console.log(process.env.API_URL);
 const headersOptions: {} = {
   headers: { "Content-Type": "application/json" },
 };
 
+const getStore = () => {
+  const endPoint: string = `${API_URL}users/getStore.php`;
+  return axios.get(
+    endPoint,
+    headersOptions
+  );
+}
 const signIn = (values: formValues) => {
-  const endPoint: string = "http://localhost:8080/VATO/api/users/signin.php";
-  return axios.post(endPoint, JSON.stringify({username : values.email, password: values.password}), headersOptions);
+  
+  const endPoint: string = `${API_URL}users/signin.php`;
+  return axios.post(
+    endPoint,
+    JSON.stringify({ username: values.email, password: values.password }),
+    headersOptions
+  );
 };
 
 const signUp = (values: formValues) => {
-  const endPoint: string = "http://localhost:8080/VATO/api/users/signup.php";
+  const endPoint: string = `${API_URL}users/signup.php`;
   let params = new URLSearchParams();
   params.append("email", values.email);
   params.append("username", values.username || "");
@@ -48,6 +61,7 @@ const resetPassword = (
 };
 
 export const userService = {
+  getStore,
   signIn,
   signUp,
   passwordForgotten,
