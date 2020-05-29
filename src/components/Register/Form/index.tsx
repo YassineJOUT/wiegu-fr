@@ -3,7 +3,7 @@ import { Card, Form, Button, Message, Checkbox } from "semantic-ui-react";
 import { Formik, Field, ErrorMessage } from "formik";
 import { registrationSchema } from "../../../utilities/validationSchema";
 import { Link } from "react-router-dom";
-import { userService } from "../../../services/users";
+import { userService } from "../../../services/users.service";
 import { reducer } from '../../../utilities/reducers'
 import { formValues } from "../../../utilities/types";
 
@@ -24,8 +24,9 @@ const RegisterForm: React.SFC = () => {
     setSubmitting(true);
     dispatch({ type: "request" });
     try {
-      const result = await userService.signUp(values);
-      console.log(result);
+      const input = { email: values.email, password: values.password, username: values.username || "" };
+      const result = await userService.signUp(input);
+      console.log(result)
       const data = { ...result.data };
       if (data.success) {
         dispatch({ type: "success", message: data.message });
@@ -39,10 +40,11 @@ const RegisterForm: React.SFC = () => {
     setSubmitting(false);
     resetForm();
   };
+  const initValues = { email: "", password: "", username: "", terms: false };
   return (
     <div>
       <Formik
-        initialValues={{ email: "", password: "", username: "", terms: false }}
+        initialValues={initValues}
         validationSchema={registrationSchema}
         onSubmit={Submit}
       >

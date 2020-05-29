@@ -12,7 +12,7 @@ import ProtectedRoute, {
 
 import { Context, loadState } from "./utilities/useAuth";
 import LoginPage from "./pages/LoginPage";
-import { userService } from "./services/users";
+import { userService } from "./services/users.service";
 
 const loadedState = loadState();
 

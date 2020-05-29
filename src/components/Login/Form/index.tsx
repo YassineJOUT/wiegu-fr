@@ -4,7 +4,7 @@ import { Formik, ErrorMessage } from "formik";
 import { loginValidationSchema } from "../../../utilities/validationSchema";
 import { Link } from "react-router-dom";
 import { reducer } from "../../../utilities/reducers";
-import { userService } from "../../../services/users";
+import { userService } from "../../../services/users.service";
 import { history } from "../../../utilities/history";
 import { Context, saveState } from "../../../utilities/useAuth";
 
@@ -26,7 +26,7 @@ const LoginForm: React.SFC = () => {
     setSubmitting(true);
     dispatch({ type: "request" });
     try {
-      const result = await userService.signIn(values);
+      const result = await userService.login(values);
       const data = { ...result.data };
       console.log(result);
       if (data.success) {
