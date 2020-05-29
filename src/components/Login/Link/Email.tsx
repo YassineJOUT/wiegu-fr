@@ -22,47 +22,49 @@ const LoginEmailForm: React.SFC = () => {
   };
 
   return (
-    <Formik
-      initialValues={{ email: "", password: "" }}
-      validationSchema={EmailValidationSchema}
-      onSubmit={Submit}
-    >
-      {({ handleSubmit }) => (
-        <Form onSubmit={handleSubmit}>
-          <Card centered style={{ width: 450 }}>
-            <Card.Content style={{ margin: 20 }}>
-              <Card.Header style={{ fontSize: 22, padding: 30 }}>
-                Connexion à Weigu
-              </Card.Header>
-              {/* <Card.Meta>Joined in 2016</Card.Meta> */}
-              <Card.Description style={{ textAlign: "left" }}>
-                <Form.Field style={{ padding: 5 }}>
-                  <div className="msg-error">
-                    {" "}
-                    <ErrorMessage name="email" />
-                  </div>
-                  <Field type="text" placeholder="Email" name="email" />
-                </Form.Field>
-                <Link to="login-link-text">
-                  <Button
-                  type="submit"
-                    color="teal"
-                    fluid
-                    size="large"
-                    style={{ marginTop: 30 }}
-                  >
-                    Suivant
-                  </Button>
-                </Link>
-              </Card.Description>
-            </Card.Content>
-          </Card>
-        </Form>
-      )}
+    <div>
+      <Formik
+        initialValues={{ email: "", password: "" }}
+        validationSchema={EmailValidationSchema}
+        onSubmit={Submit}
+      >
+        {({ handleSubmit }) => (
+          <Form onSubmit={handleSubmit}>
+            <Card centered style={{ width: 450 }}>
+              <Card.Content style={{ margin: 20 }}>
+                <Card.Header style={{ fontSize: 22, padding: 30 }}>
+                  Connexion à Weigu
+                </Card.Header>
+                {/* <Card.Meta>Joined in 2016</Card.Meta> */}
+                <Card.Description style={{ textAlign: "left" }}>
+                  <Form.Field style={{ padding: 5 }}>
+                    <div className="msg-error">
+                      {" "}
+                      <ErrorMessage name="email" />
+                    </div>
+                    <Field type="text" placeholder="Email" name="email" />
+                  </Form.Field>
+                  <Link to="login-link-text">
+                    <Button
+                      type="submit"
+                      color="teal"
+                      fluid
+                      size="large"
+                      style={{ marginTop: 30 }}
+                    >
+                      Suivant
+                    </Button>
+                  </Link>
+                </Card.Description>
+              </Card.Content>
+            </Card>
+          </Form>
+        )}
+      </Formik>
       <Message>
-        <Link to="/login">Retour></Link>
+        <Link to="/login">Retour</Link>
       </Message>
-    </Formik>
+    </div>
   );
 };
 

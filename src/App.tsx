@@ -16,8 +16,7 @@ import { userService } from "./services/users.service";
 
 const loadedState = loadState();
 
-console.log("env")
-console.log(process.env);
+
 const App: React.FC = () => {
   const [context, setContext] = useState<Context>(loadedState);
 
@@ -40,42 +39,51 @@ const App: React.FC = () => {
             exact
             component={() => (
               <Redirect
-                to={context.contextState.isLogged ? "/profile" : "login"}
+                to={context.contextState.isLogged ? "/profile" : "/"}
               />
             )}
           />
           <Route path="/login" exact component={LoginPage} />
-          <ProtectedRoute
+          <Route path="/login-link" exact component={LoginEmailForm} />
+
+          {/* <ProtectedRoute
             {...defaultProtectedRouteProps}
             exact={true}
             path="/login-link"
             component={LoginEmailForm}
-          />
-          <ProtectedRoute
+          /> */}
+          <Route path="/profile" exact component={ProfilePage} />
+
+          {/* <ProtectedRoute
             {...defaultProtectedRouteProps}
             exact={true}
             path="/profile"
             component={ProfilePage}
-          />
-          <ProtectedRoute
+          /> */}
+          <Route path="/register" exact component={RegisterPage} />
+
+          {/* <ProtectedRoute
             {...defaultProtectedRouteProps}
             exact={true}
             path="/register"
             component={RegisterPage}
-          />
+          />   */}
+          <Route path="/login-link-text" exact component={LoginTextPage} />
 
-          <ProtectedRoute
+          {/* <ProtectedRoute
             {...defaultProtectedRouteProps}
             exact={true}
             path="/login-link-text"
             component={LoginTextPage}
-          />
-          <ProtectedRoute
+          /> */}
+          <Route path="/" exact component={LoginChosePage} />
+
+          {/* <ProtectedRoute
             {...defaultProtectedRouteProps}
             exact={true}
             path="/"
             component={LoginChosePage}
-          />
+          /> */}
         </Router>
       </Context.Provider>
     </div>
