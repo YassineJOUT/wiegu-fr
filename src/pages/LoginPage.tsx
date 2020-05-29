@@ -1,4 +1,4 @@
-// Connexion à VaTo
+// Connexion à Weigu
 // E-mail
 // Mot de passe
 // Connexion

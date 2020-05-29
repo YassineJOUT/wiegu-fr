@@ -25,33 +25,34 @@ const LoginForm: React.SFC = () => {
   ) => {
     setSubmitting(true);
     dispatch({ type: "request" });
-    try {
-      const result = await userService.login(values);
-      const data = { ...result.data };
-      console.log(result);
-      if (data.success) {
-        //history push to profile
-        history.push("/profile");
-        const v = {
-          contextState:{
-            isLogged: data.success,
-            user:{
-              id: '1',
-              role: 'admin'
-            }
-          },
-          setContext
-        };
-      setContext(v);
-      saveState(v);
-        dispatch({ type: "success", message: data.message });
-      } else {
-        dispatch({ type: "failure", error: data.message });
-      }
-    } catch (err) {
-      dispatch({ type: "failure", error: err.toString() });
-    }
-
+    //try {
+      const result = userService.login(values).then(dataa => {
+        const data = { ...dataa.data };
+      console.log(data);
+        if (data.success) {
+          //history push to profile
+          history.push("/profile");
+          const v = {
+            contextState:{
+              isLogged: data.success,
+              user:{
+                id: '1',
+                role: 'admin'
+              }
+            },
+            setContext
+          };
+        setContext(v);
+        saveState(v);
+          dispatch({ type: "success", message: "Login success" });
+        } else {
+          dispatch({ type: "failure", error: data.error.message });
+        }
+      
+      }).catch(err => {
+        dispatch({ type: "failure", error: "Something went wrong" });
+      });
+      
     setSubmitting(false);
     resetForm();
   };
@@ -68,7 +69,7 @@ const LoginForm: React.SFC = () => {
             <Card centered style={{ width: 450 }}>
               <Card.Content style={{ margin: 20 }}>
                 <Card.Header style={{ fontSize: 22, padding: 30 }}>
-                  Connexion à VaTo
+                  Connexion à Weigu
                 </Card.Header>
                 {!success && error && (
                   <Message negative>
@@ -122,7 +123,7 @@ const LoginForm: React.SFC = () => {
         )}
       </Formik>
       <Message>
-        Pas de compte ? <Link to="/register">Rejoindre VaTo</Link>
+        Pas de compte ? <Link to="/register">Rejoindre Weigu</Link>
         <br />
         <Link to="/">Mot de passe oublié ?</Link>
       </Message>

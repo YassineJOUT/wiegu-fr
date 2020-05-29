@@ -53,7 +53,7 @@ const RegisterForm: React.SFC = () => {
             <Card centered style={{ width: 450 }}>
               <Card.Content style={{ margin: 30 }}>
                 <Card.Header style={{ fontSize: 22, padding: 30 }}>
-                  Rejoindre VaTo
+                  Rejoindre Weigu
                 </Card.Header>
                 {success && message && (
                   <Message positive>
@@ -126,7 +126,7 @@ const RegisterForm: React.SFC = () => {
         )}
       </Formik>
       <Message>
-        Déjà membre de VaTo ? <Link to="/login">Se connecter</Link>
+        Déjà membre de Weigu ? <Link to="/login">Se connecter</Link>
         <br />
         <Link to="/">Mot de passe oublié ?</Link>
       </Message>

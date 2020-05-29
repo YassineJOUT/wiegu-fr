@@ -32,7 +32,7 @@ const LoginEmailForm: React.SFC = () => {
           <Card centered style={{ width: 450 }}>
             <Card.Content style={{ margin: 20 }}>
               <Card.Header style={{ fontSize: 22, padding: 30 }}>
-                Connexion à VaTo
+                Connexion à Weigu
               </Card.Header>
               {/* <Card.Meta>Joined in 2016</Card.Meta> */}
               <Card.Description style={{ textAlign: "left" }}>
