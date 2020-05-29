@@ -30,11 +30,12 @@ const RegisterForm: React.SFC = () => {
       const data = { ...result.data };
       if (data.success) {
         dispatch({ type: "success", message: data.message });
+        
       } else {
-        dispatch({ type: "failure", error: data.message });
+        dispatch({ type: "failure", error: data.error.message });
       }
     } catch (err) {
-      dispatch({ type: "failure", error: err.toString() });
+      dispatch({ type: "failure", error: "Something went wrong" });
     }
 
     setSubmitting(false);
