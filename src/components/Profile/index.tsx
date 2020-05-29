@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Header, Icon, Image, Button } from "semantic-ui-react";
 import img from "../../images/centered-paragraph.png";
 import { history } from '../../utilities/history';
-const Profile = () => (
+import { Context, saveState } from "../../utilities/useAuth";
+const Profile = () => {
+  const {contextState, setContext} = useContext(Context);
+  if(contextState.isLogged === false) history.push("/login");
+  return (
   <div>
     <Header as="h2" icon textAlign="center">
       <Icon name="users" circular />
@@ -11,7 +15,21 @@ const Profile = () => (
     <Image centered size="large" src={img} />
     <Button
     onClick={
-        () => history.push("/login")
+        () => {
+          const v = {
+            contextState:{
+              isLogged: false,
+              user:{
+                id: '',
+                role: ''
+              }
+            },
+            setContext
+          };
+        setContext(v);
+        saveState(v);
+          history.push("/login")
+        }
     }
       type="submit"
       color="teal"
@@ -21,6 +39,6 @@ const Profile = () => (
       Logout
     </Button>
   </div>
-);
+)};
 
 export default Profile;

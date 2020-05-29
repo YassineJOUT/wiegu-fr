@@ -16,7 +16,8 @@ import { userService } from "./services/users.service";
 
 const loadedState = loadState();
 
-
+console.log('state');
+console.log(loadedState);
 const App: React.FC = () => {
   const [context, setContext] = useState<Context>(loadedState);
 
@@ -25,7 +26,6 @@ const App: React.FC = () => {
   });
 
 
-  console.log(context);
   const defaultProtectedRouteProps: ProtectedRouteProps = {
     isAuthenticated: context.contextState.isLogged,
     authenticationPath: "/",

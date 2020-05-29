@@ -10,7 +10,7 @@ import { Context, saveState } from "../../../utilities/useAuth";
 
 const LoginForm: React.SFC = () => {
   const {contextState, setContext} = useContext(Context);
-
+  if(contextState.isLogged) history.push("profile");
   const [{ success, error }, dispatch] = useReducer(reducer, {
     success: false,
     error: "",
@@ -28,10 +28,10 @@ const LoginForm: React.SFC = () => {
     //try {
       const result = userService.login(values).then(dataa => {
         const data = { ...dataa.data };
-      console.log(data);
+      console.log(dataa);
         if (data.success) {
           //history push to profile
-          history.push("/profile");
+          
           const v = {
             contextState:{
               isLogged: data.success,
@@ -45,6 +45,7 @@ const LoginForm: React.SFC = () => {
         setContext(v);
         saveState(v);
           dispatch({ type: "success", message: "Login success" });
+          history.push("/profile");
         } else {
           dispatch({ type: "failure", error: data.error.message });
         }
