@@ -1,2 +1,4 @@
-const isDev = true;
-export const API_URL = isDev ? "http://localhost:8080/VATO/api/" : "http://weigu-api.yj-dev.com/" 
+const isDev = process.env.REACT_APP_ENV === "development";
+export const API_URL = isDev
+  ? "http://localhost:3010/"
+  : "http://weigu-api.yj-dev.com/";

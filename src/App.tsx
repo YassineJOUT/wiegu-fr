@@ -16,19 +16,15 @@ import { userService } from "./services/users.service";
 
 const loadedState = loadState();
 
+console.log("env")
+console.log(process.env);
 const App: React.FC = () => {
   const [context, setContext] = useState<Context>(loadedState);
 
   useEffect(() => {
-     userService
-      .getStore()
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+
   });
+
 
   console.log(context);
   const defaultProtectedRouteProps: ProtectedRouteProps = {
