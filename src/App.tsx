@@ -52,14 +52,13 @@ const App: React.FC = () => {
             path="/login-link"
             component={LoginEmailForm}
           /> */}
-          <Route path="/profile" exact component={ProfilePage} />
 
-          {/* <ProtectedRoute
+          <ProtectedRoute
             {...defaultProtectedRouteProps}
             exact={true}
             path="/profile"
             component={ProfilePage}
-          /> */}
+          /> 
           <Route path="/register" exact component={RegisterPage} />
 
           {/* <ProtectedRoute
