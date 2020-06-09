@@ -5,7 +5,7 @@ import { history } from '../../utilities/history';
 import { Context, saveState } from "../../utilities/useAuth";
 const Profile = () => {
   const {contextState, setContext} = useContext(Context);
-  if(contextState.isLogged === false) history.push("/login");
+  //if(contextState.isLogged === false) history.push("/login");
   return (
   <div>
     <Header as="h2" icon textAlign="center">

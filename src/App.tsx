@@ -13,7 +13,7 @@ import ProtectedRoute, {
 import { Context, loadState } from "./utilities/useAuth";
 import LoginPage from "./pages/LoginPage";
 import { userService } from "./services/users.service";
-
+const test =  userService.profile().then(data => console.log(data));
 const loadedState = loadState();
 
 console.log('state');
@@ -25,7 +25,7 @@ const App: React.FC = () => {
 
   });
 
-
+  
   const defaultProtectedRouteProps: ProtectedRouteProps = {
     isAuthenticated: context.contextState.isLogged,
     authenticationPath: "/",

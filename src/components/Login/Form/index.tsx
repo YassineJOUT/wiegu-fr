@@ -26,7 +26,9 @@ const LoginForm: React.SFC = () => {
     setSubmitting(true);
     dispatch({ type: "request" });
     //try {
+      
       const result = userService.login(values).then(dataa => {
+        console.log("kdjcfsjk");
         const data = { ...dataa.data };
       console.log(dataa);
         if (data.success) {
@@ -56,6 +58,7 @@ const LoginForm: React.SFC = () => {
       
     setSubmitting(false);
     resetForm();
+  
   };
 
   return (

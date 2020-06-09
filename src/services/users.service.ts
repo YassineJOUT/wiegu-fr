@@ -2,7 +2,7 @@ import axios from 'axios'
 import { signUpInput } from '../types/Registration';
 import { API_URL } from "../utilities/config";
 
-const headersOptions: {} = { headers: { "Content-Type": "application/x-www-form-urlencoded" } };
+const headersOptions: {} = { headers: { "Content-Type": "application/x-www-form-urlencoded" }};
  
 type loginInput = {
     email: string;
@@ -19,7 +19,6 @@ type loginInput = {
 
 const login = (valuse: loginInput) => {
     let params = new URLSearchParams();
-    console.log('login');
     params.append('email', valuse.email );
     params.append('password', valuse.password );
     return axios.post(API_URL+'users/signin', params, headersOptions);
@@ -40,21 +39,20 @@ const passwordForgotten = (email: string,confirmationCoode: string = '') => {
     let params = new URLSearchParams();
     params.append('email', email );
     params.append('confirmationCode',confirmationCoode);
-    return axios.post(`${API_URL}'passwordForgotten`, params,headersOptions);
+    return axios.post(`${API_URL}'users/passwordForgotten`, params,headersOptions);
+} 
+
+const profile = () => {
+    return axios.post(`${API_URL}users/profile`,{},{ withCredentials: true });
 } 
 
 
 const resetPassword = (email: string,confirmationCoode: string, password: string) => {
 
-    console.log('resetPassword');
-    console.log(email);
-    console.log(confirmationCoode);
-    console.log(password);
     let params = new URLSearchParams();
     params.append('email', email );
     params.append('confirmationCode',confirmationCoode);
     params.append('password',password);
-
 
     return axios.post(`${API_URL}users/resetPassword`, params, headersOptions);
 } 
@@ -62,6 +60,7 @@ const resetPassword = (email: string,confirmationCoode: string, password: string
 
 export const userService = {
     // getStore,
+    profile,
     login,
     signUp,
     passwordForgotten,
