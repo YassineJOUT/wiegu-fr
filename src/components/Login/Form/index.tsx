@@ -26,11 +26,8 @@ const LoginForm: React.SFC = () => {
     setSubmitting(true);
     dispatch({ type: "request" });
     //try {
-      
-      const result = userService.login(values).then(dataa => {
-        console.log("kdjcfsjk");
+        userService.login(values).then(dataa => {
         const data = { ...dataa.data };
-      console.log(dataa);
         if (data.success) {
           //history push to profile
           
@@ -49,7 +46,7 @@ const LoginForm: React.SFC = () => {
           dispatch({ type: "success", message: "Login success" });
           history.push("/profile");
         } else {
-          dispatch({ type: "failure", error: data.error.message });
+          dispatch({ type: "failure", error: data.error });
         }
       
       }).catch(err => {
