@@ -32,14 +32,13 @@ const LinkVerify: React.FunctionComponent<RouteComponentProps> = (props) => {
           };
            setContext(v);
            saveState(v);
-          //history.push("/profile");
+          history.push("/profile");
         }
       })
       .catch((err) => {
         console.log("err");
         console.log(err);
       });
-    console.log("userEffect");
   }, [contextState]);
   return (
     <div><Loader active  content="Verifiying link" style={{top: -20}}/>

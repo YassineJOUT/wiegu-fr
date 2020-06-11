@@ -10,16 +10,16 @@ import { userService } from "../../../services/users.service";
 
 // Connexion avec mot de passe
 
-const LoginEmailForm: React.SFC = () => {
+const LoginEmailForm: React.FunctionComponent = () => {
   const {contextState, setContext} = useContext(Context);
-  if(contextState.isLogged) history.push("profile");
+  if(contextState.isLogged) history.push("/profile");
   const [{ success, error,message }, dispatch] = useReducer(reducer, {
     success: false,
     error: "",
     message: "",
   });
 
-  const Submit = (
+  const Submit = async (
     values: { email: string},
     {
       setSubmitting,
@@ -28,7 +28,7 @@ const LoginEmailForm: React.SFC = () => {
   ) => {
     setSubmitting(true);
     dispatch({ type: "request" });
-    userService.magicLink(values).then(dataa => {
+    await userService.magicLink(values).then(dataa => {
       const data = { ...dataa.data };
       if (data.success) {
         //history push to profile
