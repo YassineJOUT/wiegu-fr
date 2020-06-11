@@ -9,6 +9,10 @@ type loginInput = {
     password: string;
 };
 
+type emailType = {
+    email: string;
+};
+
 // const getStore = () => {
 //     const endPoint: string = `${API_URL}users/getStore.php`;
 //     return axios.get(
@@ -17,11 +21,25 @@ type loginInput = {
 //     );
 //   }
 
-const login = (valuse: loginInput) => {
+const login = (values: loginInput) => {
     let params = new URLSearchParams();
-    params.append('email', valuse.email );
-    params.append('password', valuse.password );
+    params.append('email', values.email );
+    params.append('password', values.password );
     return axios.post(API_URL+'users/signin', params, headersOptions);
+};
+
+
+
+const magicLink = (values: emailType) => {
+    let params = new URLSearchParams();
+    params.append('email', values.email );
+    return axios.post(API_URL+'users/linkSignin', params, headersOptions);
+};
+
+const magicLinkVerifiy = (token: string) => {
+    let params = new URLSearchParams();
+    params.append('token', token );
+    return axios.post(API_URL+'users/linkVerify', params, headersOptions);
 };
 
 const signUp = (user:signUpInput) => {
@@ -60,6 +78,8 @@ const resetPassword = (email: string,confirmationCoode: string, password: string
 
 export const userService = {
     // getStore,
+    magicLinkVerifiy,
+    magicLink,
     profile,
     login,
     signUp,
