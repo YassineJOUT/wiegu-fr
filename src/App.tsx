@@ -4,7 +4,7 @@ import { history } from "./utilities/history";
 import RegisterPage from "./pages/RegistrationPage";
 import LoginChosePage from "./pages/LoginLink/ChosePage";
 import LoginTextPage from "./pages/LoginLink/MessagePage";
-import LoginEmailForm from "./pages/LoginLink/EmailPage";
+import LoginEmailPage from "./pages/LoginLink/EmailPage";
 import ProfilePage from "./pages/ProfilePage";
 import ProtectedRoute, {
   ProtectedRouteProps,
@@ -13,19 +13,13 @@ import ProtectedRoute, {
 import { Context, loadState } from "./utilities/useAuth";
 import LoginPage from "./pages/LoginPage";
 import { userService } from "./services/users.service";
-const test =  userService.profile().then(data => console.log(data));
+import MagicLinkPage from "./pages/MagicLinkPage";
 const loadedState = loadState();
 
-console.log('state');
-console.log(loadedState);
+
 const App: React.FC = () => {
   const [context, setContext] = useState<Context>(loadedState);
 
-  useEffect(() => {
-
-  });
-
-  
   const defaultProtectedRouteProps: ProtectedRouteProps = {
     isAuthenticated: context.contextState.isLogged,
     authenticationPath: "/",
@@ -44,7 +38,8 @@ const App: React.FC = () => {
             )}
           />
           <Route path="/login" exact component={LoginPage} />
-          <Route path="/login-link" exact component={LoginEmailForm} />
+          <Route path="/login-link" exact component={LoginEmailPage} />
+          <Route path="/mlink/:token" exact component={MagicLinkPage} />
 
           {/* <ProtectedRoute
             {...defaultProtectedRouteProps}
