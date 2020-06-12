@@ -9,7 +9,7 @@ import ProfilePage from "./pages/ProfilePage";
 import ProtectedRoute, {
   ProtectedRouteProps,
 } from "./utilities/protectedRoute";
-
+import './App.css'
 import { Context, loadState } from "./utilities/useAuth";
 import LoginPage from "./pages/LoginPage";
 import { userService } from "./services/users.service";
