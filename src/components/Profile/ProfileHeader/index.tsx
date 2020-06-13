@@ -11,6 +11,7 @@ import {
   Header,
 } from "semantic-ui-react";
 import img from "../../../images/centered-paragraph.png";
+import ProfileEditForm from "../ProfileEdit/Form";
 const ProfileHeader: React.FunctionComponent = () => {
   const userHandlre = "@yassine";
   const userBio = "Bio : A little something about me";
@@ -71,11 +72,11 @@ const ProfileHeader: React.FunctionComponent = () => {
                           </span>
                         }
                       >
-                        <Modal.Header>Edit Profile</Modal.Header>
+                        <Modal.Header>Editer le profil</Modal.Header>
                         <Modal.Content >
                         
                           <Modal.Description>
-                          
+                          <ProfileEditForm/>
                           </Modal.Description>
                         </Modal.Content>
                       </Modal>
