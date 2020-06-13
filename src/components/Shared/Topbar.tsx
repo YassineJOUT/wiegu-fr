@@ -1,14 +1,10 @@
-import React, { useState } from "react";
-import {
-  Icon,
-  Menu,
-  Input,
-  Sidebar,
-  Ref,
-  Segment,
-} from "semantic-ui-react";
+import React, { useState, useContext } from "react";
+import { Icon, Menu, Input, Sidebar, Ref, Segment } from "semantic-ui-react";
+import { Context } from "../../utilities/useAuth";
+import { history } from "../../utilities/history";
 
 const Topbar: React.FunctionComponent = (props) => {
+  const { contextState, setContext } = useContext(Context);
   const [activeItem, setActiveItem] = useState(1);
   const [visible, setVisible] = useState(false);
   const segmentRef = React.useRef();
@@ -20,7 +16,6 @@ const Topbar: React.FunctionComponent = (props) => {
           animation="overlay"
           icon="labeled"
           inverted
-        
           vertical
           target={segmentRef}
           visible={visible}
@@ -29,13 +24,30 @@ const Topbar: React.FunctionComponent = (props) => {
           <Menu.Item as="a">Menu Item 1</Menu.Item>
           <Menu.Item as="a">Menu Item 2</Menu.Item>
           <Menu.Item as="a">Menu Item 3</Menu.Item>
-          <Menu.Item as="a">Menu Item 4</Menu.Item>
+          <Menu.Item as="a" onClick={
+             
+              () => {
+                        const v = {
+                          contextState:{
+                            isLogged: false,
+                            user:{
+                              id: '',
+                              role: ''
+                            }
+                          },
+                          setContext
+                        };
+                     // setContext(v);
+                     // useState(v);
+                        history.push("/login")
+                      }
+          }>Deconnexion</Menu.Item>
         </Sidebar>
 
         <Ref innerRef={segmentRef}>
           <div>
             <Segment>
-              <Menu pointing secondary size="small" >
+              <Menu pointing secondary size="small">
                 <Menu.Item
                   as="a"
                   name="home"
@@ -68,16 +80,7 @@ const Topbar: React.FunctionComponent = (props) => {
                 >
                   <Icon size="big" name="mail outline" />
                 </Menu.Item>
-                <Menu.Item
-                  as="a"
-                  name="Weigu"
-                >
-               <div className="center aligned  column">
-                    <h1>Wirgu</h1>
-
-                </div>
-                </Menu.Item>
-                {/*  */}
+               
                 <Menu.Menu position="right">
                   <Menu.Item>
                     <Input
