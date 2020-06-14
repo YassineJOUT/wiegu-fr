@@ -35,10 +35,8 @@ const ProfileEditForm: React.FunctionComponent = () => {
     dispatch({ type: "request" });
     await userService
       .editProfile({ ...values, id: contextState.user.id })
-      //   .magicLink(values)
       .then((dataa) => {
         const data = { ...dataa.data };
-        console.log("Edited");
         if (data.success) {
           //history push to profile
           history.push("/profile");
