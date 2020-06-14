@@ -2,7 +2,10 @@ import axios from 'axios'
 import { signUpInput } from '../types/Registration';
 import { API_URL } from "../utilities/config";
 import { editProfileType } from '../components/Profile/ProfileEdit/Form';
-
+const instance = axios.create({
+    withCredentials: true,
+    baseURL: API_URL
+  })
 const headersOptions: {} = { headers: { "Content-Type": "application/x-www-form-urlencoded" }};
  
 type loginInput = {
@@ -26,7 +29,7 @@ const login = (values: loginInput) => {
     let params = new URLSearchParams();
     params.append('email', values.email );
     params.append('password', values.password );
-    return axios.post(API_URL+'users/signin', params, headersOptions);
+    return instance.post('users/signin', params, headersOptions);
 };
 
 
@@ -34,20 +37,20 @@ const login = (values: loginInput) => {
 const magicLink = (values: emailType) => {
     let params = new URLSearchParams();
     params.append('email', values.email );
-    return axios.post(API_URL+'users/linkSignin', params, headersOptions);
+    return instance.post('users/linkSignin', params, headersOptions);
 };
 const editProfile = (values: editProfileType) => {
     let params = new URLSearchParams();
     params.append('address', values.address );
     params.append('password', values.password );
     params.append('bio', values.bio );
-    return axios.post(API_URL+'users/editProfile', params, headersOptions);
+    return instance.post('users/editProfile', params, headersOptions);
 };
 
 const magicLinkVerifiy = (token: string) => {
     let params = new URLSearchParams();
     params.append('token', token );
-    return axios.post(API_URL+'users/linkVerify', params, headersOptions);
+    return instance.post('users/linkVerify', params, headersOptions);
 };
 
 const signUp = (user:signUpInput) => {
@@ -56,7 +59,7 @@ const signUp = (user:signUpInput) => {
     params.append('username', user.username );
     params.append('password', user.password === undefined ? '' : user.password  );
     params.append('age', user.age === undefined ? '0' : user.age.toString()  );
-    return axios.post(`${API_URL}users/signup`, params);
+    return instance.post('users/signup', params);
 };
 
 
@@ -65,11 +68,13 @@ const passwordForgotten = (email: string,confirmationCoode: string = '') => {
     let params = new URLSearchParams();
     params.append('email', email );
     params.append('confirmationCode',confirmationCoode);
-    return axios.post(`${API_URL}'users/passwordForgotten`, params,headersOptions);
+    return instance.post('users/passwordForgotten', params,headersOptions);
 } 
 
-const profile = () => {
-    return axios.post(`${API_URL}users/profile`,{},{ withCredentials: true });
+const profile = (id: string) => {
+    let params = new URLSearchParams();
+    params.append('userId', id );
+    return instance.post('users/profile',params, headersOptions );
 } 
 
 
@@ -80,7 +85,7 @@ const resetPassword = (email: string,confirmationCoode: string, password: string
     params.append('confirmationCode',confirmationCoode);
     params.append('password',password);
 
-    return axios.post(`${API_URL}users/resetPassword`, params, headersOptions);
+    return instance.post('users/resetPassword', params, headersOptions);
 } 
 
 

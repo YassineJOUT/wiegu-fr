@@ -9,8 +9,7 @@ const Topbar: React.FunctionComponent = (props) => {
   const [activeItem, setActiveItem] = useState(1);
   const [visible, setVisible] = useState(false);
   const segmentRef = React.useRef();
-  console.log("context");
-  console.log(contextState);
+ 
   const disconnect = () => {
     {
       const v = {

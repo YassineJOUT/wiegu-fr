@@ -1,10 +1,15 @@
 import React from "react";
 import { Container, Image, Grid, Icon, Modal } from "semantic-ui-react";
 import ProfileEditForm from "../ProfileEdit/Form";
-const ProfileHeader: React.FunctionComponent = () => {
-  const userHandlre = "@yassine";
-  const userBio = "Bio : A little something about me";
-  const userAddress = "Paris";
+interface Prop{
+    data: any
+}
+const ProfileHeader: React.FunctionComponent<Prop> = ({ data }) => {
+  console.log("data arrived");
+  console.log(data);
+  const userHandlre = "@"+data.username;
+  const userBio = "Bio : "+data.bio;
+  const userAddress = data.address;
   return (
     <div>
       <div className="profile-header-container">

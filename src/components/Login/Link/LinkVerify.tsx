@@ -16,8 +16,7 @@ const LinkVerify: React.FunctionComponent<RouteComponentProps> = (props) => {
     userService
       .magicLinkVerifiy(param.token)
       .then((res) => {
-        console.log("datalink");
-        console.log(res);
+  
         if (res.data.success) {
           //Redirect to
           const v = {
@@ -36,8 +35,7 @@ const LinkVerify: React.FunctionComponent<RouteComponentProps> = (props) => {
         }
       })
       .catch((err) => {
-        console.log("err");
-        console.log(err);
+       
       });
   }, [contextState]);
   return (
