@@ -30,12 +30,12 @@ const LoginForm: React.SFC = () => {
         const data = { ...dataa.data };
         if (data.success) {
           //history push to profile
-          
+          const { user } = data.data;
           const v = {
             contextState:{
               isLogged: data.success,
               user:{
-                id: '1',
+                id: user._id,
                 role: 'admin'
               }
             },

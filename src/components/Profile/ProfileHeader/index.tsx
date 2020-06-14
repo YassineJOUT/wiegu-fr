@@ -1,16 +1,5 @@
 import React from "react";
-import {
-  Container,
-  Image,
-  Grid,
-  Icon,
-  Segment,
-  Placeholder,
-  Button,
-  Modal,
-  Header,
-} from "semantic-ui-react";
-import img from "../../../images/centered-paragraph.png";
+import { Container, Image, Grid, Icon, Modal } from "semantic-ui-react";
 import ProfileEditForm from "../ProfileEdit/Form";
 const ProfileHeader: React.FunctionComponent = () => {
   const userHandlre = "@yassine";
@@ -67,23 +56,28 @@ const ProfileHeader: React.FunctionComponent = () => {
                     <div className="profile-btn-controls-btns">
                       <Modal
                         trigger={
-                          <span className="profile-btn-controls-items" style={{cursor: 'pointer'}}>
+                          <span
+                            className="profile-btn-controls-items"
+                            style={{ cursor: "pointer" }}
+                          >
                             Edit Profile
                           </span>
                         }
                       >
                         <Modal.Header>Editer le profil</Modal.Header>
-                        <Modal.Content >
-                        
+                        <Modal.Content>
                           <Modal.Description>
-                          <ProfileEditForm/>
+                            <ProfileEditForm />
                           </Modal.Description>
                         </Modal.Content>
                       </Modal>
 
                       <br />
                       <br />
-                      <span className="profile-btn-controls-items" style={{cursor: 'pointer'}}>
+                      <span
+                        className="profile-btn-controls-items"
+                        style={{ cursor: "pointer" }}
+                      >
                         <Icon name="share" color="grey" />
                         {"share"}
                       </span>

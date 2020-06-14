@@ -8,6 +8,11 @@ import { userService } from "../../../../services/users.service";
 import { Formik, ErrorMessage, Field } from "formik";
 
 // Connexion avec mot de passe
+export type editProfileType = {
+  address: string;
+  bio: string;
+  password: string;
+};
 
 const ProfileEditForm: React.FunctionComponent = () => {
   const { contextState, setContext } = useContext(Context);
@@ -19,7 +24,7 @@ const ProfileEditForm: React.FunctionComponent = () => {
   });
 
   const Submit = async (
-    values: { email: string },
+    values: editProfileType,
     {
       setSubmitting,
       resetForm,
@@ -28,7 +33,8 @@ const ProfileEditForm: React.FunctionComponent = () => {
     setSubmitting(true);
     dispatch({ type: "request" });
     await userService
-      .magicLink(values)
+      .editProfile(values)
+      //   .magicLink(values)
       .then((dataa) => {
         const data = { ...dataa.data };
         if (data.success) {
@@ -49,7 +55,7 @@ const ProfileEditForm: React.FunctionComponent = () => {
 
   return (
     <Formik
-      initialValues={{ email: "" }}
+      initialValues={{ address: "", bio: "", password: "" }}
       // validationSchema={EmailValidationSchema}
       onSubmit={Submit}
     >
@@ -77,11 +83,7 @@ const ProfileEditForm: React.FunctionComponent = () => {
             <div className="msg-error">
               <ErrorMessage name="bio" />
             </div>
-            <Field
-              type="text"
-              placeholder="Bio"
-              name="bio"
-            />
+            <Field type="text" placeholder="Bio" name="bio" />
           </Form.Field>
           <Divider horizontal>Changer le mot de passe</Divider>
           <Form.Field style={{ padding: 5 }}>
@@ -107,7 +109,7 @@ const ProfileEditForm: React.FunctionComponent = () => {
             size="large"
             style={{ marginTop: 30 }}
           >
-            {isSubmitting ? "Loading..." : "Suivant"}
+            {isSubmitting ? "Loading..." : "Enregistrer"}
           </Button>
         </Form>
       )}

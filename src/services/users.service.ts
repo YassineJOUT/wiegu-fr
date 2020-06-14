@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { signUpInput } from '../types/Registration';
 import { API_URL } from "../utilities/config";
+import { editProfileType } from '../components/Profile/ProfileEdit/Form';
 
 const headersOptions: {} = { headers: { "Content-Type": "application/x-www-form-urlencoded" }};
  
@@ -34,6 +35,13 @@ const magicLink = (values: emailType) => {
     let params = new URLSearchParams();
     params.append('email', values.email );
     return axios.post(API_URL+'users/linkSignin', params, headersOptions);
+};
+const editProfile = (values: editProfileType) => {
+    let params = new URLSearchParams();
+    params.append('address', values.address );
+    params.append('password', values.password );
+    params.append('bio', values.bio );
+    return axios.post(API_URL+'users/editProfile', params, headersOptions);
 };
 
 const magicLinkVerifiy = (token: string) => {
@@ -78,6 +86,7 @@ const resetPassword = (email: string,confirmationCoode: string, password: string
 
 export const userService = {
     // getStore,
+    editProfile,
     magicLinkVerifiy,
     magicLink,
     profile,

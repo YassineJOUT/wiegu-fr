@@ -1,13 +1,33 @@
 import React, { useState, useContext } from "react";
 import { Icon, Menu, Input, Sidebar, Ref, Segment } from "semantic-ui-react";
-import { Context } from "../../utilities/useAuth";
+import { Context, saveState } from "../../utilities/useAuth";
 import { history } from "../../utilities/history";
+import { disconnect } from "process";
 
 const Topbar: React.FunctionComponent = (props) => {
   const { contextState, setContext } = useContext(Context);
   const [activeItem, setActiveItem] = useState(1);
   const [visible, setVisible] = useState(false);
   const segmentRef = React.useRef();
+  console.log("context");
+  console.log(contextState);
+  const disconnect = () => {
+    {
+      const v = {
+        contextState: {
+          isLogged: false,
+          user: {
+            id: "",
+            role: "",
+          },
+        },
+        setContext,
+      };
+      setContext(v);
+      saveState(v);
+      history.push("/login");
+    }
+  };
   return (
     <div>
       <Sidebar.Pushable as={Segment.Group} raised>
@@ -24,24 +44,9 @@ const Topbar: React.FunctionComponent = (props) => {
           <Menu.Item as="a">Menu Item 1</Menu.Item>
           <Menu.Item as="a">Menu Item 2</Menu.Item>
           <Menu.Item as="a">Menu Item 3</Menu.Item>
-          <Menu.Item as="a" onClick={
-             
-              () => {
-                        const v = {
-                          contextState:{
-                            isLogged: false,
-                            user:{
-                              id: '',
-                              role: ''
-                            }
-                          },
-                          setContext
-                        };
-                     // setContext(v);
-                     // useState(v);
-                        history.push("/login")
-                      }
-          }>Deconnexion</Menu.Item>
+          <Menu.Item as="a" onClick={() => disconnect()}>
+            Deconnexion
+          </Menu.Item>
         </Sidebar>
 
         <Ref innerRef={segmentRef}>
@@ -80,7 +85,7 @@ const Topbar: React.FunctionComponent = (props) => {
                 >
                   <Icon size="big" name="mail outline" />
                 </Menu.Item>
-               
+
                 <Menu.Menu position="right">
                   <Menu.Item>
                     <Input
