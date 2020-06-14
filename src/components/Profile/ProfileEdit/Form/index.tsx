@@ -9,6 +9,7 @@ import { Formik, ErrorMessage, Field } from "formik";
 
 // Connexion avec mot de passe
 export type editProfileType = {
+  id?: string;
   address: string;
   bio: string;
   password: string;
@@ -33,14 +34,19 @@ const ProfileEditForm: React.FunctionComponent = () => {
     setSubmitting(true);
     dispatch({ type: "request" });
     await userService
-      .editProfile(values)
+      .editProfile({ ...values, id: contextState.user.id })
       //   .magicLink(values)
       .then((dataa) => {
         const data = { ...dataa.data };
+        console.log("Edited");
         if (data.success) {
           //history push to profile
-          dispatch({ type: "success", message: "Email Sent success" });
-          history.push("/login-link-text");
+          history.push("/profile");
+
+          dispatch({
+            type: "success",
+            message: "Vos information sont modifier",
+          });
         } else {
           dispatch({ type: "failure", error: data.error });
         }

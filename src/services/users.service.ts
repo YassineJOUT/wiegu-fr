@@ -32,8 +32,6 @@ const login = (values: loginInput) => {
     return instance.post('users/signin', params, headersOptions);
 };
 
-
-
 const magicLink = (values: emailType) => {
     let params = new URLSearchParams();
     params.append('email', values.email );
@@ -44,6 +42,7 @@ const editProfile = (values: editProfileType) => {
     params.append('address', values.address );
     params.append('password', values.password );
     params.append('bio', values.bio );
+    params.append('id', values.id || '' );
     return instance.post('users/editProfile', params, headersOptions);
 };
 
