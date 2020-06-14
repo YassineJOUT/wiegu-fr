@@ -1,35 +1,89 @@
 import React from "react";
-import { Container, Image, Grid, Icon, Modal } from "semantic-ui-react";
+import {
+  Container,
+  Image,
+  Grid,
+  Icon,
+  Modal,
+  Popup,
+  Button,
+  Header,
+  Segment,
+  Label,
+} from "semantic-ui-react";
 import ProfileEditForm from "../ProfileEdit/Form";
-interface Prop{
-    data: any
+import { API_URL } from "../../../utilities/config";
+import { InputFile } from "semantic-ui-react-input-file";
+import ImageInput from "../../Shared/ImageInput";
+import CoverImageInput from "../../Shared/CoverImageInput";
+interface Prop {
+  data: any;
 }
 const ProfileHeader: React.FunctionComponent<Prop> = ({ data }) => {
   console.log("data arrived");
   console.log(data);
-  const userHandlre = "@"+data.username;
-  const userBio = "Bio : "+data.bio;
+  const userHandlre = "@" + data.username;
+  const userBio = "Bio : " + data.bio;
   const userAddress = data.address;
+  const cover = data.coverImage ? API_URL + "users/" + data.coverImage:  "./images/cover.png";
   return (
     <div>
       <div className="profile-header-container">
         <div
           className="profile-header-cover"
           style={{
-            backgroundImage: `url('./images/cover.png')`,
+            backgroundImage: `url('${cover}')`,
           }}
         >
           <Grid columns={3} stackable>
-            <Grid.Column></Grid.Column>
+            <Grid.Column>
+              <Modal
+                size={"fullscreen"}
+                trigger={
+                  <Label as="a">
+                    <Icon name="photo" />
+                  </Label>
+                }
+              >
+                <Modal.Header>Selectioner une photo de couverture</Modal.Header>
+
+                <CoverImageInput
+                  coverImage={
+                    data.coverImage
+                      ? cover
+                      : null
+                  }
+                />
+              </Modal>
+            </Grid.Column>
 
             <Grid.Column>
-              <Image
-                className="profile-photo"
-                src="./images/square-image.png"
-                size="small"
-                circular
-                centered
-              />
+              <Modal
+                size={"tiny"}
+                trigger={
+                  <Image
+                    className="profile-photo"
+                    src={
+                      data.profileImage
+                        ? API_URL + "users/" + data.profileImage
+                        : "http://localhost:3010/users/matthew-7e89.png"
+                    }
+                    size="small"
+                    circular
+                    centered
+                  />
+                }
+              >
+                <Modal.Header>Selectioner une photo de profil</Modal.Header>
+
+                <ImageInput
+                  profileImage={
+                    data.profileImage
+                      ? API_URL + "users/" + data.profileImage
+                      : null
+                  }
+                />
+              </Modal>
               <Container>
                 <Grid>
                   <Grid.Row centered>

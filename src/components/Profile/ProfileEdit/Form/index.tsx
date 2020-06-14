@@ -38,13 +38,11 @@ const ProfileEditForm: React.FunctionComponent = () => {
       .then((dataa) => {
         const data = { ...dataa.data };
         if (data.success) {
-          //history push to profile
-          history.push("/profile");
-
           dispatch({
             type: "success",
             message: "Vos information sont modifier",
           });
+          history.push("/profile");
         } else {
           dispatch({ type: "failure", error: data.error });
         }

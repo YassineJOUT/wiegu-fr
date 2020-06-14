@@ -53,3 +53,7 @@
   padding-left: 40px;
   padding-right: 40px;
 }
+.profile-photo:hover {
+opacity: 0.6;
+cursor: pointer;
+}
