@@ -9,8 +9,8 @@ import { history } from "../../../utilities/history";
 import { Context, saveState } from "../../../utilities/useAuth";
 
 const LoginForm: React.SFC = () => {
-  const {contextState, setContext} = useContext(Context);
-  if(contextState.isLogged) history.push("profile");
+  const { contextState, setContext } = useContext(Context);
+  if (contextState.isLogged) history.push("profile");
   const [{ success, error }, dispatch] = useReducer(reducer, {
     success: false,
     error: "",
@@ -26,39 +26,39 @@ const LoginForm: React.SFC = () => {
     setSubmitting(true);
     dispatch({ type: "request" });
     //try {
-        userService.login(values).then(dataa => {
+    await userService
+      .login(values)
+      .then((dataa) => {
         const data = { ...dataa.data };
         if (data.success) {
           //history push to profile
           const { user } = data.data;
           const v = {
-            contextState:{
+            contextState: {
               isLogged: data.success,
-              user:{
+              user: {
                 id: user._id,
-                role: 'admin'
-              }
+                role: "admin",
+              },
             },
-            setContext
+            setContext,
           };
-        setContext(v);
-        saveState(v);
+          setContext(v);
+          saveState(v);
           dispatch({ type: "success", message: "Login success" });
           history.push("/profile");
         } else {
           dispatch({ type: "failure", error: data.error });
         }
-        setSubmitting(false);
+
         resetForm();
-      }).catch(err => {
+      })
+      .catch((err) => {
         dispatch({ type: "failure", error: "Something went wrong" });
-        setSubmitting(false);
-        resetForm();
       });
-      
-    
-    
-  
+
+    setSubmitting(false);
+    resetForm();
   };
 
   return (
@@ -117,7 +117,7 @@ const LoginForm: React.SFC = () => {
                   color="teal"
                   fluid
                   size="large"
-                  {...(isSubmitting ? {loading: true } : {} )}
+                  {...(isSubmitting ? { loading: true } : {})}
                 >
                   Connexion
                 </Button>
