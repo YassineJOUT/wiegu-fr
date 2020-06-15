@@ -4,7 +4,7 @@ import { Formik, Field, ErrorMessage } from "formik";
 import { registrationSchema } from "../../../utilities/validationSchema";
 import { Link } from "react-router-dom";
 import { userService } from "../../../services/users.service";
-import { reducer } from '../../../utilities/reducers'
+import { reducer } from "../../../utilities/reducers";
 import { formValues } from "../../../utilities/types";
 
 const RegisterForm: React.SFC = () => {
@@ -24,12 +24,15 @@ const RegisterForm: React.SFC = () => {
     setSubmitting(true);
     dispatch({ type: "request" });
     try {
-      const input = { email: values.email, password: values.password, username: values.username || "" };
+      const input = {
+        email: values.email,
+        password: values.password,
+        username: values.username || "",
+      };
       const result = await userService.signUp(input);
       const data = { ...result.data };
       if (data.success) {
         dispatch({ type: "success", message: data.message });
-        
       } else {
         dispatch({ type: "failure", error: data.error });
       }
