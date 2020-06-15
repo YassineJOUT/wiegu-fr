@@ -1,38 +1,99 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   Container,
   Image,
   Grid,
   Icon,
   Modal,
-  Popup,
-  Button,
-  Header,
-  Segment,
   Label,
+  Placeholder,
+  Loader,
 } from "semantic-ui-react";
 import ProfileEditForm from "../ProfileEdit/Form";
 import { API_URL } from "../../../utilities/config";
-import { InputFile } from "semantic-ui-react-input-file";
 import ImageInput from "../../Shared/ImageInput";
 import CoverImageInput from "../../Shared/CoverImageInput";
-interface Prop {
-  data: any;
+import { Context } from "../../../utilities/useAuth";
+import { history } from "../../../utilities/history";
+import { userService } from "../../../services/users.service";
+
+interface userState {
+  ProfileImage: string;
+  address: string;
+  bio: string;
+  coverImage: string;
+  email: string;
+  profileImage: string;
+  username: string;
+  _id: string;
 }
-const ProfileHeader: React.FunctionComponent<Prop> = ({ data }) => {
-  console.log("data arrived");
-  console.log(data);
-  const userHandlre = "@" + data.username;
-  const userBio = "Bio : " + data.bio;
-  const userAddress = data.address;
-  const cover = data.coverImage ? API_URL + "users/" + data.coverImage:  "./images/cover.png";
+const ProfileHeader: React.FunctionComponent = () => {
+  const initalState = {
+    ProfileImage: "",
+    address: "",
+    bio: "",
+    coverImage: "",
+    email: "",
+    profileImage: "",
+    username: "",
+    _id: "",
+  };
+  const [authUser, setAuthUser] = useState<userState>(initalState);
+  const [loading, setLoading] = useState(false);
+  const { contextState, setContext } = useContext(Context);
+
+  const Disconnect = () => {
+    {
+      const v = {
+        contextState: {
+          isLogged: false,
+          user: {
+            id: "",
+            role: "",
+          },
+        },
+        setContext,
+      };
+      setContext(v);
+      useState(v);
+      history.push("/login");
+    }
+  };
+  if (!contextState.isLogged) history.push("/login");
+  useEffect(() => {
+    setLoading(true);
+    userService
+      .profile(contextState.user.id)
+      .then((res) => {
+        if (res.data.success) setAuthUser(res.data.data);
+        setLoading(false);
+        //handle errors
+      })
+      .catch((err) => {
+        err.response.data.statusCode === 401 && Disconnect();
+        setLoading(false);
+      });
+  }, []);
+
+  // const userHandlre = "@" + data.username;
+  // const userBio = "Bio : " + data.bio;
+  // const userAddress = data.address;
+  // const cover = data.coverImage
+  //   ? API_URL + "users/" + data.coverImage
+  //   : "./images/cover.png";
   return (
-    <div>
-      <div className="profile-header-container">
+    <div className="profile-header-container">
+      {loading ? (
+        <Loader />
+      ) : (
         <div
           className="profile-header-cover"
           style={{
-            backgroundImage: `url('${cover}')`,
+            backgroundImage: `url('${
+              authUser.coverImage
+                ? API_URL + "users/" + authUser.coverImage
+                : "http://localhost:3010/users/default-cover.png"
+            }')`,
           }}
         >
           <Grid columns={3} stackable>
@@ -49,8 +110,8 @@ const ProfileHeader: React.FunctionComponent<Prop> = ({ data }) => {
 
                 <CoverImageInput
                   coverImage={
-                    data.coverImage
-                      ? cover
+                    authUser.coverImage
+                      ? API_URL + "users/" + authUser.coverImage
                       : null
                   }
                 />
@@ -64,9 +125,9 @@ const ProfileHeader: React.FunctionComponent<Prop> = ({ data }) => {
                   <Image
                     className="profile-photo"
                     src={
-                      data.profileImage
-                        ? API_URL + "users/" + data.profileImage
-                        : "http://localhost:3010/users/matthew-7e89.png"
+                      authUser.profileImage
+                        ? API_URL + "users/" + authUser.profileImage
+                        : "http://localhost:3010/users/default-profile.png"
                     }
                     size="small"
                     circular
@@ -78,8 +139,8 @@ const ProfileHeader: React.FunctionComponent<Prop> = ({ data }) => {
 
                 <ImageInput
                   profileImage={
-                    data.profileImage
-                      ? API_URL + "users/" + data.profileImage
+                    authUser.profileImage
+                      ? API_URL + "users/" + authUser.profileImage
                       : null
                   }
                 />
@@ -89,18 +150,18 @@ const ProfileHeader: React.FunctionComponent<Prop> = ({ data }) => {
                   <Grid.Row centered>
                     <div className="profile-btn-controls">
                       <span className="profile-btn-controls-items">
-                        {userHandlre}
+                        {"@"+authUser.username }
                       </span>
                       <br />
                       <br />
                       <span className="profile-btn-controls-items">
-                        {userBio}
+                        {authUser.bio ? authUser.bio : "Votre bio n'est pas encore défini"}
                       </span>
                       <br />
                       <br />
                       <span className="profile-btn-controls-items">
                         <Icon name="map marker alternate" color="grey" />
-                        {userAddress}
+                        {authUser.address ? authUser.address : "Votre Adresse n'est pas encore défini"}
                       </span>
                     </div>
                   </Grid.Row>
@@ -147,7 +208,7 @@ const ProfileHeader: React.FunctionComponent<Prop> = ({ data }) => {
             </Grid.Column>
           </Grid>
         </div>
-      </div>
+      )}
     </div>
   );
 };
