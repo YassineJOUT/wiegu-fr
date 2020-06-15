@@ -5,8 +5,9 @@ import { userService } from "../../services/users.service";
 import { Context } from "../../utilities/useAuth";
 import { history } from "../../utilities/history";
 
-const CoverImageInput: React.FunctionComponent<{ coverImage: string | null }> = ({
+const CoverImageInput: React.FunctionComponent<{ coverImage: string | null,handleUpload: Function }> = ({
     coverImage,
+    handleUpload
 }) => {
   const { contextState, setContext } = useContext(Context);
 
@@ -33,8 +34,8 @@ const CoverImageInput: React.FunctionComponent<{ coverImage: string | null }> = 
     userService
       .uloadImage(formData)
       .then((res) => {
-        console.log(res);
         if (res.data.success) {
+            handleUpload(res.data.data.filename);
           setSuccess({
             success: true,
             message: "Image Uploaded",

@@ -4,8 +4,9 @@ import { Modal, Image, Button, Loader, Message } from "semantic-ui-react";
 import { userService } from "../../services/users.service";
 import { Context } from "../../utilities/useAuth";
 
-const ImageInput: React.FunctionComponent<{ profileImage?: string | null,coverImage?: string | null }> = ({
+const ImageInput: React.FunctionComponent<{ profileImage?: string | null,handleUpload: Function }> = ({
   profileImage,
+  handleUpload
 }) => {
   const { contextState, setContext } = useContext(Context);
 
@@ -32,8 +33,8 @@ const ImageInput: React.FunctionComponent<{ profileImage?: string | null,coverIm
     userService
       .uloadImage(formData)
       .then((res) => {
-        console.log(res);
         if (res.data.success) {
+            handleUpload(res.data.data.filename)
           setSuccess({
             success: true,
             message: "Image Uploaded",

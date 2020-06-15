@@ -6,6 +6,7 @@ import { history } from "../../../../utilities/history";
 import { reducer } from "../../../../utilities/reducers";
 import { userService } from "../../../../services/users.service";
 import { Formik, ErrorMessage, Field } from "formik";
+import { userState } from "../../ProfileHeader";
 
 // Connexion avec mot de passe
 export type editProfileType = {
@@ -15,7 +16,10 @@ export type editProfileType = {
   password: string;
 };
 
-const ProfileEditForm: React.FunctionComponent = () => {
+const ProfileEditForm: React.FunctionComponent<{
+  handleProfileEdit: Function;
+  profileState: userState;
+}> = ({ handleProfileEdit, profileState }) => {
   const { contextState, setContext } = useContext(Context);
   if (!contextState.isLogged) history.push("/login");
   const [{ success, error, message }, dispatch] = useReducer(reducer, {
@@ -38,6 +42,7 @@ const ProfileEditForm: React.FunctionComponent = () => {
       .then((dataa) => {
         const data = { ...dataa.data };
         if (data.success) {
+          handleProfileEdit({...profileState,...values});
           dispatch({
             type: "success",
             message: "Vos information sont modifier",
@@ -57,7 +62,11 @@ const ProfileEditForm: React.FunctionComponent = () => {
 
   return (
     <Formik
-      initialValues={{ address: "", bio: "", password: "" }}
+      initialValues={{
+        address: profileState.address ? profileState.address : "",
+        bio: profileState.bio ? profileState.bio : "",
+        password: "",
+      }}
       // validationSchema={EmailValidationSchema}
       onSubmit={Submit}
     >

@@ -16,8 +16,9 @@ import CoverImageInput from "../../Shared/CoverImageInput";
 import { Context } from "../../../utilities/useAuth";
 import { history } from "../../../utilities/history";
 import { userService } from "../../../services/users.service";
+import { Redirect } from "react-router-dom";
 
-interface userState {
+export interface userState {
   ProfileImage: string;
   address: string;
   bio: string;
@@ -40,6 +41,8 @@ const ProfileHeader: React.FunctionComponent = () => {
   };
   const [authUser, setAuthUser] = useState<userState>(initalState);
   const [loading, setLoading] = useState(false);
+  const [uploaded, setUploaded] = useState<string | null>(null);
+  const [uploadedProfile, setUploadedProfile] = useState<string | null>(null);
   const { contextState, setContext } = useContext(Context);
 
   const Disconnect = () => {
@@ -84,13 +87,15 @@ const ProfileHeader: React.FunctionComponent = () => {
   return (
     <div className="profile-header-container">
       {loading ? (
-        <Loader />
+        <Loader inverted />
       ) : (
         <div
           className="profile-header-cover"
           style={{
             backgroundImage: `url('${
-              authUser.coverImage
+              uploaded
+                ? API_URL + "users/" + uploaded
+                : authUser.coverImage
                 ? API_URL + "users/" + authUser.coverImage
                 : "http://localhost:3010/users/default-cover.png"
             }')`,
@@ -99,6 +104,7 @@ const ProfileHeader: React.FunctionComponent = () => {
           <Grid columns={3} stackable>
             <Grid.Column>
               <Modal
+                closeIcon
                 size={"fullscreen"}
                 trigger={
                   <Label as="a">
@@ -109,10 +115,13 @@ const ProfileHeader: React.FunctionComponent = () => {
                 <Modal.Header>Selectioner une photo de couverture</Modal.Header>
 
                 <CoverImageInput
+                  handleUpload={(t: string) => setUploaded(t)}
                   coverImage={
-                    authUser.coverImage
+                    uploaded
+                      ? API_URL + "users/" + uploaded
+                      : authUser.coverImage
                       ? API_URL + "users/" + authUser.coverImage
-                      : null
+                      : "http://localhost:3010/users/default-cover.png"
                   }
                 />
               </Modal>
@@ -125,7 +134,9 @@ const ProfileHeader: React.FunctionComponent = () => {
                   <Image
                     className="profile-photo"
                     src={
-                      authUser.profileImage
+                      uploadedProfile
+                        ? API_URL + "users/" + uploadedProfile
+                        : authUser.profileImage
                         ? API_URL + "users/" + authUser.profileImage
                         : "http://localhost:3010/users/default-profile.png"
                     }
@@ -138,10 +149,11 @@ const ProfileHeader: React.FunctionComponent = () => {
                 <Modal.Header>Selectioner une photo de profil</Modal.Header>
 
                 <ImageInput
+                  handleUpload={(r: string) => setUploadedProfile(r)}
                   profileImage={
                     authUser.profileImage
                       ? API_URL + "users/" + authUser.profileImage
-                      : null
+                      : "http://localhost:3010/users/default-profile.png"
                   }
                 />
               </Modal>
@@ -150,18 +162,22 @@ const ProfileHeader: React.FunctionComponent = () => {
                   <Grid.Row centered>
                     <div className="profile-btn-controls">
                       <span className="profile-btn-controls-items">
-                        {"@"+authUser.username }
+                        {"@" + authUser.username}
                       </span>
                       <br />
                       <br />
                       <span className="profile-btn-controls-items">
-                        {authUser.bio ? authUser.bio : "Votre bio n'est pas encore défini"}
+                        {authUser.bio
+                          ? authUser.bio
+                          : "Votre bio n'est pas encore défini"}
                       </span>
                       <br />
                       <br />
                       <span className="profile-btn-controls-items">
                         <Icon name="map marker alternate" color="grey" />
-                        {authUser.address ? authUser.address : "Votre Adresse n'est pas encore défini"}
+                        {authUser.address
+                          ? authUser.address
+                          : "Votre Adresse n'est pas encore défini"}
                       </span>
                     </div>
                   </Grid.Row>
@@ -187,7 +203,12 @@ const ProfileHeader: React.FunctionComponent = () => {
                         <Modal.Header>Editer le profil</Modal.Header>
                         <Modal.Content>
                           <Modal.Description>
-                            <ProfileEditForm />
+                            <ProfileEditForm
+                              profileState={authUser}
+                              handleProfileEdit={(d: userState) =>
+                                setAuthUser(d)
+                              }
+                            />
                           </Modal.Description>
                         </Modal.Content>
                       </Modal>

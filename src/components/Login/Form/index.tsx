@@ -68,7 +68,6 @@ const LoginForm: React.SFC = () => {
       >
         {({ values, handleBlur, handleChange, handleSubmit, isSubmitting }) => (
           <Form onSubmit={handleSubmit}>
-            {console.log(isSubmitting)}
             <Card centered style={{ width: 450 }}>
               <Card.Content style={{ margin: 20 }}>
                 <Card.Header style={{ fontSize: 22, padding: 30 }}>
