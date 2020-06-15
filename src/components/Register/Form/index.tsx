@@ -36,7 +36,6 @@ const RegisterForm: React.SFC = () => {
     } catch (err) {
       dispatch({ type: "failure", error: "Something went wrong" });
     }
-
     setSubmitting(false);
     resetForm();
   };

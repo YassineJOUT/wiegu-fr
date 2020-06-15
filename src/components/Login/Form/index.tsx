@@ -48,12 +48,13 @@ const LoginForm: React.SFC = () => {
         } else {
           dispatch({ type: "failure", error: data.error });
         }
-      
+        setSubmitting(false);
       }).catch(err => {
         dispatch({ type: "failure", error: "Something went wrong" });
+        setSubmitting(false);
       });
       
-    setSubmitting(false);
+    
     resetForm();
   
   };
@@ -67,6 +68,7 @@ const LoginForm: React.SFC = () => {
       >
         {({ values, handleBlur, handleChange, handleSubmit, isSubmitting }) => (
           <Form onSubmit={handleSubmit}>
+            {console.log(isSubmitting)}
             <Card centered style={{ width: 450 }}>
               <Card.Content style={{ margin: 20 }}>
                 <Card.Header style={{ fontSize: 22, padding: 30 }}>
@@ -114,7 +116,7 @@ const LoginForm: React.SFC = () => {
                   color="teal"
                   fluid
                   size="large"
-                  {...(isSubmitting && { loading: true })}
+                  {...(isSubmitting ? { loading: true } : {})}
                 >
                   Connexion
                 </Button>
