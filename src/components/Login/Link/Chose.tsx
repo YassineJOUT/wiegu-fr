@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 // Il contient un lien magique qui vous connectera à votre compte.
 // Connexion avec mot de passe
 
-const LoginChoseForm: React.SFC = () => (
+const LoginChoseForm: React.FunctionComponent = () => (
   <div>
     <Form>
       <Card centered style={{ width: 450 }}>

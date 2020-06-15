@@ -62,7 +62,7 @@ const App: React.FC = () => {
             path="/register"
             component={RegisterPage}
           />   */}
-          <Route path="/login-link-text" exact component={LoginTextPage} />
+          <Route path="/login-link-text/:email" exact component={LoginTextPage} />
 
           {/* <ProtectedRoute
             {...defaultProtectedRouteProps}

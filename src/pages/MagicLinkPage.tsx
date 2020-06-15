@@ -12,7 +12,7 @@ import LinkVerify from "../components/Login/Link/LinkVerify";
 import Layout from "./layouts/Layout";
 
 
-const MagicLinkPage: React.SFC<RouteComponentProps> = (props) => {
+const MagicLinkPage: React.FunctionComponent<RouteComponentProps> = () => {
   
  
   return <Layout><LinkVerify /></Layout>;

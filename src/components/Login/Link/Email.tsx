@@ -11,6 +11,7 @@ import { userService } from "../../../services/users.service";
 // Connexion avec mot de passe
 
 const LoginEmailForm: React.FunctionComponent = () => {
+
   const {contextState, setContext} = useContext(Context);
   if(contextState.isLogged) history.push("/profile");
   const [{ success, error,message }, dispatch] = useReducer(reducer, {
@@ -33,7 +34,7 @@ const LoginEmailForm: React.FunctionComponent = () => {
       if (data.success) {
         //history push to profile
         dispatch({ type: "success", message: "Email Sent success" });
-        history.push("/login-link-text");
+        history.push("/login-link-text/"+values.email);
       } else {
         dispatch({ type: "failure", error: data.error });
       }
