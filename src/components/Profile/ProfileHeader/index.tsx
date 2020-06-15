@@ -164,7 +164,7 @@ const ProfileHeader: React.FunctionComponent = () => {
                       <br />
                       <span className="profile-btn-controls-items">
                         {authUser.bio
-                          ? authUser.bio
+                          ? "Bio : " + authUser.bio
                           : "Votre bio n'est pas encore défini"}
                       </span>
                       <br />
