@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Router, Route, Redirect } from "react-router-dom";
 import { history } from "./utilities/history";
 import RegisterPage from "./pages/RegistrationPage";
@@ -12,7 +12,6 @@ import ProtectedRoute, {
 import './App.css'
 import { Context, loadState } from "./utilities/useAuth";
 import LoginPage from "./pages/LoginPage";
-import { userService } from "./services/users.service";
 import MagicLinkPage from "./pages/MagicLinkPage";
 const loadedState = loadState();
 

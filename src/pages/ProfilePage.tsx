@@ -1,10 +1,9 @@
 
 import React from "react";
 import Profile from '../components/Profile';
-import Layout from "./layouts/Layout";
 import ContentLayout from "./layouts/ContentLayout";
 
-const ProfilePage = () => (
+const ProfilePage: React.FunctionComponent = () => (
   <ContentLayout>
     <Profile />
   </ContentLayout>

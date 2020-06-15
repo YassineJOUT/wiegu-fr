@@ -6,7 +6,6 @@ import {
   Icon,
   Modal,
   Label,
-  Placeholder,
   Loader,
 } from "semantic-ui-react";
 import ProfileEditForm from "../ProfileEdit/Form";
@@ -16,7 +15,6 @@ import CoverImageInput from "../../Shared/CoverImageInput";
 import { Context } from "../../../utilities/useAuth";
 import { history } from "../../../utilities/history";
 import { userService } from "../../../services/users.service";
-import { Redirect } from "react-router-dom";
 
 export interface userState {
   ProfileImage: string;
@@ -46,21 +44,19 @@ const ProfileHeader: React.FunctionComponent = () => {
   const { contextState, setContext } = useContext(Context);
 
   const Disconnect = () => {
-    {
-      const v = {
-        contextState: {
-          isLogged: false,
-          user: {
-            id: "",
-            role: "",
-          },
+    const v = {
+      contextState: {
+        isLogged: false,
+        user: {
+          id: "",
+          role: "",
         },
-        setContext,
-      };
-      setContext(v);
-      useState(v);
-      history.push("/login");
-    }
+      },
+      setContext,
+    };
+    setContext(v);
+    useState(v);
+    history.push("/login");
   };
   if (!contextState.isLogged) history.push("/login");
   useEffect(() => {

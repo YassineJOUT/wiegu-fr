@@ -2,33 +2,31 @@ import React, { useState, useContext } from "react";
 import { Icon, Menu, Input, Sidebar, Ref, Segment } from "semantic-ui-react";
 import { Context, saveState } from "../../utilities/useAuth";
 import { history } from "../../utilities/history";
-import { disconnect } from "process";
 
 const Topbar: React.FunctionComponent = (props) => {
   const { contextState, setContext } = useContext(Context);
   const [activeItem, setActiveItem] = useState(1);
   const [visible, setVisible] = useState(false);
   const segmentRef = React.useRef();
- 
+
   const disconnect = () => {
-    {
-      const v = {
-        contextState: {
-          isLogged: false,
-          user: {
-            id: "",
-            role: "",
-          },
+    const v = {
+      contextState: {
+        isLogged: false,
+        user: {
+          id: "",
+          role: "",
         },
-        setContext,
-      };
-      setContext(v);
-      saveState(v);
-      history.push("/login");
-    }
+      },
+      setContext,
+    };
+    setContext(v);
+    saveState(v);
+    history.push("/login");
   };
   return (
     <div>
+      {}
       <Sidebar.Pushable as={Segment.Group} raised>
         <Sidebar
           as={Menu}

@@ -12,7 +12,7 @@ import { userService } from "../../../services/users.service";
 
 const LoginEmailForm: React.FunctionComponent = () => {
 
-  const {contextState, setContext} = useContext(Context);
+  const {contextState } = useContext(Context);
   if(contextState.isLogged) history.push("/profile");
   const [{ success, error,message }, dispatch] = useReducer(reducer, {
     success: false,

@@ -2,10 +2,7 @@ import axios from "axios";
 import { signUpInput } from "../types/Registration";
 import { API_URL } from "../utilities/config";
 import { editProfileType } from "../components/Profile/ProfileEdit/Form";
-import { saveState, Context } from "../utilities/useAuth";
-import { useContext } from "react";
-import { history } from "../utilities/history";
-import React from "react";
+
 
 const instance = axios.create({
   withCredentials: true,
@@ -14,9 +11,9 @@ const instance = axios.create({
 const headersOptions: {} = {
   headers: { "Content-Type": "application/x-www-form-urlencoded" },
 };
-const headersOptionsUpload: {} = {
-  headers: { "Content-Type": "multipart/form-data" },
-};
+// const headersOptionsUpload: {} = {
+//   headers: { "Content-Type": "multipart/form-data" },
+// };
 
 type loginInput = {
   email: string;

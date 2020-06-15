@@ -37,7 +37,7 @@ const LinkVerify: React.FunctionComponent<RouteComponentProps> = (props) => {
       .catch((err) => {
        
       });
-  }, [contextState]);
+  }, [param.token,setContext]);
   return (
     <div><Loader active  content="Verifiying link" style={{top: -20}}/>
       <Card centered style={{ width: 450}}>

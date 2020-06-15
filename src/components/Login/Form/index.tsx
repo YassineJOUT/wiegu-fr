@@ -49,13 +49,15 @@ const LoginForm: React.SFC = () => {
           dispatch({ type: "failure", error: data.error });
         }
         setSubmitting(false);
+        resetForm();
       }).catch(err => {
         dispatch({ type: "failure", error: "Something went wrong" });
         setSubmitting(false);
+        resetForm();
       });
       
     
-    resetForm();
+    
   
   };
 
@@ -115,7 +117,7 @@ const LoginForm: React.SFC = () => {
                   color="teal"
                   fluid
                   size="large"
-                  {...(isSubmitting ? { loading: true } : {})}
+                  {...(isSubmitting ? {loading: true } : {} )}
                 >
                   Connexion
                 </Button>

@@ -1,6 +1,5 @@
 import React, { useContext, useReducer } from "react";
-import { Card, Form, Button, Message, Divider } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import {  Form, Button, Message, Divider } from "semantic-ui-react";
 import { Context } from "../../../../utilities/useAuth";
 import { history } from "../../../../utilities/history";
 import { reducer } from "../../../../utilities/reducers";
@@ -20,7 +19,7 @@ const ProfileEditForm: React.FunctionComponent<{
   handleProfileEdit: Function;
   profileState: userState;
 }> = ({ handleProfileEdit, profileState }) => {
-  const { contextState, setContext } = useContext(Context);
+  const { contextState } = useContext(Context);
   if (!contextState.isLogged) history.push("/login");
   const [{ success, error, message }, dispatch] = useReducer(reducer, {
     success: false,

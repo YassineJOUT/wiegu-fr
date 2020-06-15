@@ -1,6 +1,6 @@
-import React, { ChangeEvent, useState, useContext, useReducer } from "react";
+import React, { ChangeEvent, useState, useContext } from "react";
 import { InputFile } from "semantic-ui-react-input-file";
-import { Modal, Image, Button, Loader, Message } from "semantic-ui-react";
+import { Modal, Image, Button, Message } from "semantic-ui-react";
 import { userService } from "../../services/users.service";
 import { Context } from "../../utilities/useAuth";
 
@@ -8,7 +8,7 @@ const ImageInput: React.FunctionComponent<{ profileImage?: string | null,handleU
   profileImage,
   handleUpload
 }) => {
-  const { contextState, setContext } = useContext(Context);
+  const { contextState } = useContext(Context);
 
   const [preview, setPreview] = useState<null | string>(null);
   const [loading, setLoading] = useState(false);
@@ -26,7 +26,7 @@ const ImageInput: React.FunctionComponent<{ profileImage?: string | null,handleU
   const uploadImage = () => {
     setLoading(true);
     const formData = new FormData();
-    const fs = file && formData.append("image", file);
+    file && formData.append("image", file);
     formData.append("userId", contextState.user.id);
     formData.append("type", "profile");
 
