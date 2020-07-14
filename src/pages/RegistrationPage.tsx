@@ -1,7 +1,7 @@
 import React from "react";
 import RegisterForm from '../components/Register/Form'
 import Layout from "./layouts/Layout";
-// Rejoindre VaTo
+// Rejoindre Weigu
 // Adresse e-mail
 // Mot de passe
 // Nom d'utilisateur

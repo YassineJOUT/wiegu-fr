@@ -3,8 +3,8 @@ import { Card, Form, Button, Message, Checkbox } from "semantic-ui-react";
 import { Formik, Field, ErrorMessage } from "formik";
 import { registrationSchema } from "../../../utilities/validationSchema";
 import { Link } from "react-router-dom";
-import { userService } from "../../../services/users";
-import { reducer } from '../../../utilities/reducers'
+import { userService } from "../../../services/users.service";
+import { reducer } from "../../../utilities/reducers";
 import { formValues } from "../../../utilities/types";
 
 const RegisterForm: React.SFC = () => {
@@ -24,25 +24,29 @@ const RegisterForm: React.SFC = () => {
     setSubmitting(true);
     dispatch({ type: "request" });
     try {
-      const result = await userService.signUp(values);
-      console.log(result);
+      const input = {
+        email: values.email,
+        password: values.password,
+        username: values.username || "",
+      };
+      const result = await userService.signUp(input);
       const data = { ...result.data };
       if (data.success) {
         dispatch({ type: "success", message: data.message });
       } else {
-        dispatch({ type: "failure", error: data.message });
+        dispatch({ type: "failure", error: data.error });
       }
     } catch (err) {
-      dispatch({ type: "failure", error: err.toString() });
+      dispatch({ type: "failure", error: "Something went wrong" });
     }
-
     setSubmitting(false);
     resetForm();
   };
+  const initValues = { email: "", password: "", username: "", terms: false };
   return (
     <div>
       <Formik
-        initialValues={{ email: "", password: "", username: "", terms: false }}
+        initialValues={initValues}
         validationSchema={registrationSchema}
         onSubmit={Submit}
       >
@@ -51,7 +55,7 @@ const RegisterForm: React.SFC = () => {
             <Card centered style={{ width: 450 }}>
               <Card.Content style={{ margin: 30 }}>
                 <Card.Header style={{ fontSize: 22, padding: 30 }}>
-                  Rejoindre VaTo
+                  Rejoindre Weigu
                 </Card.Header>
                 {success && message && (
                   <Message positive>
@@ -124,7 +128,7 @@ const RegisterForm: React.SFC = () => {
         )}
       </Formik>
       <Message>
-        Déjà membre de VaTo ? <Link to="/login">Se connecter</Link>
+        Déjà membre de Weigu ? <Link to="/login">Se connecter</Link>
         <br />
         <Link to="/">Mot de passe oublié ?</Link>
       </Message>

@@ -1,26 +1,17 @@
 import React from "react";
-import { Header, Icon, Image, Button } from "semantic-ui-react";
-import img from "../../images/centered-paragraph.png";
-import { history } from '../../utilities/history';
-const Profile = () => (
-  <div>
-    <Header as="h2" icon textAlign="center">
-      <Icon name="users" circular />
-      <Header.Content>Friends</Header.Content>
-    </Header>
-    <Image centered size="large" src={img} />
-    <Button
-    onClick={
-        () => history.push("/login")
-    }
-      type="submit"
-      color="teal"
-      fluid
-      size="large"
-    >
-      Logout
-    </Button>
-  </div>
-);
+import {  Divider } from "semantic-ui-react";
+import ProfileHeader from "./ProfileHeader";
+import ProfileContent from "./ProfileContent";
+
+const Profile: React.FunctionComponent = () => {
+
+  return (
+    <div style={{ height: "100vh" }}>
+      <ProfileHeader />
+      <Divider />
+      <ProfileContent />
+    </div>
+  );
+};
 
 export default Profile;

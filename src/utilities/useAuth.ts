@@ -2,7 +2,7 @@ import { createContext, Dispatch, SetStateAction } from "react";
 
 // localStorage.js
 export const loadState = (): Context => {
-  const serializedState = localStorage.getItem("vato-sate");
+  const serializedState = localStorage.getItem("Weigu-sate");
   if (serializedState !== null) {
     return JSON.parse(serializedState);
   } else return initialContext;
@@ -11,7 +11,7 @@ export const loadState = (): Context => {
 export const saveState = (state: Context) => {
   try {
     const serializedState = JSON.stringify(state);
-    localStorage.setItem("vato-sate", serializedState);
+    localStorage.setItem("Weigu-sate", serializedState);
   } catch {}
 };
 export interface AuthType {

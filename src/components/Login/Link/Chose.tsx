@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 // Il contient un lien magique qui vous connectera à votre compte.
 // Connexion avec mot de passe
 
-const LoginChoseForm: React.SFC = () => (
+const LoginChoseForm: React.FunctionComponent = () => (
   <div>
     <Form>
       <Card centered style={{ width: 450 }}>
         <Card.Content style={{ margin: 20 }}>
           <Card.Header style={{ fontSize: 22, padding: 30 }}>
-            Connexion à VaTo
+            Connexion à Weigu
           </Card.Header>
           {/* <Card.Meta>Joined in 2016</Card.Meta> */}
           <Card.Description>
