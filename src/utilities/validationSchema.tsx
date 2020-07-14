@@ -24,7 +24,7 @@ const validUsername = Yup.string()
   .max(50, "Username must have less than 50 caracters")
   .required("Username is required");
 
-const validTerms = Yup.boolean().oneOf([true], 'Must Accept Terms of Service');
+// const validTerms = Yup.boolean().oneOf([true], 'Must Accept Terms of Service');
 
 export const loginValidationSchema = Yup.object().shape({
   email: validEmail,
@@ -47,7 +47,7 @@ export const resetPasswordSchema = Yup.object().shape({
 });
 
 export const registrationSchema = Yup.object().shape({
-  terms: validTerms,
+  //t//erms: validTerms,
   username: validUsername,
   email: validEmail,
   password: validPassword,
