@@ -4,13 +4,13 @@ import { Formik, ErrorMessage } from "formik";
 import { loginValidationSchema } from "../../../utilities/validationSchema";
 import { Link } from "react-router-dom";
 import { reducer } from "../../../utilities/reducers";
-import { userService } from "../../../services/users";
+import { userService } from "../../../services/users.service";
 import { history } from "../../../utilities/history";
 import { Context, saveState } from "../../../utilities/useAuth";
 
 const LoginForm: React.SFC = () => {
-  const {contextState, setContext} = useContext(Context);
-
+  const { contextState, setContext } = useContext(Context);
+  if (contextState.isLogged) history.push("profile");
   const [{ success, error }, dispatch] = useReducer(reducer, {
     success: false,
     error: "",
@@ -25,32 +25,37 @@ const LoginForm: React.SFC = () => {
   ) => {
     setSubmitting(true);
     dispatch({ type: "request" });
-    try {
-      const result = await userService.signIn(values);
-      const data = { ...result.data };
-      console.log(result);
-      if (data.success) {
-        //history push to profile
-        history.push("/profile");
-        const v = {
-          contextState:{
-            isLogged: data.success,
-            user:{
-              id: '1',
-              role: 'admin'
-            }
-          },
-          setContext
-        };
-      setContext(v);
-      saveState(v);
-        dispatch({ type: "success", message: data.message });
-      } else {
-        dispatch({ type: "failure", error: data.message });
-      }
-    } catch (err) {
-      dispatch({ type: "failure", error: err.toString() });
-    }
+    //try {
+    await userService
+      .login(values)
+      .then((dataa) => {
+        const data = { ...dataa.data };
+        if (data.success) {
+          //history push to profile
+          const { user } = data.data;
+          const v = {
+            contextState: {
+              isLogged: data.success,
+              user: {
+                id: user._id,
+                role: "admin",
+              },
+            },
+            setContext,
+          };
+          setContext(v);
+          saveState(v);
+          dispatch({ type: "success", message: "Login success" });
+          history.push("/profile");
+        } else {
+          dispatch({ type: "failure", error: data.error });
+        }
+
+        resetForm();
+      })
+      .catch((err) => {
+        dispatch({ type: "failure", error: "Something went wrong" });
+      });
 
     setSubmitting(false);
     resetForm();
@@ -68,7 +73,7 @@ const LoginForm: React.SFC = () => {
             <Card centered style={{ width: 450 }}>
               <Card.Content style={{ margin: 20 }}>
                 <Card.Header style={{ fontSize: 22, padding: 30 }}>
-                  Connexion à VaTo
+                  Connexion à Weigu
                 </Card.Header>
                 {!success && error && (
                   <Message negative>
@@ -112,7 +117,7 @@ const LoginForm: React.SFC = () => {
                   color="teal"
                   fluid
                   size="large"
-                  {...(isSubmitting && { loading: true })}
+                  {...(isSubmitting ? { loading: true } : {})}
                 >
                   Connexion
                 </Button>
@@ -122,7 +127,7 @@ const LoginForm: React.SFC = () => {
         )}
       </Formik>
       <Message>
-        Pas de compte ? <Link to="/register">Rejoindre VaTo</Link>
+        Pas de compte ? <Link to="/register">Rejoindre Weigu</Link>
         <br />
         <Link to="/">Mot de passe oublié ?</Link>
       </Message>

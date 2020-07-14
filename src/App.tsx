@@ -1,36 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Router, Route, Redirect } from "react-router-dom";
 import { history } from "./utilities/history";
 import RegisterPage from "./pages/RegistrationPage";
 import LoginChosePage from "./pages/LoginLink/ChosePage";
 import LoginTextPage from "./pages/LoginLink/MessagePage";
-import LoginEmailForm from "./pages/LoginLink/EmailPage";
+import LoginEmailPage from "./pages/LoginLink/EmailPage";
 import ProfilePage from "./pages/ProfilePage";
 import ProtectedRoute, {
   ProtectedRouteProps,
 } from "./utilities/protectedRoute";
-
+import './App.css'
 import { Context, loadState } from "./utilities/useAuth";
 import LoginPage from "./pages/LoginPage";
-import { userService } from "./services/users";
-
+import MagicLinkPage from "./pages/MagicLinkPage";
 const loadedState = loadState();
+
 
 const App: React.FC = () => {
   const [context, setContext] = useState<Context>(loadedState);
 
-  useEffect(() => {
-     userService
-      .getStore()
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  });
-
-  console.log(context);
   const defaultProtectedRouteProps: ProtectedRouteProps = {
     isAuthenticated: context.contextState.isLogged,
     authenticationPath: "/",
@@ -44,42 +32,51 @@ const App: React.FC = () => {
             exact
             component={() => (
               <Redirect
-                to={context.contextState.isLogged ? "/profile" : "login"}
+                to={context.contextState.isLogged ? "/profile" : "/"}
               />
             )}
           />
           <Route path="/login" exact component={LoginPage} />
-          <ProtectedRoute
+          <Route path="/login-link" exact component={LoginEmailPage} />
+          <Route path="/mlink/:token" exact component={MagicLinkPage} />
+
+          {/* <ProtectedRoute
             {...defaultProtectedRouteProps}
             exact={true}
             path="/login-link"
             component={LoginEmailForm}
-          />
+          /> */}
+
           <ProtectedRoute
             {...defaultProtectedRouteProps}
             exact={true}
             path="/profile"
             component={ProfilePage}
-          />
-          <ProtectedRoute
+          /> 
+          <Route path="/register" exact component={RegisterPage} />
+
+          {/* <ProtectedRoute
             {...defaultProtectedRouteProps}
             exact={true}
             path="/register"
             component={RegisterPage}
-          />
+          />   */}
+          <Route path="/login-link-text/:email" exact component={LoginTextPage} />
 
-          <ProtectedRoute
+          {/* <ProtectedRoute
             {...defaultProtectedRouteProps}
             exact={true}
             path="/login-link-text"
             component={LoginTextPage}
-          />
-          <ProtectedRoute
+          /> */}
+          <Route path="/" exact component={LoginChosePage} />
+
+          {/* <ProtectedRoute
             {...defaultProtectedRouteProps}
             exact={true}
             path="/"
             component={LoginChosePage}
-          />
+          /> */}
         </Router>
       </Context.Provider>
     </div>

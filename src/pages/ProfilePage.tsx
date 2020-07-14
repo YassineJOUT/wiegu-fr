@@ -1,12 +1,12 @@
 
 import React from "react";
 import Profile from '../components/Profile';
-import Layout from "./layouts/Layout";
+import ContentLayout from "./layouts/ContentLayout";
 
-const ProfilePage = () => (
-  <Layout>
+const ProfilePage: React.FunctionComponent = () => (
+  <ContentLayout>
     <Profile />
-  </Layout>
+  </ContentLayout>
 );
 
 export default ProfilePage;
