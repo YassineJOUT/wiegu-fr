@@ -13,6 +13,7 @@ import './App.css'
 import { Context, loadState } from "./utilities/useAuth";
 import LoginPage from "./pages/LoginPage";
 import MagicLinkPage from "./pages/MagicLinkPage";
+import HomePage from "./pages/HomePage";
 const loadedState = loadState();
 
 
@@ -54,7 +55,7 @@ const App: React.FC = () => {
             component={ProfilePage}
           /> 
           <Route path="/register" exact component={RegisterPage} />
-
+          <Route path="/home" exact component={HomePage} />
           {/* <ProtectedRoute
             {...defaultProtectedRouteProps}
             exact={true}
