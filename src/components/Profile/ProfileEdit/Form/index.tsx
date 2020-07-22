@@ -15,10 +15,12 @@ export type editProfileType = {
   password: string;
 };
 
-const ProfileEditForm: React.FunctionComponent<{
+type ProfileEditProps = {
   handleProfileEdit: Function;
   profileState: userState;
-}> = ({ handleProfileEdit, profileState }) => {
+};
+
+const ProfileEditForm: React.FunctionComponent<ProfileEditProps> = ({ handleProfileEdit, profileState }) => {
   const { contextState } = useContext(Context);
   if (!contextState.isLogged) history.push("/login");
   const [{ success, error, message }, dispatch] = useReducer(reducer, {
