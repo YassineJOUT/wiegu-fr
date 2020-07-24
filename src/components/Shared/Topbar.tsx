@@ -80,8 +80,8 @@ const Topbar: React.FunctionComponent = (props) => {
                 >
                   
                 </Menu.Item>
-                <ModalAll/>
-                <ModalInscription/>
+                <ModalAll trigger={<a href="#" className="link item con" >Connecter</a>}/>
+                <ModalInscription trigger={<a href="#" className="link item ins" >Inscription</a>}/>
                 </Menu.Menu>
               </Menu>
             </Segment>

@@ -3,11 +3,10 @@ import { Image, Modal } from 'semantic-ui-react'
 import AllConnectionForm from '../Allconnection'
 
 type modalProps =  {
-    text : string,
-    link : string
+    trigger : any,
 }
-const ModalAll: React.FunctionComponent  = () => (
-  <Modal className="tiny" trigger={<a href="#" className="link item" >Connecter</a>} centered={false}>
+const ModalAll: React.FunctionComponent<modalProps>  = (props) => (
+  <Modal className="tiny" trigger={props.trigger} centered={false}>
     <Modal.Header><Image 
               src={require("../../../assets/weigu-logo.png")}
               size='tiny'
