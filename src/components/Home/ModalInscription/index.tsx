@@ -2,11 +2,10 @@ import React from 'react'
 import { Image, Modal } from 'semantic-ui-react'
 import InscriptionForm from '../Inscription'
 type modalProps =  {
-    text : string,
-    link : string
+  trigger : any,
 }
-const ModalInscription: React.FunctionComponent  = () => (
-  <Modal className="tiny" trigger={<a href="#" className="link item" >Inscription</a>} centered={false}>
+const ModalInscription: React.FunctionComponent<modalProps>   = (props) => (
+  <Modal className="tiny" trigger={props.trigger} centered={false}>
     <Modal.Header><Image 
               src={require("../../../assets/weigu-logo.png")}
               size='tiny'
