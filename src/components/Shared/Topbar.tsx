@@ -54,9 +54,9 @@ const Topbar: React.FunctionComponent = (props) => {
           <div>
             <Segment>
               <Menu pointing secondary size="small">
-              {/*<Menu.Item onClick={() => setVisible(visible ? false : true)}>
+              <Menu.Item onClick={() => setVisible(visible ? false : true)}>
                   <Icon size="big" name="align justify" />
-  </Menu.Item>*/}
+  </Menu.Item>
               <Menu.Item>
               <Image 
               src={require("../../assets/weigu-logo.png")}
