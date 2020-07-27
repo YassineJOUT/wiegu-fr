@@ -6,6 +6,7 @@ import LoginChosePage from "./pages/LoginLink/ChosePage";
 import LoginTextPage from "./pages/LoginLink/MessagePage";
 import LoginEmailPage from "./pages/LoginLink/EmailPage";
 import ProfilePage from "./pages/ProfilePage";
+import ProfilPage from "./pages/ProfilPage";
 import ProtectedRoute, {
   ProtectedRouteProps,
 } from "./utilities/protectedRoute";
@@ -37,6 +38,7 @@ const App: React.FC = () => {
               />
             )}
           />
+          <Route path="/profil" exact component={ProfilPage} />
           <Route path="/login" exact component={LoginPage} />
           <Route path="/login-link" exact component={LoginEmailPage} />
           <Route path="/mlink/:token" exact component={MagicLinkPage} />
