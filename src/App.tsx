@@ -6,6 +6,7 @@ import LoginChosePage from "./pages/LoginLink/ChosePage";
 import LoginTextPage from "./pages/LoginLink/MessagePage";
 import LoginEmailPage from "./pages/LoginLink/EmailPage";
 import ProfilePage from "./pages/ProfilePage";
+import ProfilPage from "./pages/ProfilPage";
 import ProtectedRoute, {
   ProtectedRouteProps,
 } from "./utilities/protectedRoute";
@@ -13,6 +14,7 @@ import './App.css'
 import { Context, loadState } from "./utilities/useAuth";
 import LoginPage from "./pages/LoginPage";
 import MagicLinkPage from "./pages/MagicLinkPage";
+import HomePage from "./pages/HomePage";
 const loadedState = loadState();
 
 
@@ -36,6 +38,7 @@ const App: React.FC = () => {
               />
             )}
           />
+          <Route path="/profil" exact component={ProfilPage} />
           <Route path="/login" exact component={LoginPage} />
           <Route path="/login-link" exact component={LoginEmailPage} />
           <Route path="/mlink/:token" exact component={MagicLinkPage} />
@@ -54,7 +57,7 @@ const App: React.FC = () => {
             component={ProfilePage}
           /> 
           <Route path="/register" exact component={RegisterPage} />
-
+          <Route path="/home" exact component={HomePage} />
           {/* <ProtectedRoute
             {...defaultProtectedRouteProps}
             exact={true}
