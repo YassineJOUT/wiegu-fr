@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image, Modal } from 'semantic-ui-react'
-import InscriptionForm from '../Inscription'
+import RegisterForm from '../../Register/Form'
 type modalProps =  {
   trigger : any,
 }
@@ -13,9 +13,7 @@ const ModalInscription: React.FunctionComponent<modalProps>   = (props) => (
             <div className="headerText">Lorem ipsum dolor sit amet, consectetur adipiscing.</div>
                </Modal.Header>
     <Modal.Content>
-      <Modal.Description>
-        <InscriptionForm/>
-      </Modal.Description>
+        <RegisterForm/>
     </Modal.Content>
     <div className="footerModal">
        <p className="headfooter"> Déja inscrit? <a href="#">Je me connecte</a></p>
