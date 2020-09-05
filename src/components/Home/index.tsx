@@ -9,8 +9,8 @@ const Home: React.FunctionComponent = () => {
   return (
     <div className="containerback">
       <Grid stackable columns='equal'>
-        <Grid.Row >
-          <Grid.Column width={5} style={{paddingLeft: '40px', paddingRight: '40px' }}>
+        <Grid.Row  centered>
+          <Grid.Column width={5} >
             <SliderComponent />
             <div className="buttons">
               <ModalInscription
@@ -29,7 +29,7 @@ const Home: React.FunctionComponent = () => {
               />
             </div>
           </Grid.Column>
-          <Grid.Column width={10} floated="right" style={{marginRight: '10px'}}>
+          <Grid.Column width={10} style={{marginRight: '10px'}}>
             <Grid stackable columns={2}>
               <Grid.Column><HomeCard /></Grid.Column>
               <Grid.Column><HomeCard /></Grid.Column>
