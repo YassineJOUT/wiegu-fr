@@ -83,26 +83,26 @@ const Topbar: React.FunctionComponent = (props) => {
           <div>
             <Responsive as={Segment} {...Responsive.onlyMobile}>
               <Sidebar.Pusher>
-                <Grid>
-                  <GridRow>
-                    <GridColumn verticalAlign="middle">
+                <Grid >
+                  <GridRow textAlign='center' columns='equal' style={{marginLeft: "10px",marginRight: "10px"}}>
+                    <Image
+                      src={require("../../assets/weigu-logo.png")}
+                      size="tiny"
+                    />
+                    <GridColumn  verticalAlign="middle" width={10} >
+                      <Input
+                        fluid
+                        icon={{ name: "search", circular: true, link: true }}
+                        placeholder="Search..."
+                      />
+                    </GridColumn>
+                    <GridColumn verticalAlign="middle"  > 
                       <Icon
                         size="big"
                         name="align justify"
                         onClick={() => setVisible(visible ? false : true)}
                       />
                     </GridColumn>
-                    <Image
-                      src={require("../../assets/weigu-logo.png")}
-                      size="tiny"
-                      centered
-                    />
-                  </GridRow>
-                  <GridRow centered>
-                    <Input
-                      icon={{ name: "search", circular: true, link: true }}
-                      placeholder="Search..."
-                    />
                   </GridRow>
                 </Grid>
               </Sidebar.Pusher>
