@@ -5,8 +5,8 @@ import {
 
 const HomeCard: React.FunctionComponent = () => {
   return (
-    <div className="mycards">
-      <Card>
+    <div style={{fontSize: '12px'}}>
+      <Card fluid >
         <Card.Content>
         <div className="privacy">Public <Icon name='unlock' size='large' /></div>
           
