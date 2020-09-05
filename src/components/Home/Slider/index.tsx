@@ -10,7 +10,7 @@ const slides = [
 ];
 const SliderComponent: React.FunctionComponent = () => {
   return (
-    <div style={{height:'300px'}}>
+    <div >
       <Slider
         autoplay = {2000}
         infinite = {true}
