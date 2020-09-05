@@ -7,15 +7,7 @@ import ModalInscription from "./ModalInscription";
 
 
 const Profile: React.FunctionComponent = () => {
-const openIns = () =>{
- 
-}
-const opencon = () =>{
-  let con = (document.getElementsByClassName(".con")[0] as HTMLElement);
-  con.click();
-}
   return (
-    
     <div  className ="containerback" >
       <div className ="contenu"></div>
         <Grid>
@@ -28,16 +20,8 @@ const opencon = () =>{
             
             </div>
             </Grid.Column>
-            <Grid.Column width={12}> 
-            
-              <HomeCard></HomeCard>
-              <HomeCard></HomeCard>
-              <HomeCard></HomeCard>
-              <HomeCard></HomeCard>
-              <HomeCard></HomeCard>
-              <HomeCard></HomeCard>
-              <HomeCard></HomeCard>
-              <HomeCard></HomeCard>
+            <Grid.Column width={12}>
+              <HomeCard />
             </Grid.Column>
 
           </Grid.Row>
