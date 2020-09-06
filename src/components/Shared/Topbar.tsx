@@ -43,7 +43,6 @@ const Topbar: React.FunctionComponent = (props) => {
   // hide side bar
   return (
     <>
-      <Sidebar.Pushable as={Segment} style={{ margin: 0 }}>
         <Sidebar
           as={Menu}
           animation="overlay"
@@ -170,7 +169,6 @@ const Topbar: React.FunctionComponent = (props) => {
             </Menu.Menu>
           </Menu>
         </Responsive>
-      </Sidebar.Pushable>
     </>
   );
 };
