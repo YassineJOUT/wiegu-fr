@@ -14,7 +14,6 @@ const ModalConnection: React.FunctionComponent = () => (
         Se connecter avec un e-mail
       </Button>
     }
-    centered={false}
   >
     <Modal.Header>
       <Image src={require("../../../assets/weigu-logo.png")} size="tiny" />

@@ -38,12 +38,12 @@ const Topbar: React.FunctionComponent = (props) => {
     };
     setContext(v);
     saveState(v);
-    history.push("/login");
+    history.push("/");
   };
   // hide side bar
   return (
     <>
-      <Sidebar.Pushable as={Segment} style={{ margin: 0 }} >
+      <Sidebar.Pushable as={Segment} style={{ margin: 0 }}>
         <Sidebar
           as={Menu}
           animation="overlay"
@@ -61,22 +61,36 @@ const Topbar: React.FunctionComponent = (props) => {
             className="redlocation"
             onClick={() => setActiveItem(1)}
           ></Menu.Item>
-          <ModalAll
-            trigger={
-              <a href="#" className="link item con">
-                Connecter
-              </a>
-            }
-          />
-          <ModalInscription
-            trigger={
-              <a href="#" className="link item ins">
-                Inscription
-              </a>
-            }
-          />
+          {!contextState.isLogged ? (
+            <>
+              <ModalAll
+                page=""
+                trigger={
+                  <a href="#" className="link item con">
+                    Connecter
+                  </a>
+                }
+              />
+              <ModalAll
+                page="register"
+                trigger={
+                  <a href="#" className="link item ins">
+                    Inscription
+                  </a>
+                }
+              />
+            </>
+          ) : (
+            <a onClick={() => disconnect()} className="link item ins">
+              Deconnexion
+            </a>
+          )}
         </Sidebar>
-        <Responsive as={Segment} {...Responsive.onlyMobile} style={{ margin: 0 }}>
+        <Responsive
+          as={Segment}
+          {...Responsive.onlyMobile}
+          style={{ margin: 0 }}
+        >
           <Sidebar.Pusher>
             <Grid>
               <GridRow
@@ -106,7 +120,11 @@ const Topbar: React.FunctionComponent = (props) => {
             </Grid>
           </Sidebar.Pusher>
         </Responsive>
-        <Responsive as={Segment} minWidth={Responsive.onlyTablet.minWidth} style={{ margin: 0 }}>
+        <Responsive
+          as={Segment}
+          minWidth={Responsive.onlyTablet.minWidth}
+          style={{ margin: 0 }}
+        >
           <Menu stackable pointing secondary size="small">
             <Menu.Item>
               <Image src={require("../../assets/weigu-logo.png")} size="tiny" />
@@ -125,20 +143,30 @@ const Topbar: React.FunctionComponent = (props) => {
                 className="redlocation"
                 onClick={() => setActiveItem(1)}
               ></Menu.Item>
-              <ModalAll
-                trigger={
-                  <a href="#" className="link item con">
-                    Connecter
-                  </a>
-                }
-              />
-              <ModalInscription
-                trigger={
-                  <a href="#" className="link item ins">
-                    Inscription
-                  </a>
-                }
-              />
+              {!contextState.isLogged ? (
+                <>
+                  <ModalAll
+                    page=""
+                    trigger={
+                      <a href="#" className="link item con">
+                        Connecter
+                      </a>
+                    }
+                  />
+                  <ModalAll
+                    page="register"
+                    trigger={
+                      <a href="#" className="link item ins">
+                        Inscription
+                      </a>
+                    }
+                  />
+                </>
+              ) : (
+                <a onClick={() => disconnect()} className="link item ins">
+                  Deconnexion
+                </a>
+              )}
             </Menu.Menu>
           </Menu>
         </Responsive>

@@ -55,7 +55,7 @@ const App: React.FC = () => {
             component={ProfilePage}
           />
           <Route path="/register" exact component={RegisterPage} />
-          <Route path="/home" exact component={HomePage} />
+          {/* <Route path="/" exact component={HomePage} /> */}
           {/* <ProtectedRoute
             {...defaultProtectedRouteProps}
             exact={true}
@@ -74,7 +74,7 @@ const App: React.FC = () => {
             path="/login-link-text"
             component={LoginTextPage}
           /> */}
-          <Route path="/" exact component={LoginChosePage} />
+          <Route path="/" exact component={HomePage} />
 
           {/* <ProtectedRoute
             {...defaultProtectedRouteProps}

@@ -13,7 +13,8 @@ const Home: React.FunctionComponent = () => {
           <Grid.Column width={5} >
             <SliderComponent />
             <div className="buttons">
-              <ModalInscription
+              <ModalAll
+                page="register"
                 trigger={
                   <Button size="large" color="red" className="signup">
                     Commencer
@@ -21,6 +22,7 @@ const Home: React.FunctionComponent = () => {
                 }
               />
               <ModalAll
+                page=""
                 trigger={
                   <Button size="large"  style={{backgroundColor: 'white', color: 'black'}} className="signin" >
                     Se connecter
