@@ -10,13 +10,13 @@ import ProfilPage from "./pages/ProfilPage";
 import ProtectedRoute, {
   ProtectedRouteProps,
 } from "./utilities/protectedRoute";
-import './App.css'
+import "./App.css";
 import { Context, loadState } from "./utilities/useAuth";
 import LoginPage from "./pages/LoginPage";
 import MagicLinkPage from "./pages/MagicLinkPage";
 import HomePage from "./pages/HomePage";
-const loadedState = loadState();
 
+const loadedState = loadState();
 
 const App: React.FC = () => {
   const [context, setContext] = useState<Context>(loadedState);
@@ -33,9 +33,7 @@ const App: React.FC = () => {
             path="/"
             exact
             component={() => (
-              <Redirect
-                to={context.contextState.isLogged ? "/profile" : "/"}
-              />
+              <Redirect to={context.contextState.isLogged ? "/profile" : "/"} />
             )}
           />
           <Route path="/profil" exact component={ProfilPage} />
@@ -55,16 +53,20 @@ const App: React.FC = () => {
             exact={true}
             path="/profile"
             component={ProfilePage}
-          /> 
+          />
           <Route path="/register" exact component={RegisterPage} />
-          <Route path="/home" exact component={HomePage} />
+          {/* <Route path="/" exact component={HomePage} /> */}
           {/* <ProtectedRoute
             {...defaultProtectedRouteProps}
             exact={true}
             path="/register"
             component={RegisterPage}
           />   */}
-          <Route path="/login-link-text/:email" exact component={LoginTextPage} />
+          <Route
+            path="/login-link-text/:email"
+            exact
+            component={LoginTextPage}
+          />
 
           {/* <ProtectedRoute
             {...defaultProtectedRouteProps}
@@ -72,7 +74,7 @@ const App: React.FC = () => {
             path="/login-link-text"
             component={LoginTextPage}
           /> */}
-          <Route path="/" exact component={LoginChosePage} />
+          <Route path="/" exact component={HomePage} />
 
           {/* <ProtectedRoute
             {...defaultProtectedRouteProps}

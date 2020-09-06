@@ -56,9 +56,9 @@ const ProfileHeader: React.FunctionComponent = () => {
     };
     setContext(v);
     useState(v);
-    history.push("/login");
+    history.push("/");
   };
-  if (!contextState.isLogged) history.push("/login");
+  if (!contextState.isLogged) history.push("/");
   useEffect(() => {
     setLoading(true);
     userService

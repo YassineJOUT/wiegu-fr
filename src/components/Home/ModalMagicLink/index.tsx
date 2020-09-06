@@ -1,17 +1,18 @@
 import React from "react";
 import { Image, Modal, Button } from "semantic-ui-react";
-import ConnectionForm from "../Connexion";
-import LoginForm from "../../Login/Form";
-type modalProps = {
-  text: string;
-  link: string;
-};
-const ModalConnection: React.FunctionComponent = () => (
+import LoginEmailForm from "../../Login/Link/Email";
+
+const ModalMagicLink: React.FunctionComponent = () => (
   <Modal
     className="tiny"
     trigger={
-      <Button type="button" className="signUp" color="black">
-        Se connecter avec un e-mail
+      <Button type="button" className="signUp" color="green">
+        Se connecter avec un lien magic
+        <Image
+          src={require("../../../assets/giphyz.gif")}
+          alt="gif"
+          className="magic"
+        />
       </Button>
     }
   >
@@ -22,7 +23,7 @@ const ModalConnection: React.FunctionComponent = () => (
       </div>
     </Modal.Header>
     <Modal.Content>
-      <LoginForm />
+      <LoginEmailForm />
     </Modal.Content>
     <div className="footerModal">
       <p className="headfooter">
@@ -37,4 +38,4 @@ const ModalConnection: React.FunctionComponent = () => (
   </Modal>
 );
 
-export default ModalConnection;
+export default ModalMagicLink;

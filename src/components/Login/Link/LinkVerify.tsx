@@ -56,7 +56,7 @@ const LinkVerify: React.FunctionComponent<RouteComponentProps> = (props) => {
   return (
     <div>
       {!success && error && (
-        <Message negative>
+        <Message style={{textAlign: "center"}} negative>
           <Message.Header>{error}</Message.Header>
         </Message>
       )}

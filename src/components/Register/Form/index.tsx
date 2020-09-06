@@ -1,5 +1,15 @@
 import React, { useReducer } from "react";
-import { Card, Form, Button, Message, Checkbox } from "semantic-ui-react";
+import {
+  Card,
+  Form,
+  Button,
+  Message,
+  Checkbox,
+  Grid,
+  GridRow,
+  GridColumn,
+  Label,
+} from "semantic-ui-react";
 import { Formik, Field, ErrorMessage } from "formik";
 import { registrationSchema } from "../../../utilities/validationSchema";
 import { Link } from "react-router-dom";
@@ -7,7 +17,7 @@ import { userService } from "../../../services/users.service";
 import { reducer } from "../../../utilities/reducers";
 import { formValues } from "../../../utilities/types";
 
-const RegisterForm: React.SFC = () => {
+const RegisterForm: React.FunctionComponent = () => {
   const [{ success, message, error }, dispatch] = useReducer(reducer, {
     success: false,
     error: "",
@@ -42,97 +52,159 @@ const RegisterForm: React.SFC = () => {
     setSubmitting(false);
     resetForm();
   };
-  const initValues = { email: "", password: "", username: "", terms: false };
+  const initValues = {
+    email: "",
+    password: "",
+    username: "",
+    terms: false,
+    birthday:  "",
+    genre: true,
+  };
   return (
-    <div>
-      <Formik
-        initialValues={initValues}
-        validationSchema={registrationSchema}
-        onSubmit={Submit}
-      >
-        {({ values, handleBlur, handleChange, handleSubmit, isSubmitting }) => (
-          <Form onSubmit={handleSubmit}>
-            <Card centered style={{ width: 450 }}>
-              <Card.Content style={{ margin: 30 }}>
-                <Card.Header style={{ fontSize: 22, padding: 30 }}>
-                  Rejoindre Weigu
-                </Card.Header>
-                {success && message && (
-                  <Message positive>
-                    <Message.Header>{message}</Message.Header>
-                  </Message>
-                )}
-                {!success && error && (
-                  <Message negative>
-                    <Message.Header>{error}</Message.Header>
-                  </Message>
-                )}
-                <Card.Description>
-                  <div className="msg-error">
-                    {" "}
-                    <ErrorMessage name="email" />
-                  </div>
-                  <Form.Field style={{ padding: 5 }}>
-                    <Field type="email" name="email" placeholder="E-mail" />
-                  </Form.Field>
-                  <div className="msg-error">
-                    <ErrorMessage name="password" />
-                  </div>
-                  <Form.Field style={{ padding: 5 }}>
-                    <Field
-                      type="password"
-                      name="password"
-                      placeholder="Mot de passe"
-                    />
-                  </Form.Field>
-                  <div className="msg-error">
-                    {" "}
-                    <ErrorMessage name="username" />
-                  </div>
+    <Formik
+      initialValues={initValues}
+      validationSchema={registrationSchema}
+      onSubmit={Submit}
+    >
+      {({
+        values,
+        handleSubmit,
+        isSubmitting,
+        errors,
+        touched,
+        setFieldValue,
+      }) => (
+        <Form onSubmit={handleSubmit}>
+          {success && message && (
+            <Message style={{textAlign: "center"}} positive>
+              <Message.Header>{message}</Message.Header>
+            </Message>
+          )}
+          {!success && error && (
+            <Message style={{textAlign: "center"}} negative>
+              <Message.Header>{error}</Message.Header>
+            </Message>
+          )}
 
-                  <Form.Field style={{ padding: 5 }}>
-                    <Field
-                      type="text"
-                      name="username"
-                      placeholder="Nom d'utilisateur"
-                    />
-                  </Form.Field>
-                </Card.Description>
-              </Card.Content>
-              <Card.Content extra style={{ paddingLeft: 40, paddingRight: 40 }}>
+          <div style={{ padding: "10px" }}>
+            <Form.Field width="12">
+              {errors.username && touched.username ? (
                 <div className="msg-error">
-                  {" "}
+                  <ErrorMessage name="username" />
+                </div>
+              ) : (
+                <label>Nom d'utilisateur</label>
+              )}
+              <Field
+                type="text"
+                name="username"
+                placeholder="Nom d'utilisateur"
+              />
+            </Form.Field>
+            <Form.Field width="12">
+              {errors.email && touched.email ? (
+                <div className="msg-error">
+                  <ErrorMessage name="email" />
+                </div>
+              ) : (
+                <label>Email</label>
+              )}
+
+              <Field type="email" name="email" placeholder="E-mail" />
+            </Form.Field>
+            <Form.Field width="12">
+              {errors.password && touched.password ? (
+                <div className="msg-error">
+                  <ErrorMessage name="password" />
+                </div>
+              ) : (
+                <label>Mot de passe</label>
+              )}
+
+              <Field
+                type="password"
+                name="password"
+                placeholder="Mot de passe"
+              />
+            </Form.Field>
+            <Form.Field width="12">
+              {errors.birthday && touched.birthday ? (
+                <div className="msg-error">
+                  <ErrorMessage name="birthday" />
+                </div>
+              ) : (
+                <label>Date de naissance</label>
+              )}
+
+              <Field
+                type="date"
+                name="birthday"
+                placeholder="Date de naissance"
+              />
+            </Form.Field>
+            <Form.Field width="12">
+              {errors.genre && touched.genre ? (
+                <div className="msg-error">
+                  <ErrorMessage name="genre" />
+                </div>
+              ) : (
+                <label>Genre</label>
+              )}
+              <Grid columns="equal">
+                <GridRow>
+                  <GridColumn>
+                    <Checkbox
+                      radio
+                      label="Homme"
+                      name="gender"
+                      checked={values.genre}
+                      onClick={() => setFieldValue("genre", true)}
+                    />
+                  </GridColumn>
+                  <GridColumn>
+                    <Checkbox
+                      radio
+                      label="Femme"
+                      name="gender"
+                      checked={!values.genre}
+                      onClick={() => setFieldValue("genre", false)}
+                    />
+                  </GridColumn>
+                </GridRow>
+              </Grid>
+            </Form.Field>
+            <Form.Field width="12">
+              {errors.terms && touched.terms && (
+                <div className="msg-error">
                   <ErrorMessage name="terms" />
                 </div>
-                <Form.Field>
-                  <Checkbox
-                    label="J'ai lu et j'accepte les conditions générales d'utilisation."
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    name="terms"
-                    checked={values.terms}
-                  />
-                </Form.Field>
+              )}
+              <Checkbox
+                type="checkbox"
+                label="J'ai lu et j'accepte les conditions générales d'utilisation."
+                name="terms"
+                checked={values.terms}
+                onClick={() => setFieldValue("terms", !values.terms)}
+              />
+            </Form.Field>
+            <br/>
+            <br/>
+            <Form.Field>
+              <Grid centered>
                 <Button
-                  type="submit"
-                  color="teal"
                   fluid
-                  size="large"
+                  type="submit"
+                  color="black"
                   {...(isSubmitting ? { loading: true } : {})}
                 >
-                  Rejoindre
+                  S'inscrire
                 </Button>
-              </Card.Content>
-            </Card>
-          </Form>
-        )}
-      </Formik>
-      <Message>
-        Déjà membre de Weigu ? <Link to="/login">Se connecter</Link>
-        <br />
-        <Link to="/">Mot de passe oublié ?</Link>
-      </Message>
-    </div>
+              </Grid>
+            </Form.Field>
+          </div>
+        </Form>
+      )}
+    </Formik>
   );
 };
 

@@ -105,12 +105,12 @@ const CoverImageInput: React.FunctionComponent<{ coverImage: string | null,handl
         />
         <br />
         {success && message && (
-          <Message positive>
+          <Message style={{textAlign: "center"}} positive>
             <Message.Header>{message}</Message.Header>
           </Message>
         )}
         {!success && error && (
-          <Message negative>
+          <Message style={{textAlign: "center"}} negative>
             <Message.Header>{error}</Message.Header>
           </Message>
         )}

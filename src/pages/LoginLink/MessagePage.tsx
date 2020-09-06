@@ -5,7 +5,7 @@ import { RouteComponentProps } from "react-router-dom";
 
 const LoginPagePage: React.FunctionComponent<RouteComponentProps>  = () => (
   <Layout>
-    <LoginMessageForm />
+    {/* <LoginMessageForm /> */}
   </Layout>
 );
 
