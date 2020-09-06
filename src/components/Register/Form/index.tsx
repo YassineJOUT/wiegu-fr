@@ -57,7 +57,7 @@ const RegisterForm: React.FunctionComponent = () => {
     password: "",
     username: "",
     terms: false,
-    birthday: "",
+    birthday:  "",
     genre: true,
   };
   return (
@@ -68,8 +68,6 @@ const RegisterForm: React.FunctionComponent = () => {
     >
       {({
         values,
-        handleBlur,
-        handleChange,
         handleSubmit,
         isSubmitting,
         errors,
@@ -78,12 +76,12 @@ const RegisterForm: React.FunctionComponent = () => {
       }) => (
         <Form onSubmit={handleSubmit}>
           {success && message && (
-            <Message positive>
+            <Message style={{textAlign: "center"}} positive>
               <Message.Header>{message}</Message.Header>
             </Message>
           )}
           {!success && error && (
-            <Message negative>
+            <Message style={{textAlign: "center"}} negative>
               <Message.Header>{error}</Message.Header>
             </Message>
           )}
@@ -145,9 +143,9 @@ const RegisterForm: React.FunctionComponent = () => {
               />
             </Form.Field>
             <Form.Field width="12">
-              {errors.birthday && touched.birthday ? (
+              {errors.genre && touched.genre ? (
                 <div className="msg-error">
-                  <ErrorMessage name="birthday" />
+                  <ErrorMessage name="genre" />
                 </div>
               ) : (
                 <label>Genre</label>
@@ -163,7 +161,6 @@ const RegisterForm: React.FunctionComponent = () => {
                       onClick={() => setFieldValue("genre", true)}
                     />
                   </GridColumn>
-                  {console.log(values)}
                   <GridColumn>
                     <Checkbox
                       radio

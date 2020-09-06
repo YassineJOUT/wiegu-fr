@@ -1,5 +1,13 @@
 import * as Yup from "yup";
+import { parse, isDate } from "date-fns";
 
+function parseDateString(value: any, originalValue: any) {
+  const parsedDate = isDate(originalValue)
+    ? originalValue
+    : parse(originalValue, "yyyy-MM-dd", new Date());
+
+  return parsedDate;
+}
 const validEmail = Yup.string()
   .email("Must be a valid email address")
   .max(255, "Too long for an email")
@@ -24,7 +32,7 @@ const validUsername = Yup.string()
   .max(50, "Username must have less than 50 caracters")
   .required("Username is required");
 
-// const validTerms = Yup.boolean().oneOf([true], 'Must Accept Terms of Service');
+const validTerms = Yup.boolean().oneOf([true], "Must Accept Terms of Service");
 
 export const loginValidationSchema = Yup.object().shape({
   email: validEmail,
@@ -45,10 +53,12 @@ export const resetPasswordSchema = Yup.object().shape({
     "Passwords must match"
   ),
 });
-
+const today = new Date();
+const validDate = Yup.date().transform(parseDateString).max(today,"La date de naissance doit être inférieure à celle d'aujourd'hui ").required("La date de naiassance est requis");
 export const registrationSchema = Yup.object().shape({
-  //t//erms: validTerms,
+  terms: validTerms,
   username: validUsername,
   email: validEmail,
   password: validPassword,
+  birthday: validDate,
 });

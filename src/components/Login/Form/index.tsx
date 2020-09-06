@@ -78,7 +78,7 @@ const LoginForm: React.SFC = () => {
       }) => (
         <Form onSubmit={handleSubmit}>
           {!success && error && (
-            <Message negative>
+            <Message style={{ textAlign: "center" }} negative>
               <Message.Header>{error}</Message.Header>
             </Message>
           )}
@@ -105,20 +105,20 @@ const LoginForm: React.SFC = () => {
 
             <Field type="password" name="password" placeholder="Mot de passe" />
           </Form.Field>
-          <br/>
-            <br/>
-            <Form.Field>
-              <Grid centered>
-                <Button
-                  fluid
-                  type="submit"
-                  color="black"
-                  {...(isSubmitting ? { loading: true } : {})}
-                >
-                  Connexion
-                </Button>
-              </Grid>
-            </Form.Field>
+          <br />
+          <br />
+          <Form.Field>
+            <Grid centered>
+              <Button
+                fluid
+                type="submit"
+                color="black"
+                {...(isSubmitting ? { loading: true } : {})}
+              >
+                Connexion
+              </Button>
+            </Grid>
+          </Form.Field>
         </Form>
       )}
     </Formik>

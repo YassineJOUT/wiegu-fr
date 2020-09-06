@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Button, Form, Image, Icon } from 'semantic-ui-react'
 import "react-datepicker/dist/react-datepicker.css";
 import ModalConnection from '../ModalConnection';
+import ModalMagicLink from '../ModalMagicLink';
 const AllConnectionForm: React.FunctionComponent = () => {
   return (
     <Form>
@@ -18,13 +19,8 @@ const AllConnectionForm: React.FunctionComponent = () => {
             <ModalConnection/>
         </Form.Field>
         <Form.Field>
-        <Button type='button' className="signUp" color="green">Se connecter avec un lien magic
-        <Image
-        src = {require("../../../assets/giphyz.gif")}
-        alt = "gif"
-        className = "magic"
-        />
-        </Button>
+        <ModalMagicLink/>
+        
         </Form.Field>
     </Form>
   );
