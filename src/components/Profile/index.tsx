@@ -6,7 +6,7 @@ import ProfileContent from "./ProfileContent";
 const Profile: React.FunctionComponent = () => {
 
   return (
-    <div style={{ height: "100vh" }}>
+    <div>
       <ProfileHeader />
       <Divider />
       <ProfileContent />

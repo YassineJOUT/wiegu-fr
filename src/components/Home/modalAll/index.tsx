@@ -49,12 +49,8 @@ const ModalFooter: React.FunctionComponent<{
   handleClick: Function;
 }> = ({ page, handleClick }) => {
   switch (page) {
-    case "login":
-      return <FooterInscription handleClick={handleClick} />;
     case "register":
       return <FooterLogin handleClick={handleClick} />;
-    case "magiclink":
-      return <FooterInscription handleClick={handleClick} />;
     default:
       return <FooterInscription handleClick={handleClick} />;
   }

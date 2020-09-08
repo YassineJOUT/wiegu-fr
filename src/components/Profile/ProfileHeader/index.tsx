@@ -7,6 +7,7 @@ import {
   Modal,
   Label,
   Loader,
+  GridRow,
 } from "semantic-ui-react";
 import ProfileEditForm from "../ProfileEdit/Form";
 import { API_URL } from "../../../utilities/config";
@@ -81,120 +82,116 @@ const ProfileHeader: React.FunctionComponent = () => {
   //   ? API_URL + "users/" + data.coverImage
   //   : "./images/cover.png";
   return (
-    <div className="profile-header-container">
+    <div className="">
       {loading ? (
         <Loader inverted />
       ) : (
         <div
           className="profile-header-cover"
-          style={{
-            backgroundImage: `url('${
-              uploaded
-                ? API_URL + "users/" + uploaded
-                : authUser.coverImage
-                ? API_URL + "users/" + authUser.coverImage
-                : "http://localhost:3010/users/default-cover.png"
-            }')`,
-          }}
+          // style={{
+          //   backgroundImage: `url('${
+          //     uploaded
+          //       ? API_URL + "users/" + uploaded
+          //       : authUser.coverImage
+          //       ? API_URL + "users/" + authUser.coverImage
+          //       : "http://localhost:3010/users/default-cover.png"
+          //   }')`,
+          // }}
         >
           <Grid columns={3} stackable>
-            <Grid.Column>
-              <Modal
-                closeIcon
-                size={"fullscreen"}
-                trigger={
-                  <Label as="a">
-                    <Icon name="photo" />
-                  </Label>
-                }
-              >
-                <Modal.Header>Selectioner une photo de couverture</Modal.Header>
+            <GridRow style={{marginBottom: '20px'}}>
+              <Grid.Column>
+                <Modal
+                  closeIcon
+                  size={"fullscreen"}
+                  // trigger={
+                  //   <Label as="a">
+                  //     <Icon name="photo" />
+                  //   </Label>
+                  // }
+                >
+                  <Modal.Header>
+                    Selectioner une photo de couverture
+                  </Modal.Header>
 
-                <CoverImageInput
-                  handleUpload={(t: string) => setUploaded(t)}
-                  coverImage={
-                    uploaded
-                      ? API_URL + "users/" + uploaded
-                      : authUser.coverImage
-                      ? API_URL + "users/" + authUser.coverImage
-                      : "http://localhost:3010/users/default-cover.png"
+                  <CoverImageInput
+                    handleUpload={(t: string) => setUploaded(t)}
+                    coverImage={
+                      uploaded
+                        ? API_URL + "users/" + uploaded
+                        : authUser.coverImage
+                        ? API_URL + "users/" + authUser.coverImage
+                        : "http://localhost:3010/users/default-cover.png"
+                    }
+                  />
+                </Modal>
+              </Grid.Column>
+              <Grid.Column>
+                <Modal
+                  size={"tiny"}
+                  trigger={
+                    <Image
+                      className="profile-photo"
+                      src={
+                        uploadedProfile
+                          ? API_URL + "users/" + uploadedProfile
+                          : authUser.profileImage
+                          ? API_URL + "users/" + authUser.profileImage
+                          : "http://localhost:3010/users/default-profile.png"
+                      }
+                      size="tiny"
+                      circular
+                      centered
+                    />
                   }
-                />
-              </Modal>
-            </Grid.Column>
+                >
+                  <Modal.Header>Selectioner une photo de profil</Modal.Header>
 
-            <Grid.Column>
-              <Modal
-                size={"tiny"}
-                trigger={
-                  <Image
-                    className="profile-photo"
-                    src={
-                      uploadedProfile
-                        ? API_URL + "users/" + uploadedProfile
-                        : authUser.profileImage
+                  <ImageInput
+                    handleUpload={(r: string) => setUploadedProfile(r)}
+                    profileImage={
+                      authUser.profileImage
                         ? API_URL + "users/" + authUser.profileImage
                         : "http://localhost:3010/users/default-profile.png"
                     }
-                    size="small"
-                    circular
-                    centered
                   />
-                }
-              >
-                <Modal.Header>Selectioner une photo de profil</Modal.Header>
-
-                <ImageInput
-                  handleUpload={(r: string) => setUploadedProfile(r)}
-                  profileImage={
-                    authUser.profileImage
-                      ? API_URL + "users/" + authUser.profileImage
-                      : "http://localhost:3010/users/default-profile.png"
-                  }
-                />
-              </Modal>
-              <Container>
-                <Grid>
-                  <Grid.Row centered>
-                    <div className="profile-btn-controls">
-                      <span className="profile-btn-controls-items">
-                        {"@" + authUser.username}
-                      </span>
-                      <br />
-                      <br />
-                      <span className="profile-btn-controls-items">
-                        {authUser.bio
-                          ? "Bio : " + authUser.bio
-                          : "Votre bio n'est pas encore défini"}
-                      </span>
-                      <br />
-                      <br />
-                      <span className="profile-btn-controls-items">
-                        <Icon name="map marker alternate" color="grey" />
-                        {authUser.address
-                          ? authUser.address
-                          : "Votre Adresse n'est pas encore défini"}
-                      </span>
-                    </div>
-                  </Grid.Row>
-                </Grid>
-              </Container>
-            </Grid.Column>
-
-            <Grid.Column>
+                </Modal>
+                <Container>
+                  <Grid>
+                    <Grid.Row centered>
+                      <div>
+                        <span className="profile-btn-controls-items">
+                          {authUser.username}
+                        </span>
+                        <br />
+                        <span className="profile-btn-controls-items" style={{color: 'grey'}}>
+                          <Icon name="map marker alternate" />
+                          {authUser.address
+                            ? authUser.address
+                            : "Votre Adresse n'est pas encore défini"}
+                        </span>
+                      </div>
+                    </Grid.Row>
+                  </Grid>
+                </Container>
+              </Grid.Column>
+              {/* <Grid.Column>
               <Container>
                 <Grid>
                   <Grid.Row centered>
                     <div className="profile-btn-controls-btns">
                       <Modal
-                        trigger={
-                          <span
-                            className="profile-btn-controls-items"
-                            style={{ cursor: "pointer" }}
-                          >
-                            Edit Profile
-                          </span>
-                        }
+                      //   trigger={
+                      //     // <Icon name="ellipsis horizontal" >
+                      //     // <span
+
+                      //     //   className="profile-btn-controls-items"
+                      //     //   style={{ cursor: "pointer" }}
+                      //     // >
+                      //     //   Edit Profile
+                      //     // </span>
+                      //   }
+                      //
                       >
                         <Modal.Header>Editer le profil</Modal.Header>
                         <Modal.Content>
@@ -222,7 +219,34 @@ const ProfileHeader: React.FunctionComponent = () => {
                   </Grid.Row>
                 </Grid>
               </Container>
-            </Grid.Column>
+            </Grid.Column> */}
+              <Grid.Column>
+                <Icon
+                  name="ellipsis horizontal"
+                  size="mini"
+                  style={{ float: "right", marginRight: "10px" }}
+                />
+                <br />
+                <br />
+                <span
+                  className="profile-btn-controls-items"
+                  style={{
+                    cursor: "pointer",
+                    float: "right",
+                    marginRight: "10px",
+                  }}
+                >
+                  <Icon name="share" color="grey" />
+                </span>
+              </Grid.Column>
+            </GridRow>
+            <GridRow centered>
+              <span className="profile-btn-controls-items" style={{color: 'grey'}}> 
+                {authUser.bio
+                  ? "Bio : " + authUser.bio
+                  : "Votre bio n'est pas encore défini"}
+              </span>
+            </GridRow>
           </Grid>
         </div>
       )}

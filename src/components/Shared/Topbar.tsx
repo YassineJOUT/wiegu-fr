@@ -102,11 +102,7 @@ const Topbar: React.FunctionComponent = (props) => {
                   size="tiny"
                 />
                 <GridColumn verticalAlign="middle" width={10}>
-                  <Input
-                    fluid
-                    icon={{ name: "search", circular: true, link: true }}
-                    placeholder="Search..."
-                  />
+                <Input icon='search' fluid placeholder='Search...' />
                 </GridColumn>
                 <GridColumn verticalAlign="middle">
                   <Icon
@@ -129,10 +125,7 @@ const Topbar: React.FunctionComponent = (props) => {
               <Image src={require("../../assets/weigu-logo.png")} size="tiny" />
             </Menu.Item>
             <Menu.Item>
-              <Input
-                icon={{ name: "search", circular: true, link: true }}
-                placeholder="Search..."
-              />
+            <Input icon='search' placeholder='Search...' />
             </Menu.Item>
             <Menu.Menu position="right">
               <Menu.Item

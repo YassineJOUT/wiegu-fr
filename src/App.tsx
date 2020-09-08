@@ -36,7 +36,7 @@ const App: React.FC = () => {
               <Redirect to={context.contextState.isLogged ? "/profile" : "/"} />
             )}
           />
-          <Route path="/profil" exact component={ProfilPage} />
+          {/* <Route path="/profil" exact component={ProfilPage} /> */}
           <Route path="/login" exact component={LoginPage} />
           <Route path="/login-link" exact component={LoginEmailPage} />
           <Route path="/mlink/:token" exact component={MagicLinkPage} />

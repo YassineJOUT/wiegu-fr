@@ -21,7 +21,7 @@ body{
 }
 
 .profile-header-cover{
-  height: 370px;
+  /* height: 370px; */
   background-size: cover;
   font-size: 4em;
   font-weight: normal;
@@ -34,12 +34,9 @@ body{
 }
 
 .profile-btn-controls-items{
-  padding: 13px;
-  box-shadow: 0 0 0 1px #2185d0 inset!important;
-  border-radius: 30px;
-  color: #000!important;
+  
   font-size: 0.3em;
-  background-color: aliceblue;
+
 }
 .btn{
   padding: 13px;
