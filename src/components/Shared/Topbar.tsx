@@ -48,21 +48,21 @@ const Topbar: React.FunctionComponent = (props) => {
         onHide={() => setVisible(false)}
         vertical
         visible={visible}
-        width="thin"
+        width="wide"
       >
-        <Menu.Item
-          link
-          as="a"
-          content="C'est quoi Weigu ?"
+          <Image src={require("../../assets/weigu-logo.png")} size="tiny" style={{marginTop: "20px"}}  centered/>
+        <br/>
+        <br/>
+        <br/>
+        <a
           className="redlocation"
-          onClick={() => setActiveItem(1)}
-        ></Menu.Item>
+        >C'est quoi Weigu ?</a>
         {!contextState.isLogged ? (
           <>
             <ModalAll
               page="allLogin"
               trigger={
-                <a href="#" className="link item con">
+                <a href="#" className="link item ">
                   Connecter
                 </a>
               }
@@ -70,7 +70,7 @@ const Topbar: React.FunctionComponent = (props) => {
             <ModalAll
               page="allRegister"
               trigger={
-                <a href="#" className="link item ins">
+                <a href="#" className="link item ">
                   Inscription
                 </a>
               }
@@ -128,7 +128,6 @@ const Topbar: React.FunctionComponent = (props) => {
               as="a"
               content="C'est quoi Weigu ?"
               className="redlocation"
-              onClick={() => setActiveItem(1)}
             ></Menu.Item>
             {!contextState.isLogged ? (
               <>

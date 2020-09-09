@@ -20,6 +20,7 @@
     "axios": "^0.19.2",
     "create-react-class": "^15.6.3",
     "formik": "^2.1.4",
+    "pure-react-carousel": "^1.27.3",
     "qs": "^6.9.4",
     "react": "^16.13.1",
     "react-animated-slider": "^1.1.4",

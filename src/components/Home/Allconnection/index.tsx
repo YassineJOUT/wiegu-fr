@@ -10,13 +10,13 @@ const AllForm: React.FunctionComponent<{
     <Form>
       <Responsive minWidth={Responsive.onlyTablet.minWidth}>
         <Form.Field>
-          <Button type="button" className="signUp" color="blue">
+          <Button type="button" className="signUp" style={{backgroundColor: '#3b5998'}}>
             <Icon name="facebook" size="large" />
             {type !== "register" ? "Se connecter " : "S'inscrire"} avec Facebook
           </Button>
         </Form.Field>
         <Form.Field>
-          <Button type="button" className="signUp" color="red">
+          <Button type="button" className="signUp" style={{backgroundColor: '#db4437'}} >
             <Icon name="google" size="large" />
             {type !== "register" ? "Se connecter " : "S'inscrire"} avec Google
           </Button>
@@ -28,21 +28,20 @@ const AllForm: React.FunctionComponent<{
           <Button
             type="button"
             className="signUp"
-            color="black"
+            style={{backgroundColor: '#444'}}
             onClick={() =>
               handleClick(type !== "register" ? "login" : "register")
             }
           >
-            {type !== "register" ? "Se connecter " : "S'inscrire"} avec un
-            e-mail
+            {type !== "register" ? "Se connecter " : "S'inscrire"} avec un e-mail
           </Button>
         </Form.Field>
         {type !== "register" && (
           <Form.Field>
             <Button
+            style={{backgroundColor: '#0c6c50'}}
               type="button"
               className="signUp"
-              color="green"
               onClick={() => handleClick("magiclink")}
             >
               Se connecter avec un lien magic
@@ -96,7 +95,7 @@ const AllForm: React.FunctionComponent<{
               <Image
                 src={require("../../../assets/giphyz.gif")}
                 alt="gif"
-                className="magic"
+                className="magicM"
               />
             </Button>
           </Form.Field>
