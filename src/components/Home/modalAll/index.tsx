@@ -63,7 +63,7 @@ const ModalContent: React.FunctionComponent<{
   console.log("CHOOSEN", page);
   switch (page) {
     case "login":
-      return <LoginForm  />;
+      return <LoginForm />;
     case "register":
       return <RegisterForm />;
     case "magiclink":
@@ -81,22 +81,20 @@ const ModalAll: React.FunctionComponent<modalProps> = (props) => {
   const handleClick = (pageName: string) => {
     setPage(pageName);
   };
-  console.log("page")
-  console.log(page)
+  console.log("page");
+  console.log(page);
   const close = () => {
     setPage(
-      page !== "login" && page !== "magiclink"
-        ? "allRegister"
-        : "allLogin"
+      page !== "login" && page !== "magiclink" ? "allRegister" : "allLogin"
     );
     setOpen(false);
-  }
+  };
   return (
     <Modal
       className="tiny"
       trigger={props.trigger}
       onClose={() => {
-        close()
+        close();
       }}
       open={open}
       onOpen={() => setOpen(true)}
@@ -111,7 +109,13 @@ const ModalAll: React.FunctionComponent<modalProps> = (props) => {
         {page !== "allRegister" && page !== "allLogin" && (
           <span
             style={{ float: "left", cursor: "pointer" }}
-            
+            onClick={() =>
+              setPage(
+                page !== "login" && page !== "magiclink"
+                  ? "allRegister"
+                  : "allLogin"
+              )
+            }
           >
             <Icon name="angle left" />
           </span>
