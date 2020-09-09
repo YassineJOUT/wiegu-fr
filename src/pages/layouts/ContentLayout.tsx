@@ -16,7 +16,7 @@ const ContentLayout: React.SFC<Props> = ({ children }) => {
         <div className="content-fluid">
           {!contextState.isLogged && <div className="contenu"></div>}
           <Topbar />
-          <div >{children}</div>
+          <div style={{paddingTop: "80px"}}>{children}</div>
         </div>
         <Segment
           vertical

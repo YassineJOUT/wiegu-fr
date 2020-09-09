@@ -40,7 +40,7 @@ const Topbar: React.FunctionComponent = (props) => {
   };
   // hide side bar
   return (
-    <>
+    <div style={{ position: "fixed", width: '100%', zIndex: 1 }}>
       <Sidebar
         as={Menu}
         animation="overlay"
@@ -153,7 +153,7 @@ const Topbar: React.FunctionComponent = (props) => {
           </Menu.Menu>
         </Menu>
       </Responsive>
-    </>
+    </div>
   );
 };
 
