@@ -40,12 +40,11 @@ const Topbar: React.FunctionComponent = (props) => {
   };
   // hide side bar
   return (
-    <div style={{ position: "fixed", width: '100%', zIndex: 1 }}>
+    <div style={{ position: "fixed", width: "100%", zIndex: 1 }}>
       <Sidebar
         as={Menu}
         animation="overlay"
         icon="labeled"
-        inverted
         onHide={() => setVisible(false)}
         vertical
         visible={visible}
@@ -83,7 +82,12 @@ const Topbar: React.FunctionComponent = (props) => {
           </a>
         )}
       </Sidebar>
-      <Responsive as={Segment} {...Responsive.onlyMobile} style={{ margin: 0 }}>
+      <Responsive
+        as={Segment}
+        {...Responsive.onlyMobile}
+        style={{ margin: 0, height: "70px", paddingTop: "8px" }}
+        size={"mini"}
+      >
         <Sidebar.Pusher>
           <Grid>
             <GridRow
