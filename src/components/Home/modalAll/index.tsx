@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Image, Modal } from "semantic-ui-react";
-import AllConnectionForm from "../Allconnection";
+import { Image, Modal, Icon } from "semantic-ui-react";
+import AllForm from "../Allconnection";
 import LoginForm from "../../Login/Form";
 import RegisterForm from "../../Register/Form";
 import LoginEmailForm from "../../Login/Link/Email";
 
 type modalProps = {
-  trigger: any;
+  trigger?: any;
   page: string;
 };
 
@@ -55,6 +55,7 @@ const ModalFooter: React.FunctionComponent<{
       return <FooterInscription handleClick={handleClick} />;
   }
 };
+
 const ModalContent: React.FunctionComponent<{
   page: string;
   handleClick: Function;
@@ -66,20 +67,49 @@ const ModalContent: React.FunctionComponent<{
       return <RegisterForm />;
     case "magiclink":
       return <LoginEmailForm />;
+    case "allRegister":
+      return <AllForm type="register" handleClick={handleClick} />;
     default:
-      return <AllConnectionForm handleClick={handleClick} />;
+      return <AllForm type="login" handleClick={handleClick} />;
   }
 };
 
 const ModalAll: React.FunctionComponent<modalProps> = (props) => {
   const [page, setPage] = useState(props.page);
+  const [open, setOpen] = React.useState(false);
   const handleClick = (pageName: string) => {
-    console.log(pageName);
     setPage(pageName);
   };
   return (
-    <Modal className="tiny" trigger={props.trigger} centered={false} onClose={() => setPage("")}>
+    <Modal
+      className="tiny"
+      trigger={props.trigger}
+      onClose={() => {
+        setPage(
+          props.page === "login" || props.page === "magiclink"
+            ? "allLogin"
+            : "allRegister"
+        );
+        setOpen(false);
+      }}
+      open={open}
+      onOpen={() => setOpen(true)}
+    >
       <Modal.Header>
+        <span
+          style={{ float: "right", cursor: "pointer" }}
+          onClick={() => setOpen(false)}
+        >
+          X
+        </span>
+        {page !== "allRegister" && page !== "allLogin" && (
+          <span
+            style={{ float: "left", cursor: "pointer" }}
+            onClick={() => setOpen(false)}
+          >
+            <Icon name="angle left" />
+          </span>
+        )}
         <Image src={require("../../../assets/weigu-logo.png")} size="tiny" />
         <div className="headerText">
           Lorem ipsum dolor sit amet, consectetur adipiscing.
