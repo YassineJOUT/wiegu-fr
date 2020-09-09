@@ -28,7 +28,7 @@ const AllForm: React.FunctionComponent<{
           type="button"
           className="signUp"
           color="black"
-          onClick={() => handleClick( type !== "register" ? "login " : "register")}
+          onClick={() => handleClick(type !== "register" ? "login" : "register")}
         >
            {type !== "register" ? "Se connecter " : "S'inscrire"} avec un e-mail
         </Button>
