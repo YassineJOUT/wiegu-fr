@@ -12,8 +12,10 @@ const SliderComponent: React.FunctionComponent = () => {
   return (
     <div >
       <Slider
+        
         autoplay = {2000}
         infinite = {true}
+
         nextButton = {<Icon name='arrow circle right'  />}
         previousButton = {<Icon name='arrow circle left'  />}
       >

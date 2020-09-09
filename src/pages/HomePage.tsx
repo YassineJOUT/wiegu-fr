@@ -6,7 +6,7 @@ const HomePage: React.FunctionComponent = () => {
   return (
     <>
       <ContentLayout>
-        <div style={{ marginTop: "10px" }}>
+        <div style={{ marginTop: "50px" }}>
           <Home />
         </div>
       </ContentLayout>

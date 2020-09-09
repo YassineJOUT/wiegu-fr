@@ -98,7 +98,7 @@ const Topbar: React.FunctionComponent = (props) => {
               <GridColumn verticalAlign="middle">
                 <Icon
                   size="big"
-                  name="align justify"
+                  name="bars"
                   onClick={() => setVisible(visible ? false : true)}
                 />
               </GridColumn>

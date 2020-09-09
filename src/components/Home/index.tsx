@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Button, Container, List } from "semantic-ui-react";
+import { Grid, Button, Container, List, Message } from "semantic-ui-react";
 import HomeCard from "../Shared/HomeCard";
 import SliderComponent from "./Slider";
 import ModalAll from "./modalAll";
@@ -18,7 +18,7 @@ const Home: React.FunctionComponent = () => {
         <Grid.Row centered>
           <Grid.Column width={5}>
             <SliderComponent />
-            <div className="buttons">
+            <div className="buttons" style={{marginTop: '-60px',marginBottom: "60px"}}>
               <ModalAll
                 page="allRegister"
                 trigger={
@@ -91,6 +91,9 @@ const Home: React.FunctionComponent = () => {
               </Grid.Column>
               <Grid.Column>
                 <HomeCard />
+              </Grid.Column>
+              <Grid.Column >
+                <a onClick={() => console.log("CLICKED")}><Message style={{textAlign: 'center',cursor: 'pointer'}}>Voir toutes les publications...</Message></a>
               </Grid.Column>
             </Grid>
           </Grid.Column>

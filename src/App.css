@@ -1,3 +1,16 @@
+
+.slider a.previousButton{
+  opacity: 50% !important;
+}
+.slider a.nextButton{
+  opacity: 50% !important;
+}
+.slider a.previousButton:hover{
+  opacity: 100% !important;
+}
+.slider a.nextButton:hover{
+  opacity: 100% !important;
+}
 .logo {
   font-family: "Dr Sugiyama";
   margin: auto;
