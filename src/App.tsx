@@ -15,6 +15,7 @@ import { Context, loadState } from "./utilities/useAuth";
 import LoginPage from "./pages/LoginPage";
 import MagicLinkPage from "./pages/MagicLinkPage";
 import HomePage from "./pages/HomePage";
+import SliderComponentX from "./components/Home/Slider/Slider";
 
 const loadedState = loadState();
 
@@ -75,6 +76,7 @@ const App: React.FC = () => {
             component={LoginTextPage}
           /> */}
           <Route path="/" exact component={HomePage} />
+          {/* <Route path="/" exact component={SliderComponentX} /> */}
 
           {/* <ProtectedRoute
             {...defaultProtectedRouteProps}

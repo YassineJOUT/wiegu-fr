@@ -1,15 +1,15 @@
 import React from "react";
-// import Slider from 'react-animated-slider'
+import Slider from 'react-animated-slider'
 import "react-animated-slider/build/horizontal.css";
 import { Icon } from "semantic-ui-react";
-import {
-  CarouselProvider,
-  Slider,
-  Slide,
-  ButtonBack,
-  ButtonNext,
-} from "pure-react-carousel";
-import "pure-react-carousel/dist/react-carousel.es.css";
+// import {
+//   CarouselProvider,
+//   Slider,
+//   Slide,
+//   ButtonBack,
+//   ButtonNext,
+// } from "pure-react-carousel";
+// import "pure-react-carousel/dist/react-carousel.es.css";
 const slides = [
   {
     title: "First item",
@@ -32,7 +32,7 @@ const slides = [
 const SliderComponent: React.FunctionComponent = () => {
   return (
     <div>
-      <CarouselProvider
+      {/* <CarouselProvider
         naturalSlideWidth={100}
         naturalSlideHeight={125}
         totalSlides={3}
@@ -47,9 +47,9 @@ const SliderComponent: React.FunctionComponent = () => {
             </Slide>
           ))}
         </Slider>
-      </CarouselProvider>
-      {/* <Slider
-        
+      </CarouselProvider> */}
+      <Slider
+       
         autoplay = {2000}
         infinite = {true}
 
@@ -59,7 +59,12 @@ const SliderComponent: React.FunctionComponent = () => {
         {slides.map((slide, index) => <div key={index}>
           <div className="textSlider">{slide.description}</div>
         </div>)}
-      </Slider> */}
+      </Slider>
+      {/* <ol className="carousel-indicators">
+      <li data-target="#carouselExampleCaptions" data-slide-to="0" className=""></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="1" className="active"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="2" className=""></li>
+    </ol> */}
     </div>
   );
 };

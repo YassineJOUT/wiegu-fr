@@ -18,7 +18,7 @@ const Home: React.FunctionComponent = () => {
         <Grid.Row centered>
           <Grid.Column width={5}>
             <SliderComponent />
-            <div className="buttons" style={{marginTop: '-60px',marginBottom: "60px"}}>
+            <div className="buttons" style={{marginTop: '-5px',marginBottom: "60px"}}>
               <ModalAll
                 page="allRegister"
                 trigger={
