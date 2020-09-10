@@ -292,6 +292,17 @@ p:last-child {
   color: #ff0000 !important;
 }
 
+@media screen and (max-width: 640px) {
+  .captions {
+    padding-top: 70%;
+  }
+}
+@media screen and (max-width: 440px) {
+  .captions {
+    padding-top: 80%;
+  }
+}
+
 .captions{
-  padding-top: 250px;
+  padding-top: 40%;
 }

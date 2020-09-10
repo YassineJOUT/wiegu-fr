@@ -43,6 +43,7 @@ const Topbar: React.FunctionComponent = (props) => {
   return (
     <div style={{ position: "fixed", width: "100%", zIndex: 1 }}>
       <Sidebar
+        onShow={() => setVisible(true)}
         as={Segment}
         vertical
         animation="overlay"
@@ -52,12 +53,20 @@ const Topbar: React.FunctionComponent = (props) => {
         width="wide"
         style={{ backgroundColor: "#fff" }}
       >
+         <span
+          style={{ float: "right", cursor: "pointer", marginRight: "20px" }}
+          onClick={() => setVisible(false)}
+        >
+          X
+        </span>
+
         <Image
+        
           src={require("../../assets/weigu-logo.png")}
           size="tiny"
-          style={{ marginTop: "20px" }}
           centered
         />
+       
         <br />
         <br />
         <br />
