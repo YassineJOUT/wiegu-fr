@@ -150,6 +150,7 @@ i.icon {
   text-align: center;
   line-height: 1.45em;
   margin-top: 2.5em;
+  position: absolute;
 }
 .previousButton,
 .nextButton {
@@ -291,3 +292,6 @@ p:last-child {
   color: #ff0000 !important;
 }
 
+.captions{
+  padding-top: 250px;
+}

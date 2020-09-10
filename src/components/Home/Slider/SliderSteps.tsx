@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { relative } from "path";
 
 const Captions: React.FunctionComponent<{
   step: number;
@@ -23,9 +24,7 @@ const Captions: React.FunctionComponent<{
   }
   console.log(items);
   return (
-    <div style={{ backgroundColor: "black" }}>
-      <ol className="carousel-indicators">{items}</ol>
-    </div>
+      <ol className="carousel-indicators" >{items}</ol>
   );
 };
 
