@@ -1,15 +1,8 @@
 import React from "react";
-import Slider from 'react-animated-slider'
-import "react-animated-slider/build/horizontal.css";
-import { Icon } from "semantic-ui-react";
-// import {
-//   CarouselProvider,
-//   Slider,
-//   Slide,
-//   ButtonBack,
-//   ButtonNext,
-// } from "pure-react-carousel";
-// import "pure-react-carousel/dist/react-carousel.es.css";
+import { Carousel } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 const slides = [
   {
     title: "First item",
@@ -20,7 +13,7 @@ const slides = [
     description: "incididunt ut labore et dolore magna aliqua",
   },
   {
-    title: "Third item",
+    title: "Third item ",
     description:
       "Praesent commodo cursus magna, vel scelerisque nisl consectetur.",
   },
@@ -32,39 +25,13 @@ const slides = [
 const SliderComponent: React.FunctionComponent = () => {
   return (
     <div>
-      {/* <CarouselProvider
-        naturalSlideWidth={100}
-        naturalSlideHeight={125}
-        totalSlides={3}
-        playDirection="forward"
-        infinite
-        interval={100}
-      >
-        <Slider>
-          {slides.map((slide, index) => (
-            <Slide index={index}>
-              <div className="textSlider">{slide.description}</div>
-            </Slide>
-          ))}
-        </Slider>
-      </CarouselProvider> */}
-      <Slider
-       
-        autoplay = {2000}
-        infinite = {true}
-
-        nextButton = {<Icon name='arrow circle right'  />}
-        previousButton = {<Icon name='arrow circle left'  />}
-      >
-        {slides.map((slide, index) => <div key={index}>
-          <div className="textSlider">{slide.description}</div>
-        </div>)}
-      </Slider>
-      {/* <ol className="carousel-indicators">
-      <li data-target="#carouselExampleCaptions" data-slide-to="0" className=""></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="1" className="active"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="2" className=""></li>
-    </ol> */}
+      <Carousel style={{ padding: "40px", height: "350px" }} controls={true}>
+        {slides.map((slide, index) => (
+          <Carousel.Item key={index}>
+            <div className="textSlider">{slide.description}</div>
+          </Carousel.Item>
+        ))}
+      </Carousel>
     </div>
   );
 };
