@@ -34,7 +34,6 @@ const SliderComponentX: React.FunctionComponent<Props> = ({ slideCount }) => {
   const count = 4; // slideCount;
   const handleCaptionClick = (index: string) => {
     // console.log(activeIndex)
-    console.log();
     setActiveIndex(parseInt(index));
     // setVisible(!visible);
   };
@@ -87,7 +86,6 @@ const SliderComponentX: React.FunctionComponent<Props> = ({ slideCount }) => {
           )}
         </Transition.Group>
 
-        {console.log(anim)}
 
         <Transition.Group
           duration={1000}

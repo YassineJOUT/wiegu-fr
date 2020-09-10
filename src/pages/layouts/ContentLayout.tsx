@@ -9,7 +9,6 @@ type Props = {
 
 const ContentLayout: React.SFC<Props> = ({ children }) => {
   const { contextState, setContext } = useContext(Context);
-  console.log(contextState);
   return (
     <div className="content-page">
       <div className="content">

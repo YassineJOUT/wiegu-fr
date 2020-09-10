@@ -85,7 +85,7 @@ const ModalAll: React.FunctionComponent<modalProps> = (props) => {
   console.log(page);
   const close = () => {
     setPage(
-      page !== "login" && page !== "magiclink" ? "allRegister" : "allLogin"
+      page !== "login" && page !== "magiclink" && page !== "allLogin"  ? "allRegister" : "allLogin"
     );
     setOpen(false);
   };

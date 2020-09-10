@@ -22,7 +22,6 @@ const Captions: React.FunctionComponent<{
       ></li>
     );
   }
-  console.log(items);
   return (
       <ol className="carousel-indicators" >{items}</ol>
   );
