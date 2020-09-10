@@ -1,236 +1,237 @@
-
-.slider a.previousButton{
+.slider a.previousButton {
   opacity: 50% !important;
 }
-.slider a.nextButton{
+.slider a.nextButton {
   opacity: 50% !important;
 }
-.slider a.previousButton:hover{
+.slider a.previousButton:hover {
   opacity: 100% !important;
 }
-.slider a.nextButton:hover{
+.slider a.nextButton:hover {
   opacity: 100% !important;
 }
 .logo {
   font-family: "Dr Sugiyama";
   margin: auto;
 }
-body{
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
 }
-.pointer{
+.pointer {
   cursor: pointer;
 }
 .profile-header {
- 
   display: "inline-block";
   background-size: "cover";
   font-weight: "normal";
 }
 
-.profile-header-container{
+.profile-header-container {
   width: 100% !important;
   margin-left: 0 !important;
 }
 
-.profile-header-cover{
+.profile-header-cover {
   /* height: 370px; */
   background-size: cover;
   font-size: 4em;
   font-weight: normal;
   padding-top: 20px;
 }
-.profile-btn-controls{
+.profile-btn-controls {
   margin: auto;
   margin: 20px;
-
 }
 
-.profile-btn-controls-items{
-  
+.profile-btn-controls-items {
   font-size: 0.3em;
-
 }
-.btn{
+.btn {
   padding: 13px;
 
   border-radius: 30px;
 }
 
-.msg-container{
+.msg-container {
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
   width: 60%;
 }
 
-.edit-profile-form{
+.edit-profile-form {
   padding-left: 40px;
   padding-right: 40px;
 }
 .profile-photo:hover {
-opacity: 0.6;
-cursor: pointer;
+  opacity: 0.6;
+  cursor: pointer;
 }
 /* Header*/
-.ui.secondary.pointing.menu{
-  border-bottom : none;
+.ui.secondary.pointing.menu {
+  border-bottom: none;
 }
-.ui.secondary.pointing.menu .item{
+.ui.secondary.pointing.menu .item {
   margin-top: auto;
   margin-bottom: auto;
-  font-family: 'robotoregular';
+  font-family: "robotoregular";
   text-decoration: none;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
   height: 40px;
 }
-.ui.secondary.pointing.menu .active.item{
+.ui.secondary.pointing.menu .active.item {
   border-bottom: none;
 }
-.redlocation{
-  color: #FF0000 !important;
+.redlocation {
+  color: #ff0000 !important;
 }
 /*Header*/
 
 /*home*/
-.contenu{
+.contenu {
   background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url(https://thumbs.gfycat.com/WarmAllBedlingtonterrier-size_restricted.gif);
-    background-attachment: fixed;
-    background-blend-mode: luminosity;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    position: fixed;
-    filter: blur(3px)
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(https://thumbs.gfycat.com/WarmAllBedlingtonterrier-size_restricted.gif);
+  background-attachment: fixed;
+  background-blend-mode: luminosity;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  position: fixed;
+  filter: blur(3px);
 }
-.ui.card{
+.ui.card {
   width: 100%;
   display: inline-flex;
   padding: 0px 5px;
 }
-.red.point.small.icon,i.icon{
+.red.point.small.icon,
+i.icon {
   width: unset;
 }
-.ui.card .meta{
+.ui.card .meta {
   margin-left: 3em;
   margin-top: -0.9em;
   font-size: 11px;
 }
-.comment.icon.small{
+.comment.icon.small {
   margin: 0px 10px;
 }
-.ellipsis.horizontal.large.icon{
-  float : right;
-  color : black;  
+.ellipsis.horizontal.large.icon {
+  float: right;
+  color: black;
 }
-.heart{
+.heart {
   color: #000;
 }
-.unlock{
+.unlock {
   color: blue;
 }
-.privacy{
+.privacy {
   float: right;
   margin-top: auto;
   margin-bottom: auto;
 }
-.mycards{
+.mycards {
   width: 50%;
   padding: 10px 10px;
   display: inline-block;
 }
-.textSlider{
+.textSlider {
   color: #fff;
-  font-family: 'robotoregular';
+  font-family: "robotoregular";
   font-size: 35px;
   font-weight: bold;
   text-align: center;
   line-height: 1.45em;
   margin-top: 2.5em;
 }
-.previousButton,.nextButton{
+.previousButton,
+.nextButton {
   top: 60% !important;
 }
-.arrow.circle.icon{
+.arrow.circle.icon {
   color: #fff;
 }
-a.nextButton{
-  right :5px !important;
+a.nextButton {
+  right: 5px !important;
 }
-a.previousButton{
+a.previousButton {
   left: 5px !important;
 }
-.signup,.signin{
+.signup,
+.signin {
   width: 85%;
   margin: 5px !important;
   border-radius: 2em !important;
 }
-.signUp{
+.signUp {
   width: 100%;
   margin: 5px !important;
   border-radius: 2em !important;
 }
-.buttons{
+.buttons {
   text-align: center;
 }
-.modal>.header>img{
+.modal > .header > img {
   margin-left: auto;
   margin-right: auto;
-
 }
-.headerText{
+.headerText {
   width: 100%;
   padding: 10px 20px;
   text-align: center;
 }
-.ui.form .field{
+.ui.form .field {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
 }
-.footerModal{
+.footerModal {
   background: #f9fafb;
   padding: 1rem 1rem;
-  border-top: 1px solid rgba(34,36,38,.15);
+  border-top: 1px solid rgba(34, 36, 38, 0.15);
   margin: 0px !important;
   width: 100% !important;
   text-align: center;
 }
-.headfooter{
+.headfooter {
   font-weight: 700;
   font-size: 1.42857143rem;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
 }
-.secheadfooter{
+.secheadfooter {
   padding: 0 30px;
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 p:last-child {
   margin-bottom: 30px;
 }
-.magic{
-    width: 50px;
-    height: 50px;
-    position: absolute !important;
-    right: 127px;
-    bottom: -2px;
+.magic {
+  width: 50px;
+  height: 50px;
+  position: absolute !important;
+  right: 127px;
+  bottom: -2px;
 }
-.magicM{
-    width: 50px;
-    height: 50px;
-    position: absolute !important;
-    right: 50px;
-    bottom: -2px;
+.magicM {
+  width: 50px;
+  height: 50px;
+  position: absolute !important;
+  right: 50px;
+  bottom: -2px;
 }
-.dataField{
+.dataField {
   text-align: center;
 }
-.spe{
+.spe {
   color: #000;
   text-decoration: underline;
 }
@@ -250,8 +251,8 @@ p:last-child {
   background-clip: padding-box;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  opacity: .5;
-  transition: opacity .6s ease;
+  opacity: 0.5;
+  transition: opacity 0.6s ease;
 }
 .carousel-indicators .active {
   opacity: 1;
@@ -271,6 +272,22 @@ p:last-child {
   margin-left: 15%;
   list-style: none;
 }
-.hide{
+.hide {
   display: none;
 }
+.sidebarMenu {
+  margin-left: 25px;
+}
+.sidebarMenuItem {
+  margin-top: 15px;
+  color: #1a1a1a;
+}
+.sidebarMenuItem a {
+  text-decoration: none;
+  color: grey !important;
+  font-family: "robotoregular";
+}
+.sidebarMenuItem .redlocation{
+  color: #ff0000 !important;
+}
+

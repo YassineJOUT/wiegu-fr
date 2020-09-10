@@ -12,6 +12,7 @@ import {
   Grid,
   GridRow,
   GridColumn,
+  Divider,
 } from "semantic-ui-react";
 import { Context, saveState } from "../../utilities/useAuth";
 import { history } from "../../utilities/history";
@@ -42,45 +43,85 @@ const Topbar: React.FunctionComponent = (props) => {
   return (
     <div style={{ position: "fixed", width: "100%", zIndex: 1 }}>
       <Sidebar
-        as={Menu}
+        as={Segment}
+        vertical
         animation="overlay"
         icon="labeled"
         onHide={() => setVisible(false)}
-        vertical
         visible={visible}
         width="wide"
+        style={{ backgroundColor: "#fff" }}
       >
-          <Image src={require("../../assets/weigu-logo.png")} size="tiny" style={{marginTop: "20px"}}  centered/>
-        <br/>
-        <br/>
-        <br/>
-        <a
-          className="redlocation"
-        >C'est quoi Weigu ?</a>
-        {!contextState.isLogged ? (
-          <>
-            <ModalAll
-              page="allLogin"
-              trigger={
-                <a href="#" className="link item ">
-                  Connecter
+        <Image
+          src={require("../../assets/weigu-logo.png")}
+          size="tiny"
+          style={{ marginTop: "20px" }}
+          centered
+        />
+        <br />
+        <br />
+        <br />
+        <div className="sidebarMenu">
+          <div className="sidebarMenuItem">
+            <a> <Icon name="plus square outline" /> Deposer une publication</a>
+          </div>
+          <div className="sidebarMenuItem">
+            <a> <Icon name="search" />Rechercher</a>
+          </div>
+        </div>
+        <Divider />
+        <div className="sidebarMenu">
+          <div className="sidebarMenuItem">
+            <a>Link </a>
+          </div>
+          <div className="sidebarMenuItem">
+            <a>Annother link</a>
+          </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <Divider />
+        <div className="sidebarMenu">
+          <div className="sidebarMenuItem">
+            <a className="redlocation">C'est quoi Weigu ?</a>
+          </div>
+          {!contextState.isLogged ? (
+            <>
+              <div className="sidebarMenuItem">
+                <ModalAll
+                  page="allLogin"
+                  trigger={
+                    <a href="#" className="link item ">
+                      Connecter
+                    </a>
+                  }
+                />
+              </div>
+              <div className="sidebarMenuItem">
+                <ModalAll
+                  page="allRegister"
+                  trigger={
+                    <a href="#" className="link item ">
+                      Inscription
+                    </a>
+                  }
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="sidebarMenuItem">
+                <a onClick={() => disconnect()} className="link item ins">
+                  Deconnexion
                 </a>
-              }
-            />
-            <ModalAll
-              page="allRegister"
-              trigger={
-                <a href="#" className="link item ">
-                  Inscription
-                </a>
-              }
-            />
-          </>
-        ) : (
-          <a onClick={() => disconnect()} className="link item ins">
-            Deconnexion
-          </a>
-        )}
+              </div>
+            </>
+          )}
+        </div>
       </Sidebar>
       <Responsive
         as={Segment}
