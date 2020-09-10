@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.5f6547ed.chunk.css",
-    "main.js": "/static/js/main.61bea4fe.chunk.js",
-    "main.js.map": "/static/js/main.61bea4fe.chunk.js.map",
+    "main.css": "/static/css/main.e8efab2d.chunk.css",
+    "main.js": "/static/js/main.1c9aa919.chunk.js",
+    "main.js.map": "/static/js/main.1c9aa919.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.09b85ec0.js",
     "runtime-main.js.map": "/static/js/runtime-main.09b85ec0.js.map",
     "static/css/2.8d4cdce2.chunk.css": "/static/css/2.8d4cdce2.chunk.css",
     "static/js/2.a0001cc6.chunk.js": "/static/js/2.a0001cc6.chunk.js",
     "static/js/2.a0001cc6.chunk.js.map": "/static/js/2.a0001cc6.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.2e31e0c930c4049497318c3e455fb158.js": "/precache-manifest.2e31e0c930c4049497318c3e455fb158.js",
+    "precache-manifest.26d161c4ace4e6b611d7c10765853073.js": "/precache-manifest.26d161c4ace4e6b611d7c10765853073.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.8d4cdce2.chunk.css.map": "/static/css/2.8d4cdce2.chunk.css.map",
-    "static/css/main.5f6547ed.chunk.css.map": "/static/css/main.5f6547ed.chunk.css.map",
+    "static/css/main.e8efab2d.chunk.css.map": "/static/css/main.e8efab2d.chunk.css.map",
     "static/js/2.a0001cc6.chunk.js.LICENSE.txt": "/static/js/2.a0001cc6.chunk.js.LICENSE.txt",
     "static/media/giphyz.gif": "/static/media/giphyz.74356439.gif",
     "static/media/weigu-logo.png": "/static/media/weigu-logo.246b4f4a.png"
@@ -21,7 +21,7 @@
     "static/js/runtime-main.09b85ec0.js",
     "static/css/2.8d4cdce2.chunk.css",
     "static/js/2.a0001cc6.chunk.js",
-    "static/css/main.5f6547ed.chunk.css",
-    "static/js/main.61bea4fe.chunk.js"
+    "static/css/main.e8efab2d.chunk.css",
+    "static/js/main.1c9aa919.chunk.js"
   ]
 }
