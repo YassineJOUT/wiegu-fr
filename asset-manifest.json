@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.d4cafb83.chunk.css",
-    "main.js": "/static/js/main.89ff4278.chunk.js",
-    "main.js.map": "/static/js/main.89ff4278.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.98a2b520.js",
-    "runtime-main.js.map": "/static/js/runtime-main.98a2b520.js.map",
-    "static/css/2.7159430d.chunk.css": "/static/css/2.7159430d.chunk.css",
-    "static/js/2.f31bba71.chunk.js": "/static/js/2.f31bba71.chunk.js",
-    "static/js/2.f31bba71.chunk.js.map": "/static/js/2.f31bba71.chunk.js.map",
+    "main.css": "/static/css/main.44ba90eb.chunk.css",
+    "main.js": "/static/js/main.435502d7.chunk.js",
+    "main.js.map": "/static/js/main.435502d7.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.09b85ec0.js",
+    "runtime-main.js.map": "/static/js/runtime-main.09b85ec0.js.map",
+    "static/css/2.f4581b40.chunk.css": "/static/css/2.f4581b40.chunk.css",
+    "static/js/2.d5a071bf.chunk.js": "/static/js/2.d5a071bf.chunk.js",
+    "static/js/2.d5a071bf.chunk.js.map": "/static/js/2.d5a071bf.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.70da7ca1b5c417dd5f8bfb7496236baa.js": "/precache-manifest.70da7ca1b5c417dd5f8bfb7496236baa.js",
+    "precache-manifest.032a582e888969f60abe1e1d86cbd9ad.js": "/precache-manifest.032a582e888969f60abe1e1d86cbd9ad.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/2.7159430d.chunk.css.map": "/static/css/2.7159430d.chunk.css.map",
-    "static/css/main.d4cafb83.chunk.css.map": "/static/css/main.d4cafb83.chunk.css.map",
-    "static/js/2.f31bba71.chunk.js.LICENSE.txt": "/static/js/2.f31bba71.chunk.js.LICENSE.txt",
+    "static/css/2.f4581b40.chunk.css.map": "/static/css/2.f4581b40.chunk.css.map",
+    "static/css/main.44ba90eb.chunk.css.map": "/static/css/main.44ba90eb.chunk.css.map",
+    "static/js/2.d5a071bf.chunk.js.LICENSE.txt": "/static/js/2.d5a071bf.chunk.js.LICENSE.txt",
     "static/media/giphyz.gif": "/static/media/giphyz.74356439.gif",
     "static/media/weigu-logo.png": "/static/media/weigu-logo.246b4f4a.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.98a2b520.js",
-    "static/css/2.7159430d.chunk.css",
-    "static/js/2.f31bba71.chunk.js",
-    "static/css/main.d4cafb83.chunk.css",
-    "static/js/main.89ff4278.chunk.js"
+    "static/js/runtime-main.09b85ec0.js",
+    "static/css/2.f4581b40.chunk.css",
+    "static/js/2.d5a071bf.chunk.js",
+    "static/css/main.44ba90eb.chunk.css",
+    "static/js/main.435502d7.chunk.js"
   ]
 }
