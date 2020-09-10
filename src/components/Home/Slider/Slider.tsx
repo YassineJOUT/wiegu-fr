@@ -46,69 +46,39 @@ const SliderComponentX: React.FunctionComponent<Props> = ({ slideCount }) => {
   }, [activeIndex]);
   const size = slides.length;
   return (
-    <div>
-      <div>
-        <Transition.Group
-          duration={1000}
-          animation={
-            "slide right"
-          }
-        >
+    <>
+      <div className="slidesContainer">
+        <Transition.Group duration={1000} animation={"slide right"}>
           {"0" === activeIndex + "" && (
-            <div className="textSlider" >
-              {slides[0].description}
-            </div>
+            <div className="textSlider">{slides[0].description}</div>
           )}
         </Transition.Group>
-        <Transition.Group
-          duration={1000}
-          animation={
-            "slide right"
-          }
-        >
+        <Transition.Group duration={1000} animation={"slide right"}>
           {"1" === activeIndex + "" && (
-            <div className="textSlider" >
-              {slides[1].description}
-            </div>
+            <div className="textSlider">{slides[1].description}</div>
           )}
         </Transition.Group>
 
-        <Transition.Group
-          duration={1000}
-          animation={
-           "slide right"
-          }
-        >
+        <Transition.Group duration={1000} animation={"slide right"}>
           {"2" === activeIndex + "" && (
-            <div className="textSlider">
-              {slides[2].description}
-            </div>
+            <div className="textSlider">{slides[2].description}</div>
           )}
         </Transition.Group>
 
-
-        <Transition.Group
-          duration={1000}
-          animation={
-           "slide right"
-          }
-        >
+        <Transition.Group duration={1000} animation={"slide right"}>
           {"3" === activeIndex + "" && (
-            <div className="textSlider" >
-              {slides[3].description}
-            </div>
+            <div className="textSlider">{slides[3].description}</div>
           )}
         </Transition.Group>
       </div>
       <div className="captions">
-           <Captions
-        size={size}
-        step={activeIndex}
-        handleCaptionClick={handleCaptionClick}
-      />
+        <Captions
+          size={size}
+          step={activeIndex}
+          handleCaptionClick={handleCaptionClick}
+        />
       </div>
-     
-    </div>
+    </>
   );
 };
 
