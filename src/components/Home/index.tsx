@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Grid, Button, Container, List, Message } from "semantic-ui-react";
+import { Grid, Button, Message } from "semantic-ui-react";
 import HomeCard from "../Shared/HomeCard";
-import SliderComponent from "./Slider";
 import ModalAll from "./modalAll";
-import ModalInscription from "./ModalInscription";
+import SliderComponentX from "./Slider/Slider";
 
 const Home: React.FunctionComponent = () => {
   const [page, setPage] = useState("");
@@ -12,7 +11,7 @@ const Home: React.FunctionComponent = () => {
       <Grid stackable columns="equal">
         <Grid.Row centered>
           <Grid.Column width={5}>
-            <SliderComponent />
+          <SliderComponentX slideCount={4}/>
             <br></br>
             <div className="buttons" style={{ marginBottom: "60px" }}>
               <ModalAll

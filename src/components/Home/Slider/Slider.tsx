@@ -29,8 +29,6 @@ interface Props {
 }
 const SliderComponentX: React.FunctionComponent<Props> = ({ slideCount }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [anim, setAnim] = useState(1);
-  const [rightanim, rightLeftAnim] = useState(0);
   const count = 4; // slideCount;
   const handleCaptionClick = (index: string) => {
     // console.log(activeIndex)
