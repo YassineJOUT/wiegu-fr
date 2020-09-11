@@ -146,6 +146,7 @@ i.icon {
   color: #fff;
   font-family: "robotoregular";
   font-size: 35px;
+  /* font-size:2vw; */
   font-weight: bold;
   text-align: center;
   line-height: 1.45em;
@@ -291,6 +292,15 @@ p:last-child {
 .sidebarMenuItem .redlocation{
   color: #ff0000 !important;
 }
+
+@media screen and (max-width: 400px){
+  .slidesContainer{
+    height: 600px
+  } 
+  .textSlider{
+    font-size: 8vw;
+  }
+}
 .slidesContainer{
-  height: 300px
+  height: 200px
 } 
