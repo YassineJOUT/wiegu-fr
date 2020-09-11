@@ -39,6 +39,7 @@ const Topbar: React.FunctionComponent = (props) => {
     saveState(v);
     history.push("/");
   };
+  const [page, setPage] = useState("");
   // hide side bar
   return (
     <div style={{ position: "fixed", width: "100%", zIndex: 1 }}>
@@ -102,9 +103,10 @@ const Topbar: React.FunctionComponent = (props) => {
             <>
               <div className="sidebarMenuItem">
                 <ModalAll
-                  page="allLogin"
+                  page={page}
+                  setPage={setPage}
                   trigger={
-                    <a href="#" className="link item ">
+                    <a href="#" className="link item " onClick={() => setPage("allLogin")}>
                       Connecter
                     </a>
                   }
@@ -112,9 +114,11 @@ const Topbar: React.FunctionComponent = (props) => {
               </div>
               <div className="sidebarMenuItem">
                 <ModalAll
-                  page="allRegister"
+                  
+                  page={page}
+                  setPage={setPage}
                   trigger={
-                    <a href="#" className="link item ">
+                    <a href="#" className="link item" onClick={() => setPage("allRegister")}>
                       Inscription
                     </a>
                   }
@@ -183,16 +187,19 @@ const Topbar: React.FunctionComponent = (props) => {
               <>
                 <ModalAll
                   page="allLogin"
+                  setPage={setPage}
+
                   trigger={
-                    <a href="#" className="link item con">
+                    <a href="#" className="link item con" onClick={()=> setPage("allLogin")}>
                       Connecter
                     </a>
                   }
                 />
                 <ModalAll
-                  page="allRegister"
+                  page={page}
+                  setPage={setPage}
                   trigger={
-                    <a href="#" className="link item ins">
+                    <a href="#" className="link item ins" onClick={()=> setPage("allRegister")}>
                       Inscription
                     </a>
                   }

@@ -6,12 +6,7 @@ import ModalAll from "./modalAll";
 import ModalInscription from "./ModalInscription";
 
 const Home: React.FunctionComponent = () => {
-  const [openRegister, setOpenRegister] = useState(false);
-  const [openLogin, setOpenLogin] = useState(false);
-  const handleClose = (bool: boolean) => {
-    setOpenRegister(!bool);
-    setOpenLogin(!bool);
-  };
+  const [page, setPage] = useState("");
   return (
     <div className="containerback">
       <Grid stackable columns="equal">
@@ -21,20 +16,24 @@ const Home: React.FunctionComponent = () => {
             <br></br>
             <div className="buttons" style={{ marginBottom: "60px" }}>
               <ModalAll
-                page="allRegister"
+                page={page}
+                setPage={setPage}
                 trigger={
-                  <Button size="large" color="red" className="signup">
+                  <Button size="large" color="red" className="signup" onClick={()=> setPage('allRegister') }>
                     Commencer
                   </Button>
                 }
               />
               <ModalAll
-                page="allLogin"
+                page={page}
+                setPage={setPage}
                 trigger={
                   <Button
+
                     size="large"
                     style={{ backgroundColor: "white", color: "black" }}
                     className="signin"
+                    onClick={()=> setPage('allLogin') }
                   >
                     Se connecter
                   </Button>

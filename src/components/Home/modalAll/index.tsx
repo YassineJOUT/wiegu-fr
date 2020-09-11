@@ -8,6 +8,7 @@ import LoginEmailForm from "../../Login/Link/Email";
 type modalProps = {
   trigger?: any;
   page: string;
+  setPage: Function
 };
 
 const FooterInscription: React.FunctionComponent<{ handleClick: Function }> = ({
@@ -21,7 +22,7 @@ const FooterInscription: React.FunctionComponent<{ handleClick: Function }> = ({
     </p>
     <p className="secheadfooter">
       Pas encore inscrit ?{" "}
-      <a className="pointer" onClick={() => handleClick("register")}>
+      <a className="pointer" onClick={() => handleClick("allRegister")}>
         Je m'inscris
       </a>
     </p>
@@ -33,7 +34,7 @@ const FooterLogin: React.FunctionComponent<{ handleClick: Function }> = ({
   <div className="footerModal">
     <p className="headfooter">
       Déja inscrit?{" "}
-      <a className="pointer" onClick={() => handleClick("login")}>
+      <a className="pointer" onClick={() => handleClick("allLogin")}>
         Je me connecte
       </a>
     </p>
@@ -49,9 +50,11 @@ const ModalFooter: React.FunctionComponent<{
   handleClick: Function;
 }> = ({ page, handleClick }) => {
   switch (page) {
-    case "register":
+    case "register" :
       return <FooterLogin handleClick={handleClick} />;
-    default:
+    case "allRegister" :
+      return <FooterLogin handleClick={handleClick} />;
+    default :
       return <FooterInscription handleClick={handleClick} />;
   }
 };
@@ -76,16 +79,19 @@ const ModalContent: React.FunctionComponent<{
 };
 
 const ModalAll: React.FunctionComponent<modalProps> = (props) => {
-  const [page, setPage] = useState(props.page);
+  console.log("props.page");
+  console.log(props.page);
+  
   const [open, setOpen] = React.useState(false);
   const handleClick = (pageName: string) => {
-    setPage(pageName);
+    props.setPage(pageName);
   };
   console.log("page");
-  console.log(page);
+  console.log(props.page);
   const close = () => {
-    setPage(
-      page !== "login" && page !== "magiclink" && page !== "allLogin"  ? "allRegister" : "allLogin"
+    props.setPage(
+      ""
+     //// page !== "login" && page !== "magiclink" && page !== "allLogin"  ? "allRegister" : "allLogin"
     );
     setOpen(false);
   };
@@ -106,12 +112,12 @@ const ModalAll: React.FunctionComponent<modalProps> = (props) => {
         >
           X
         </span>
-        {page !== "allRegister" && page !== "allLogin" && (
+        {props.page !== "allRegister" && props.page !== "allLogin" && (
           <span
             style={{ float: "left", cursor: "pointer" }}
             onClick={() =>
-              setPage(
-                page !== "login" && page !== "magiclink"
+              props.setPage(
+                props.page !== "login" && props.page !== "magiclink"
                   ? "allRegister"
                   : "allLogin"
               )
@@ -127,10 +133,10 @@ const ModalAll: React.FunctionComponent<modalProps> = (props) => {
       </Modal.Header>
       <Modal.Content>
         <Modal.Description>
-          <ModalContent page={page} handleClick={handleClick} />
+          <ModalContent page={props.page} handleClick={handleClick} />
         </Modal.Description>
       </Modal.Content>
-      <ModalFooter page={page} handleClick={handleClick} />
+      <ModalFooter page={props.page} handleClick={handleClick} />
     </Modal>
   );
 };
