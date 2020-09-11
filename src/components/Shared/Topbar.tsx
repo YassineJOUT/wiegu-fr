@@ -54,7 +54,7 @@ const Topbar: React.FunctionComponent = (props) => {
         style={{ backgroundColor: "#fff" }}
       >
          <span
-          style={{ float: "right", cursor: "pointer", marginRight: "20px" }}
+          style={{ float: "right", cursor: "pointer", marginRight: "20px", fontSize: '18px', fontWeight: 'bolder' }}
           onClick={() => setVisible(false)}
         >
           X
