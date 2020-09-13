@@ -11,6 +11,7 @@ import {
   GridRow,
   GridColumn,
   Divider,
+  Feed,
 } from "semantic-ui-react";
 import { Context, saveState } from "../../utilities/useAuth";
 import { history } from "../../utilities/history";
@@ -75,39 +76,24 @@ const Topbar: React.FunctionComponent = () => {
         <div className="sidebarMenu">
           <div className="sidebarMenuItem">
             <a>
-              {" "}
               <Icon name="plus square outline" /> Deposer une publication
             </a>
           </div>
           <div className="sidebarMenuItem">
             <a>
-              {" "}
               <Icon name="search" />
               Rechercher
             </a>
           </div>
         </div>
         <Divider />
-        <div className="sidebarMenu">
-          <div className="sidebarMenuItem">
-            <a>Link </a>
-          </div>
-          <div className="sidebarMenuItem">
-            <a>Annother link</a>
-          </div>
-        </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <Divider />
-        <div className="sidebarMenu">
-          <div className="sidebarMenuItem">
-            <a className="redlocation">C'est quoi Weigu ?</a>
-          </div>
-          {!contextState.isLogged ? (
-            <>
+
+        {!contextState.isLogged ? (
+          <>
+            <div className="sidebarMenu">
+              <div className="sidebarMenuItem">
+                <a className="redlocation">C'est quoi Weigu ?</a>
+              </div>
               <div className="sidebarMenuItem">
                 <ModalAll
                   page={page}
@@ -138,17 +124,33 @@ const Topbar: React.FunctionComponent = () => {
                   }
                 />
               </div>
-            </>
-          ) : (
-            <>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="sidebarMenu">
+              <div className="sidebarMenuItem">
+                <a>
+                  <Icon name="user circle" />
+                  Profil
+                </a>
+              </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <Divider />
+            <div className="sidebarMenu">
               <div className="sidebarMenuItem">
                 <a onClick={() => disconnect()} className="link item ins">
                   Deconnexion
                 </a>
               </div>
-            </>
-          )}
-        </div>
+            </div>
+          </>
+        )}
       </Sidebar>
       <Responsive
         as={Segment}
@@ -191,14 +193,14 @@ const Topbar: React.FunctionComponent = () => {
             <Input icon="search" placeholder="Search..." />
           </Menu.Item>
           <Menu.Menu position="right">
-            <Menu.Item
-              link
-              as="a"
-              content="C'est quoi Weigu ?"
-              className="redlocation"
-            ></Menu.Item>
             {!contextState.isLogged ? (
               <>
+                <Menu.Item
+                  link
+                  as="a"
+                  content="C'est quoi Weigu ?"
+                  className="redlocation"
+                ></Menu.Item>
                 <ModalAll
                   page={page}
                   setPage={setPage}
@@ -227,9 +229,28 @@ const Topbar: React.FunctionComponent = () => {
                 />
               </>
             ) : (
-              <a onClick={() => disconnect()} className="link item ins">
-                Deconnexion
-              </a>
+              <>
+                <div style={{ marginRight: "40px", marginTop: "10px" }}>
+                  <Icon name="newspaper" style={{ fontSize: "40px" }} />
+                </div>
+                <div style={{ marginRight: "40px" }}>
+                  <span style={{ marginRight: "10px" }}>Username</span>
+                  <Image
+                    verticalAlign="middle"
+                    src="https://react.semantic-ui.com/images/avatar/small/elliot.jpg"
+                    size="mini"
+                    circular
+                  />
+                </div>
+                {/* <a onClick={() => disconnect()} className="link item ins">
+                  Deconnexion
+                </a> */}
+                <div style={{ marginTop: "10px" }}>
+                  <a className="link item ins">
+                    <Icon name="wechat" style={{ fontSize: "40px" }} />
+                  </a>
+                </div>
+              </>
             )}
           </Menu.Menu>
         </Menu>

@@ -100,7 +100,7 @@ const ProfileHeader: React.FunctionComponent = () => {
           //   }')`,
           // }}
         >
-          <Grid columns={3} stackable>
+          <Grid columns={3} >
             <GridRow style={{marginBottom: '20px'}}>
               <Grid.Column>
                 <Modal
