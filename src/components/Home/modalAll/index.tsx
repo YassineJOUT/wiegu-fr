@@ -12,15 +12,16 @@ type modalProps = {
   setPage: Function;
 };
 
-const FooterInscription: React.FunctionComponent<{ handleClick: Function }> = ({
+const FooterInscription: React.FunctionComponent<{ handleClick: Function, type?: string }> = ({
   handleClick,
+  type
 }) => (
   <div className="footerModal">
-    <p className="headfooter">
+    {type !== "pwd" && <p className="headfooter">
       <a className="pointer spe" onClick={() => handleClick("pwdForgotten")}>
         Mot de passe oublié ?
       </a>
-    </p>
+    </p>}
     <p className="secheadfooter">
       Pas encore inscrit ?
       <a className="pointer" onClick={() => handleClick("allRegister")}>
@@ -34,7 +35,7 @@ const FooterLogin: React.FunctionComponent<{ handleClick: Function }> = ({
 }) => (
   <div className="footerModal">
     <p className="headfooter">
-      Déja inscrit?{" "}
+      Déja inscrit?
       <a className="pointer" onClick={() => handleClick("allLogin")}>
         Je me connecte
       </a>
@@ -56,9 +57,9 @@ const ModalFooter: React.FunctionComponent<{
     case "allRegister":
       return <FooterLogin handleClick={handleClick} />;
     case "pwdForgotten":
-      return <FooterLogin handleClick={handleClick} />;
+      return <FooterInscription handleClick={handleClick} type="pwd" />;
     default:
-      return <FooterInscription handleClick={handleClick} />;
+      return <FooterInscription handleClick={handleClick}  />;
   }
 };
 
@@ -84,17 +85,14 @@ const ModalContent: React.FunctionComponent<{
 };
 
 const ModalAll: React.FunctionComponent<modalProps> = (props) => {
-  console.log(props.page)
+  console.log(props.page);
   const [open, setOpen] = React.useState(false);
   const handleClick = (pageName: string) => {
     props.setPage(pageName);
   };
 
   const close = () => {
-    props.setPage(
-      ""
-      //// page !== "login" && page !== "magiclink" && page !== "allLogin"  ? "allRegister" : "allLogin"
-    );
+    props.setPage("");
     setOpen(false);
   };
   return (
@@ -119,7 +117,9 @@ const ModalAll: React.FunctionComponent<modalProps> = (props) => {
             style={{ float: "left", cursor: "pointer" }}
             onClick={() =>
               props.setPage(
-                props.page !== "login" && props.page !== "magiclink" && props.page !== "pwdForgotten"
+                props.page !== "login" &&
+                  props.page !== "magiclink" &&
+                  props.page !== "pwdForgotten"
                   ? "allRegister"
                   : "allLogin"
               )

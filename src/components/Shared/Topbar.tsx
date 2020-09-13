@@ -101,7 +101,6 @@ const Topbar: React.FunctionComponent = () => {
         <br />
         <br />
         <br />
-
         <Divider />
         <div className="sidebarMenu">
           <div className="sidebarMenuItem">
