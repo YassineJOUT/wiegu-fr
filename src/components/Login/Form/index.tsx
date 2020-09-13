@@ -9,7 +9,7 @@ import { history } from "../../../utilities/history";
 import { Context, saveState } from "../../../utilities/useAuth";
 
 const LoginForm: React.SFC = () => {
-  console.log("RENDERED LOGIN PAGE")
+  //console.log("RENDERED LOGIN PAGE");
   const { contextState, setContext } = useContext(Context);
   if (contextState.isLogged) history.push("profile");
   const [{ success, error }, dispatch] = useReducer(reducer, {
@@ -47,7 +47,9 @@ const LoginForm: React.SFC = () => {
           setContext(v);
           saveState(v);
           dispatch({ type: "success", message: "Login success" });
-          history.push("/profile");
+          console.log("dataa");
+          console.log(v);
+          //history.push("/profile");
         } else {
           dispatch({ type: "failure", error: data.error });
         }

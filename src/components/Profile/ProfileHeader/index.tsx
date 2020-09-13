@@ -13,7 +13,7 @@ import ProfileEditForm from "../ProfileEdit/Form";
 import { API_URL } from "../../../utilities/config";
 import ImageInput from "../../Shared/ImageInput";
 import CoverImageInput from "../../Shared/CoverImageInput";
-import { Context } from "../../../utilities/useAuth";
+import { Context, saveState } from "../../../utilities/useAuth";
 import { history } from "../../../utilities/history";
 import { userService } from "../../../services/users.service";
 
@@ -56,10 +56,12 @@ const ProfileHeader: React.FunctionComponent = () => {
       setContext,
     };
     setContext(v);
-    useState(v);
+    saveState(v);
     history.push("/");
   };
-  if (!contextState.isLogged) history.push("/");
+  console.log("CONTEXT")
+  console.log(contextState.isLogged)
+ // if (!contextState.isLogged) history.push("/");
   useEffect(() => {
     setLoading(true);
     userService

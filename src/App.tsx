@@ -18,7 +18,8 @@ import HomePage from "./pages/HomePage";
 import SliderComponentX from "./components/Home/Slider/Slider";
 
 const loadedState = loadState();
-
+console.log("loadedState")
+console.log(loadedState)
 const App: React.FC = () => {
   const [context, setContext] = useState<Context>(loadedState);
 
