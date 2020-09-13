@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import uniqid from "uniqid";
 // import "react-animated-slider/build/horizontal.css";
 import Captions from "./SliderSteps";
 import {
@@ -53,30 +54,43 @@ let elements = [
 const slides = [
   {
     title: "First item",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing",
+    description: () => (
+      <div className="textSlider">
+      Lorem ipsum dolor sit amet, consectetur adipiscin
+      </div>
+    ),
   },
   {
     title: "Second item",
-    description: "incididunt ut labore et dolore magna aliqua",
+    description: () => (
+      <div className="textSlider">
+      incididunt ut labore et dolore magna aliqu
+      </div>
+    ),
   },
   {
     title: "Third item",
-    description:
-      "Praesent commodo cursus magna, vel scelerisque nisl consectetur.",
+    description: () => (
+      <div className="textSlider">
+      Praesent commodo cursus magna, vel scelerisque nisl consectetur
+      </div>
+    ),
   },
   {
     title: "Fourth item",
-    description: "Duis aute irure dolor in reprehenderit in",
+    description: () => (
+      <div className="textSlider">
+        Duis aute irure dolor in reprehenderit i
+      </div>
+    ),
   },
 ];
-const animation = ["slide right", "slide left"];
-interface Props {
-  slideCount: number;
-}
-const SliderComponentX: React.FunctionComponent<Props> = ({ slideCount }) => {
+
+const SliderComponentX: React.FunctionComponent = () => {
+  const id = 1;
   const [activeIndex, setActiveIndex] = useState(0);
-  const count = 4; // slideCount;
-  const animation = "slide left";
+  const count = slides.length;
+  const animation = ["slide left", "slide right"];
   const handleCaptionClick = (index: string) => {
     // console.log(activeIndex)
     setActiveIndex(parseInt(index));
@@ -89,42 +103,64 @@ const SliderComponentX: React.FunctionComponent<Props> = ({ slideCount }) => {
     }, 4000);
     return () => clearInterval(interval);
   }, [activeIndex]);
-  const size = slides.length;
+
+  // next function
+  const next = () => {
+    setActiveIndex((activeIndex + 1) % count);
+  };
+  // previous function
+  const previous = () => {
+    setActiveIndex(
+      (activeIndex - 1) % count < 0 ? count - 1 : (activeIndex - 1) % count
+    );
+  };
   return (
     <>
-      <Grid columns={3} verticalAlign='middle' >
-        <GridColumn width="1" >
-          <Icon name="angle left" style={{ position: "absolute" }} />
-        </GridColumn>
-        <GridColumn width="16">
-          <div className="slidesContainer">
-            {slides.map((element, index) => {
-              return (
-                <Transition.Group
-                  key={index}
-                  duration={1000}
-                  animation={animation}
-                >
-                  {index === activeIndex && (
-                    <div className="textSlider">{element.description}</div>
-                  )}
-                </Transition.Group>
-              );
-            })}
+      <Grid columns={4} centered>
+        <Grid.Row verticalAlign="middle">
+          <Grid.Column className="arrow-icon" width="2">
+            <Icon
+              name="angle left"
+              style={{ fontSize: "35px" }}
+              onClick={() => previous()}
+            />
+          </Grid.Column>
+          <Grid.Column width="10" style={{ textAlign: "center" }}>
+            <div className="slidesContainer">
+              {slides.map((element, index) => {
+                if (activeIndex === index) {
+                  return (
+                    <Transition
+                      key={uniqid()}
+                      visible={true}
+                      duration={1000}
+                      animation={animation[1 - id]}
+                    >
+                      {slides[index].description()}
+                    </Transition>
+                  );
+                }
+              })}
+            </div>
+          </Grid.Column>
+          <Grid.Column className="arrow-icon" width="2">
+            <Icon
+              name="angle right"
+              style={{ fontSize: "35px" }}
+              onClick={() => next()}
+            />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <div className="captions">
+            <Captions
+              size={count}
+              step={activeIndex}
+              handleCaptionClick={handleCaptionClick}
+            />
           </div>
-        </GridColumn>
-        <GridColumn width="1">
-          <Icon name="angle left" style={{ position: "absolute" }} />
-        </GridColumn>
+        </Grid.Row>
       </Grid>
-
-      <div className="captions">
-        <Captions
-          size={size}
-          step={activeIndex}
-          handleCaptionClick={handleCaptionClick}
-        />
-      </div>
     </>
   );
 };

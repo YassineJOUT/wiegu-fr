@@ -145,13 +145,13 @@ i.icon {
 .textSlider {
   color: #fff;
   font-family: "robotoregular";
-  font-size: 35px;
-  /* font-size:2vw; */
+  /* font-size: 35px; */
+  font-size: 1.8vw;
   font-weight: bold;
-  text-align: center;
   line-height: 1.45em;
-  margin-top: 2.5em;
   position: absolute;
+  display: inline-block;
+  vertical-align: middle;
 }
 .previousButton,
 .nextButton {
@@ -289,18 +289,32 @@ p:last-child {
   color: grey !important;
   font-family: "robotoregular";
 }
-.sidebarMenuItem .redlocation{
+.sidebarMenuItem .redlocation {
   color: #ff0000 !important;
 }
 
-@media screen and (max-width: 400px){
-  .slidesContainer{
-    height: 600px
-  } 
-  .textSlider{
-    font-size: 8vw;
+@media screen and (max-width: 768px) {
+  .textSlider {
+    font-size: 4.7vw;
   }
 }
-.slidesContainer{
-  height: 200px
-} 
+
+/* @media screen and (max-width: 400px) {
+  .textSlider {
+    font-size: 4.7vw;
+  }
+} */
+.slidesContainer {
+  height: 10vw;
+}
+
+.arrow-icon {
+  text-align: "center";
+  color: white;
+  opacity: 50%;
+
+}
+.arrow-icon:hover{
+  opacity: 1;
+}
+

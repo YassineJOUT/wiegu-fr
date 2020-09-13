@@ -11,7 +11,7 @@ const Home: React.FunctionComponent = () => {
       <Grid stackable columns="equal">
         <Grid.Row centered>
           <Grid.Column width={5}>
-          <SliderComponentX slideCount={4}/>
+          <SliderComponentX />
             <br></br>
             <div className="buttons" style={{ marginBottom: "60px" }}>
               <ModalAll
