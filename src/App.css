@@ -166,17 +166,17 @@ a.nextButton {
 a.previousButton {
   left: 5px !important;
 }
-.signup,
-.signin {
-  width: 85%;
-  margin: 5px !important;
-  border-radius: 2em !important;
-}
-.signUp {
+
+.btns {
   width: 100%;
   margin: 5px !important;
   border-radius: 2em !important;
+
 }
+/* .signUp {
+  width: 100%;
+  margin: 5px !important;
+} */
 .buttons {
   text-align: center;
 }
@@ -299,11 +299,6 @@ p:last-child {
   }
 }
 
-/* @media screen and (max-width: 400px) {
-  .textSlider {
-    font-size: 4.7vw;
-  }
-} */
 .slidesContainer {
   height: 10vw;
 }

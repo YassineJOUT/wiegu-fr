@@ -18,7 +18,7 @@ const Home: React.FunctionComponent = () => {
                 page={page}
                 setPage={setPage}
                 trigger={
-                  <Button size="large" color="red" className="signup" onClick={()=> setPage('allRegister') }>
+                  <Button size="large"  color="red" className="btns" onClick={()=> setPage('allRegister') }>
                     Commencer
                   </Button>
                 }
@@ -31,7 +31,7 @@ const Home: React.FunctionComponent = () => {
 
                     size="large"
                     style={{ backgroundColor: "white", color: "black" }}
-                    className="signin"
+                    className="btns"
                     onClick={()=> setPage('allLogin') }
                   >
                     Se connecter

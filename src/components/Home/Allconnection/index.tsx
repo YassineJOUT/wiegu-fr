@@ -9,10 +9,10 @@ const AllForm: React.FunctionComponent<{
   return (
     <Form>
       <Responsive minWidth={Responsive.onlyTablet.minWidth}>
-        <Form.Field>
-          <Button
+        <Form.Field  >
+          <Button 
             type="button"
-            className="signUp"
+            className="btns"
             style={{ color: "white", backgroundColor: "#3b5998" }}
           >
             <Icon name="facebook" size="large" />
@@ -22,7 +22,7 @@ const AllForm: React.FunctionComponent<{
         <Form.Field>
           <Button
             type="button"
-            className="signUp"
+            className="btns"
             style={{ color: "white", backgroundColor: "#db4437"}}
           >
             <Icon name="google" size="large" />
@@ -35,7 +35,7 @@ const AllForm: React.FunctionComponent<{
         <Form.Field>
           <Button
             type="button"
-            className="signUp"
+            className="btns"
             style={{ color: "white", backgroundColor: "#444" }}
             onClick={() =>
               handleClick(type !== "register" ? "login" : "register")
@@ -50,7 +50,7 @@ const AllForm: React.FunctionComponent<{
             <Button
               style={{ color: "white", backgroundColor: "#0c6c50" }}
               type="button"
-              className="signUp"
+              className="btns"
               onClick={() => handleClick("magiclink")}
             >
               Se connecter avec un lien magic
@@ -64,33 +64,33 @@ const AllForm: React.FunctionComponent<{
         )}
       </Responsive>
       <Responsive {...Responsive.onlyMobile}>
-        <Form.Field width="12">
+        <div className="stretched">
           <Button
             type="button"
-            className="signUp"
+            className="btns"
             style={{ color: "white", backgroundColor: "#3b5998" }}
           >
             <Icon name="facebook" size="large" />
             {type !== "register" ? "Se connecter " : "S'inscrire"} avec Facebook
           </Button>
-        </Form.Field>
-        <Form.Field width="12">
+        </div>
+        <div className="stretched">
           <Button
             type="button"
-            className="signUp"
+            className="btns"
             style={{ color: "white", backgroundColor: "#db4437" }}
           >
             <Icon name="google" size="large" />
             {type !== "register" ? "Se connecter " : "S'inscrire"} avec Google
           </Button>
-        </Form.Field>
-        <Form.Field>
+        </div>
+        <div>
           <p className="dataField">Ou</p>
-        </Form.Field>
-        <Form.Field width="12">
+        </div>
+        <div className="stretched">
           <Button
             type="button"
-            className="signUp"
+            className="btns"
             style={{ color: "white", backgroundColor: "#444" }}
             onClick={() =>
               handleClick(type !== "register" ? "login" : "register")
@@ -99,12 +99,12 @@ const AllForm: React.FunctionComponent<{
             {type !== "register" ? "Se connecter " : "S'inscrire"} avec un
             e-mail
           </Button>
-        </Form.Field>
+        </div>
         {type !== "register" && (
-          <Form.Field width="12">
+          <div className="stretched">
             <Button
               type="button"
-              className="signUp"
+              className="btns"
               style={{ color: "white", backgroundColor: "#0c6c50" }}
               onClick={() => handleClick("magiclink")}
             >
@@ -115,7 +115,7 @@ const AllForm: React.FunctionComponent<{
                 className="magicM"
               />
             </Button>
-          </Form.Field>
+          </div>
         )}
       </Responsive>
     </Form>
