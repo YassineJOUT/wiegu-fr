@@ -12,7 +12,7 @@ type modalProps = {
   setPage: Function;
 };
 
-const FooterInscription: React.FunctionComponent<{ handleClick: Function,  }> = ({
+const FooterInscription: React.FunctionComponent<{ handleClick: Function }> = ({
   handleClick,
 }) => (
   <div className="footerModal">
@@ -84,6 +84,7 @@ const ModalContent: React.FunctionComponent<{
 };
 
 const ModalAll: React.FunctionComponent<modalProps> = (props) => {
+  console.log(props.page)
   const [open, setOpen] = React.useState(false);
   const handleClick = (pageName: string) => {
     props.setPage(pageName);

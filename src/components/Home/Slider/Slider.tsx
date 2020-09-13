@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 // import "react-animated-slider/build/horizontal.css";
 import Captions from "./SliderSteps";
-import { Transition, Image, Grid, GridRow } from "semantic-ui-react";
+import {
+  Transition,
+  Image,
+  Grid,
+  GridRow,
+  GridColumn,
+  Icon,
+} from "semantic-ui-react";
 import { relative } from "path";
 // import Carousel from "semantic-ui-carousel-react";
 // import "semantic-ui-css/semantic.min.css";
@@ -85,23 +92,32 @@ const SliderComponentX: React.FunctionComponent<Props> = ({ slideCount }) => {
   const size = slides.length;
   return (
     <>
-      <div className="slidesContainer">
-        {slides.map((element, index) => {
-          console.log(index === activeIndex);
+      <Grid columns={3} verticalAlign='middle' >
+        <GridColumn width="1" >
+          <Icon name="angle left" style={{ position: "absolute" }} />
+        </GridColumn>
+        <GridColumn width="16">
+          <div className="slidesContainer">
+            {slides.map((element, index) => {
+              return (
+                <Transition.Group
+                  key={index}
+                  duration={1000}
+                  animation={animation}
+                >
+                  {index === activeIndex && (
+                    <div className="textSlider">{element.description}</div>
+                  )}
+                </Transition.Group>
+              );
+            })}
+          </div>
+        </GridColumn>
+        <GridColumn width="1">
+          <Icon name="angle left" style={{ position: "absolute" }} />
+        </GridColumn>
+      </Grid>
 
-          return (
-            <Transition.Group
-              key={index}
-              duration={1000}
-              animation={animation}
-            >
-              {index === activeIndex && (
-                <div className="textSlider">{element.description}</div>
-              )}
-            </Transition.Group>
-          );
-        })}
-      </div>
       <div className="captions">
         <Captions
           size={size}

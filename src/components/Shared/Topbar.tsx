@@ -4,11 +4,9 @@ import {
   Menu,
   Input,
   Sidebar,
-  Ref,
   Segment,
   Image,
   Responsive,
-  Container,
   Grid,
   GridRow,
   GridColumn,
@@ -18,11 +16,9 @@ import { Context, saveState } from "../../utilities/useAuth";
 import { history } from "../../utilities/history";
 import ModalAll from "../Home/modalAll";
 
-const Topbar: React.FunctionComponent = (props) => {
+const Topbar: React.FunctionComponent = () => {
   const { contextState, setContext } = useContext(Context);
-  const [activeItem, setActiveItem] = useState(1);
   const [visible, setVisible] = useState(false);
-  const segmentRef = React.useRef();
 
   const disconnect = () => {
     const v = {
@@ -54,29 +50,41 @@ const Topbar: React.FunctionComponent = (props) => {
         width="wide"
         style={{ backgroundColor: "#fff" }}
       >
-         <span
-          style={{ float: "right", cursor: "pointer", marginRight: "20px", fontSize: '18px', fontWeight: 'bolder' }}
+        <span
+          style={{
+            float: "right",
+            cursor: "pointer",
+            marginRight: "20px",
+            fontSize: "18px",
+            fontWeight: "bolder",
+          }}
           onClick={() => setVisible(false)}
         >
           X
         </span>
 
         <Image
-        
           src={require("../../assets/weigu-logo.png")}
           size="tiny"
           centered
         />
-       
+
         <br />
         <br />
         <br />
         <div className="sidebarMenu">
           <div className="sidebarMenuItem">
-            <a> <Icon name="plus square outline" /> Deposer une publication</a>
+            <a>
+              {" "}
+              <Icon name="plus square outline" /> Deposer une publication
+            </a>
           </div>
           <div className="sidebarMenuItem">
-            <a> <Icon name="search" />Rechercher</a>
+            <a>
+              {" "}
+              <Icon name="search" />
+              Rechercher
+            </a>
           </div>
         </div>
         <Divider />
@@ -106,7 +114,11 @@ const Topbar: React.FunctionComponent = (props) => {
                   page={page}
                   setPage={setPage}
                   trigger={
-                    <a href="#" className="link item " onClick={() => setPage("allLogin")}>
+                    <a
+                      href="#"
+                      className="link item "
+                      onClick={() => setPage("allLogin")}
+                    >
                       Connecter
                     </a>
                   }
@@ -114,11 +126,14 @@ const Topbar: React.FunctionComponent = (props) => {
               </div>
               <div className="sidebarMenuItem">
                 <ModalAll
-                  
                   page={page}
                   setPage={setPage}
                   trigger={
-                    <a href="#" className="link item" onClick={() => setPage("allRegister")}>
+                    <a
+                      href="#"
+                      className="link item"
+                      onClick={() => setPage("allRegister")}
+                    >
                       Inscription
                     </a>
                   }
@@ -186,11 +201,14 @@ const Topbar: React.FunctionComponent = (props) => {
             {!contextState.isLogged ? (
               <>
                 <ModalAll
-                  page="allLogin"
+                  page={page}
                   setPage={setPage}
-
                   trigger={
-                    <a href="#" className="link item con" onClick={()=> setPage("allLogin")}>
+                    <a
+                      href="#"
+                      className="link item con"
+                      onClick={() => setPage("allLogin")}
+                    >
                       Connecter
                     </a>
                   }
@@ -199,7 +217,11 @@ const Topbar: React.FunctionComponent = (props) => {
                   page={page}
                   setPage={setPage}
                   trigger={
-                    <a href="#" className="link item ins" onClick={()=> setPage("allRegister")}>
+                    <a
+                      href="#"
+                      className="link item ins"
+                      onClick={() => setPage("allRegister")}
+                    >
                       Inscription
                     </a>
                   }
