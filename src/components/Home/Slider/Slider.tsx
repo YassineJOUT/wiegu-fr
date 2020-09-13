@@ -9,32 +9,39 @@ let elements = [
   {
     render: () => {
       return (
-        <div className="textSlider">Lorem ipsum dolor sit amet, consectetur adipiscing</div>
+        <div className="textSlider">
+          Lorem ipsum dolor sit amet, consectetur adipiscing
+        </div>
       );
     },
   },
   {
     render: () => {
       return (
-        <div className="textSlider">incididunt ut labore et dolore magna aliqua</div>
+        <div className="textSlider">
+          incididunt ut labore et dolore magna aliqua
+        </div>
       );
     },
   },
   {
     render: () => {
       return (
-        <div className="textSlider">Praesent commodo cursus magna, vel scelerisque nisl consectetur</div>
+        <div className="textSlider">
+          Praesent commodo cursus magna, vel scelerisque nisl consectetur
+        </div>
       );
     },
   },
   {
     render: () => {
       return (
-        <div className="textSlider">Duis aute irure dolor in reprehenderit in</div>
+        <div className="textSlider">
+          Duis aute irure dolor in reprehenderit in
+        </div>
       );
     },
   },
- 
 ];
 const slides = [
   {
@@ -62,7 +69,7 @@ interface Props {
 const SliderComponentX: React.FunctionComponent<Props> = ({ slideCount }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const count = 4; // slideCount;
-  const animation = "slide left"
+  const animation = "slide left";
   const handleCaptionClick = (index: string) => {
     // console.log(activeIndex)
     setActiveIndex(parseInt(index));
@@ -79,28 +86,21 @@ const SliderComponentX: React.FunctionComponent<Props> = ({ slideCount }) => {
   return (
     <>
       <div className="slidesContainer">
-        <Transition.Group duration={1000} transitionOnMount={true} directional animation={animation}>
-          {"0" === activeIndex + "" && (
-            <div className="textSlider">{slides[0].description}</div>
-          )}
-        </Transition.Group>
-        <Transition.Group duration={1000} transitionOnMount={true} directional animation={animation}>
-          {"1" === activeIndex + "" && (
-            <div className="textSlider">{slides[1].description}</div>
-          )}
-        </Transition.Group>
+        {slides.map((element, index) => {
+          console.log(index === activeIndex);
 
-        <Transition.Group duration={1000} transitionOnMount={true} directional animation={animation}>
-          {"2" === activeIndex + "" && (
-            <div className="textSlider">{slides[2].description}</div>
-          )}
-        </Transition.Group>
-
-        <Transition.Group duration={1000} transitionOnMount={true} directional  animation={animation}>
-          {"3" === activeIndex + "" && (
-            <div className="textSlider">{slides[3].description}</div>
-          )}
-        </Transition.Group>
+          return (
+            <Transition.Group
+              key={index}
+              duration={1000}
+              animation={animation}
+            >
+              {index === activeIndex && (
+                <div className="textSlider">{element.description}</div>
+              )}
+            </Transition.Group>
+          );
+        })}
       </div>
       <div className="captions">
         <Captions
@@ -109,21 +109,8 @@ const SliderComponentX: React.FunctionComponent<Props> = ({ slideCount }) => {
           handleCaptionClick={handleCaptionClick}
         />
       </div>
-
     </>
   );
-
-  // return (
-  //   <div style={{ width: 500, height: 300}}>
-  //     {/* <Carousel
-  //       elements={elements}
-  //       duration={4000}
-  //       animation="slide right"
-  //       showNextPrev={false}
-  //       showIndicators={true}
-  //     /> */}
-  //   </div>
-  // );
 };
 
 export default SliderComponentX;
