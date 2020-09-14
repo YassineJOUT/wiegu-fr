@@ -306,7 +306,7 @@ p:last-child {
 .arrow-icon {
   text-align: "center";
   color: white;
-  opacity: 50%;
+  opacity: 0.7;
 
 }
 .arrow-icon:hover{
