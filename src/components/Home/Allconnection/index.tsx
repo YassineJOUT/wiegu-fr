@@ -1,16 +1,43 @@
 import React from "react";
 import { Button, Form, Image, Icon, Responsive } from "semantic-ui-react";
 import "react-datepicker/dist/react-datepicker.css";
-
+import { GoogleLogin } from "react-google-login";
+// import FacebookLogin from "react-facebook-login";
+import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 const AllForm: React.FunctionComponent<{
   handleClick: Function;
   type: string;
 }> = ({ handleClick, type }) => {
+  const responseGoogle = (response: any) => {
+    console.log(response);
+  };
+  const responseFacebook = (response: any) => {
+    console.log(response);
+  };
   return (
     <Form>
       <Responsive minWidth={Responsive.onlyTablet.minWidth}>
-        <Form.Field  >
-          <Button 
+        <Form.Field>
+          {/* <FacebookLogin
+            appId="669704453651059"
+            
+            callback={responseFacebook}
+            render={(renderProps: any) => (
+              <Button
+                type="button"
+                className="btns"
+                style={{ color: "white", backgroundColor: "#3b5998" }}
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+              >
+                <Icon name="facebook" size="large" />
+                {type !== "register" ? "Se connecter " : "S'inscrire"} avec
+                Facebook
+              </Button>
+            )}
+          /> */}
+          
+          <Button
             type="button"
             className="btns"
             style={{ color: "white", backgroundColor: "#3b5998" }}
@@ -20,14 +47,35 @@ const AllForm: React.FunctionComponent<{
           </Button>
         </Form.Field>
         <Form.Field>
+          {/* <GoogleLogin
+            clientId="951667779149-jpb2ljtpbf0rp1n7ppbobt8jmq6in5cn.apps.googleusercontent.com"
+            render={(renderProps: any) => (
+              <Button
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+                type="button"
+                className="btns"
+                style={{ color: "white", backgroundColor: "#db4437" }}
+              >
+                <Icon name="google" size="large" />
+                {type !== "register" ? "Se connecter " : "S'inscrire"} avec
+                Google
+              </Button>
+            )}
+            buttonText="Login"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={"single_host_origin"}
+          /> */}
           <Button
-            type="button"
-            className="btns"
-            style={{ color: "white", backgroundColor: "#db4437"}}
-          >
-            <Icon name="google" size="large" />
-            {type !== "register" ? "Se connecter " : "S'inscrire"} avec Google
-          </Button>
+                type="button"
+                className="btns"
+                style={{ color: "white", backgroundColor: "#db4437" }}
+              >
+                <Icon name="google" size="large" />
+                {type !== "register" ? "Se connecter " : "S'inscrire"} avec
+                Google
+              </Button>
         </Form.Field>
         <Form.Field>
           <p className="dataField">Ou</p>

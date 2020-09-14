@@ -171,7 +171,6 @@ a.previousButton {
   width: 100%;
   margin: 5px !important;
   border-radius: 2em !important;
-
 }
 /* .signUp {
   width: 100%;
@@ -307,9 +306,12 @@ p:last-child {
   text-align: "center";
   color: white;
   opacity: 0.7;
-
 }
-.arrow-icon:hover{
+.arrow-icon:hover {
   opacity: 1;
 }
 
+.fb {
+  color: white ;
+  background-color: #3b5998;
+}
